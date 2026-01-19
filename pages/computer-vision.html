@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Vision - ML for NOAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-icon">🤖</span>
+                <span>ML for NOAI</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="fundamentals.html" class="nav-link">Fundamentals</a></li>
+                <li><a href="supervised.html" class="nav-link">Supervised Learning</a></li>
+                <li><a href="unsupervised.html" class="nav-link">Unsupervised Learning</a></li>
+                <li><a href="neural-networks.html" class="nav-link">Neural Networks</a></li>
+                <li><a href="computer-vision.html" class="nav-link active">Computer Vision</a></li>
+                <li><a href="nlp.html" class="nav-link">NLP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li>Computer Vision</li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>👁️ Computer Vision</h1>
+            <p class="subtitle">Teaching machines to see and understand visual information using deep learning.</p>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="overview" class="content-section">
+            <div class="container">
+                <h2>Introduction to Computer Vision</h2>
+                <p>Computer Vision (CV) enables machines to interpret and understand visual information from images and videos. It's one of the most successful applications of deep learning.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>🏷️ Image Classification</h4>
+                        <p>Assign a label to an entire image</p>
+                        <p><em>"This image contains a cat"</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>📍 Object Detection</h4>
+                        <p>Find and locate objects with bounding boxes</p>
+                        <p><em>"Cat at position (x, y, w, h)"</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🎨 Semantic Segmentation</h4>
+                        <p>Classify each pixel in the image</p>
+                        <p><em>Create a pixel-wise mask</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🔢 Instance Segmentation</h4>
+                        <p>Separate different instances of same class</p>
+                        <p><em>Distinguish cat #1 from cat #2</em></p>
+                    </div>
+                </div>
+
+                <h3>Images as Data</h3>
+                <p>To a computer, an image is a 3D array of numbers:</p>
+                <ul>
+                    <li><strong>Height × Width × Channels</strong></li>
+                    <li>Grayscale: 1 channel (0-255 intensity)</li>
+                    <li>Color (RGB): 3 channels (Red, Green, Blue)</li>
+                    <li>Example: 224 × 224 × 3 = 150,528 values!</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="cnn" class="content-section">
+            <div class="container">
+                <h2>Convolutional Neural Networks (CNNs)</h2>
+                <p>CNNs are the foundation of modern computer vision. They're designed specifically to process grid-like data (images).</p>
+
+                <div class="algorithm-card">
+                    <h3>Why CNNs for Images?</h3>
+                    <div class="algorithm-meta">
+                        <span>👁️ Type: Deep Learning</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                    </div>
+
+                    <h4>Problems with MLPs for Images</h4>
+                    <ul>
+                        <li>Too many parameters (224×224×3 = 150K inputs!)</li>
+                        <li>No spatial awareness (treats pixels independently)</li>
+                        <li>Not translation invariant (cat in corner ≠ cat in center)</li>
+                    </ul>
+
+                    <h4>CNN Solutions</h4>
+                    <ul>
+                        <li><strong>Local connectivity:</strong> Each neuron only "sees" a small region</li>
+                        <li><strong>Weight sharing:</strong> Same filter applied across entire image</li>
+                        <li><strong>Hierarchical features:</strong> Early layers detect edges, later layers detect objects</li>
+                    </ul>
+                </div>
+
+                <h3>Key CNN Components</h3>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Convolutional Layer</h4>
+                        <p>Applies learnable filters (kernels) that slide across the image to detect features.</p>
+                        <p><em>Detects edges, textures, patterns</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Pooling Layer</h4>
+                        <p>Downsamples feature maps to reduce size and computation.</p>
+                        <p><em>Max pooling: take maximum value in region</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Fully Connected Layer</h4>
+                        <p>Traditional neural network layers at the end for classification.</p>
+                        <p><em>Combines features for final prediction</em></p>
+                    </div>
+                </div>
+
+                <h3>Convolution Operation</h3>
+                <div class="algorithm-card">
+                    <h4>How Convolution Works</h4>
+                    <ol>
+                        <li>Slide a small filter (e.g., 3×3) across the image</li>
+                        <li>At each position, compute element-wise multiplication</li>
+                        <li>Sum the results to get one output value</li>
+                        <li>Move filter by stride and repeat</li>
+                    </ol>
+
+                    <h4>Key Parameters</h4>
+                    <ul>
+                        <li><strong>Kernel size:</strong> Filter dimensions (common: 3×3, 5×5)</li>
+                        <li><strong>Stride:</strong> Step size when sliding (1 = overlap, 2 = skip)</li>
+                        <li><strong>Padding:</strong> Add zeros around edges to preserve size</li>
+                        <li><strong>Filters:</strong> Number of different patterns to detect</li>
+                    </ul>
+
+                    <div class="formula">
+                        <div class="formula-title">Output Size Formula</div>
+                        Output = (Input - Kernel + 2×Padding) / Stride + 1
+                    </div>
+                </div>
+
+                <pre><code># PyTorch: CNN Building Blocks
+import torch.nn as nn
+
+# Convolutional layer
+conv = nn.Conv2d(
+    in_channels=3,      # RGB input
+    out_channels=64,    # 64 filters
+    kernel_size=3,      # 3x3 filter
+    stride=1,
+    padding=1           # Same padding
+)
+
+# Max pooling
+pool = nn.MaxPool2d(kernel_size=2, stride=2)  # Halves dimensions
+
+# Example: Input (3, 224, 224) → Conv → (64, 224, 224) → Pool → (64, 112, 112)</code></pre>
+            </div>
+        </section>
+
+        <section id="architectures" class="content-section">
+            <div class="container">
+                <h2>Famous CNN Architectures</h2>
+                <p>Understanding classic architectures helps you design better models.</p>
+
+                <div class="algorithm-card">
+                    <h3>LeNet-5 (1998)</h3>
+                    <p>The original CNN for handwritten digit recognition.</p>
+                    <p><strong>Architecture:</strong> Conv → Pool → Conv → Pool → FC → FC → Output</p>
+                </div>
+
+                <div class="algorithm-card">
+                    <h3>VGGNet (2014)</h3>
+                    <div class="algorithm-meta">
+                        <span>📊 Depth: 16-19 layers</span>
+                        <span>🎯 Simple design</span>
+                    </div>
+                    <p>Key insight: <strong>Stack many 3×3 convolutions</strong> instead of large filters.</p>
+                    <p>Two 3×3 convs = one 5×5 conv (same receptive field, fewer parameters)</p>
+                </div>
+
+                <div class="algorithm-card">
+                    <h3>ResNet (2015)</h3>
+                    <div class="algorithm-meta">
+                        <span>📊 Depth: 18-152+ layers</span>
+                        <span>📚 NOAI: Practice</span>
+                        <span>🏆 Very Important</span>
+                    </div>
+
+                    <h4>The Problem</h4>
+                    <p>Deeper networks should be better, but they become harder to train (vanishing gradients).</p>
+
+                    <h4>The Solution: Skip Connections</h4>
+                    <p>Add the input directly to the output of a layer block:</p>
+                    <div class="formula">
+                        output = F(x) + x
+                    </div>
+                    <p>This allows gradients to flow directly backward and enables training of very deep networks.</p>
+                </div>
+
+                <pre><code># PyTorch: ResNet Block (Simplified)
+class ResidualBlock(nn.Module):
+    def __init__(self, channels):
+        super().__init__()
+        self.conv1 = nn.Conv2d(channels, channels, 3, padding=1)
+        self.bn1 = nn.BatchNorm2d(channels)
+        self.conv2 = nn.Conv2d(channels, channels, 3, padding=1)
+        self.bn2 = nn.BatchNorm2d(channels)
+
+    def forward(self, x):
+        identity = x  # Save input
+
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = torch.relu(out)
+
+        out = self.conv2(out)
+        out = self.bn2(out)
+
+        out = out + identity  # Skip connection!
+        out = torch.relu(out)
+        return out</code></pre>
+
+                <h3>Using Pre-trained Models</h3>
+                <p>Instead of training from scratch, use models pre-trained on ImageNet (1M+ images):</p>
+
+                <pre><code># PyTorch: Using Pre-trained ResNet
+import torchvision.models as models
+
+# Load pre-trained ResNet-18
+model = models.resnet18(pretrained=True)
+
+# Replace final layer for your task (e.g., 10 classes)
+num_features = model.fc.in_features
+model.fc = nn.Linear(num_features, 10)
+
+# Option 1: Fine-tune entire network
+# Option 2: Freeze early layers, only train final layers
+for param in model.parameters():
+    param.requires_grad = False  # Freeze all
+model.fc.requires_grad = True    # Unfreeze final layer</code></pre>
+            </div>
+        </section>
+
+        <section id="augmentation" class="content-section">
+            <div class="container">
+                <h2>Data Augmentation</h2>
+                <p>Artificially expand your training data by applying transformations. This improves generalization and reduces overfitting.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Geometric Transforms</h4>
+                        <ul>
+                            <li>Horizontal/vertical flip</li>
+                            <li>Rotation</li>
+                            <li>Scaling/cropping</li>
+                            <li>Translation</li>
+                        </ul>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Color Transforms</h4>
+                        <ul>
+                            <li>Brightness adjustment</li>
+                            <li>Contrast changes</li>
+                            <li>Saturation</li>
+                            <li>Color jittering</li>
+                        </ul>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Other Techniques</h4>
+                        <ul>
+                            <li>Gaussian noise</li>
+                            <li>Cutout (random erasing)</li>
+                            <li>Mixup (blend images)</li>
+                            <li>CutMix</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <pre><code># PyTorch: Data Augmentation
+from torchvision import transforms
+
+# Training transforms (with augmentation)
+train_transform = transforms.Compose([
+    transforms.RandomResizedCrop(224),
+    transforms.RandomHorizontalFlip(),
+    transforms.RandomRotation(15),
+    transforms.ColorJitter(brightness=0.2, contrast=0.2),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                        std=[0.229, 0.224, 0.225])
+])
+
+# Validation transforms (no augmentation!)
+val_transform = transforms.Compose([
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                        std=[0.229, 0.224, 0.225])
+])</code></pre>
+
+                <div class="warning-box">
+                    Only apply augmentation to training data, not validation or test data! Test data should reflect real-world conditions.
+                </div>
+            </div>
+        </section>
+
+        <section id="transfer-learning" class="content-section">
+            <div class="container">
+                <h2>Transfer Learning</h2>
+                <p>Use knowledge from a model trained on one task to help with a different but related task.</p>
+
+                <div class="algorithm-card">
+                    <h3>Why Transfer Learning?</h3>
+                    <ul>
+                        <li>Don't need massive datasets (ImageNet has 1M+ images)</li>
+                        <li>Faster training (start with good features)</li>
+                        <li>Better performance with limited data</li>
+                        <li>Lower layers learn general features (edges, textures)</li>
+                    </ul>
+
+                    <h4>Two Approaches</h4>
+                    <ol>
+                        <li><strong>Feature Extraction:</strong> Freeze pre-trained layers, only train new final layer(s)</li>
+                        <li><strong>Fine-tuning:</strong> Train entire network with small learning rate</li>
+                    </ol>
+                </div>
+
+                <h3>When to Use What</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Your Data</th>
+                            <th>Similarity to Pre-training Data</th>
+                            <th>Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Small</td>
+                            <td>Similar</td>
+                            <td>Feature extraction (freeze most layers)</td>
+                        </tr>
+                        <tr>
+                            <td>Small</td>
+                            <td>Different</td>
+                            <td>Feature extraction from earlier layers</td>
+                        </tr>
+                        <tr>
+                            <td>Large</td>
+                            <td>Similar</td>
+                            <td>Fine-tune entire network</td>
+                        </tr>
+                        <tr>
+                            <td>Large</td>
+                            <td>Different</td>
+                            <td>Fine-tune or train from scratch</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="object-detection" class="content-section">
+            <div class="container">
+                <h2>Object Detection</h2>
+                <p>Detect and localize multiple objects in an image with bounding boxes.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Two-Stage Detectors</h4>
+                        <p><strong>R-CNN Family:</strong> First propose regions, then classify each.</p>
+                        <ul>
+                            <li>R-CNN</li>
+                            <li>Fast R-CNN</li>
+                            <li>Faster R-CNN</li>
+                        </ul>
+                        <p><em>More accurate, slower</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>One-Stage Detectors</h4>
+                        <p><strong>Direct prediction:</strong> Predict boxes and classes in one pass.</p>
+                        <ul>
+                            <li>YOLO (You Only Look Once)</li>
+                            <li>SSD</li>
+                            <li>RetinaNet</li>
+                        </ul>
+                        <p><em>Faster, good for real-time</em></p>
+                    </div>
+                </div>
+
+                <h3>Evaluation Metrics</h3>
+                <ul>
+                    <li><strong>IoU (Intersection over Union):</strong> Overlap between predicted and ground truth boxes</li>
+                    <li><strong>mAP (mean Average Precision):</strong> Average precision across all classes and IoU thresholds</li>
+                </ul>
+
+                <div class="formula">
+                    <div class="formula-title">IoU (Intersection over Union)</div>
+                    IoU = Area of Overlap / Area of Union
+
+                    IoU > 0.5 typically considered a "match"
+                </div>
+            </div>
+        </section>
+
+        <section id="advanced" class="content-section">
+            <div class="container">
+                <h2>Advanced Topics</h2>
+
+                <h3>GANs (Generative Adversarial Networks)</h3>
+                <div class="algorithm-card">
+                    <div class="algorithm-meta">
+                        <span>🎨 Type: Generative Model</span>
+                        <span>📚 NOAI: Practice</span>
+                    </div>
+                    <p>Two networks compete: a <strong>Generator</strong> creates fake images, a <strong>Discriminator</strong> tries to distinguish real from fake.</p>
+                    <h4>Applications</h4>
+                    <ul>
+                        <li>Image generation</li>
+                        <li>Style transfer</li>
+                        <li>Super-resolution</li>
+                        <li>Data augmentation</li>
+                    </ul>
+                </div>
+
+                <h3>Vision Transformers (ViT)</h3>
+                <p>Apply transformer architecture (from NLP) to images by treating image patches as "tokens".</p>
+
+                <h3>CLIP (Contrastive Language-Image Pre-training)</h3>
+                <div class="algorithm-card">
+                    <div class="algorithm-meta">
+                        <span>🔗 Type: Vision-Language Model</span>
+                        <span>📚 NOAI: Practice</span>
+                    </div>
+                    <p>Learns to match images with text descriptions. Enables:</p>
+                    <ul>
+                        <li>Zero-shot classification (classify without training examples)</li>
+                        <li>Image search with natural language</li>
+                        <li>Cross-modal understanding</li>
+                    </ul>
+                </div>
+
+                <h3>Diffusion Models</h3>
+                <p>State-of-the-art image generation. Learn to gradually denoise images, enabling high-quality generation.</p>
+                <p><em>Used in: DALL-E, Stable Diffusion, Midjourney</em></p>
+            </div>
+        </section>
+
+        <section id="quiz" class="content-section">
+            <div class="container">
+                <h2>Test Your Understanding</h2>
+
+                <div class="quiz-container" data-correct="b" data-explanation="CNNs use weight sharing (same filter applied across entire image) and local connectivity, dramatically reducing parameters compared to fully connected networks.">
+                    <p class="quiz-question">1. Why do CNNs have fewer parameters than MLPs for image tasks?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) They use smaller images</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Weight sharing and local connectivity</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) They have fewer layers</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) They don't use activation functions</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="ResNet introduced skip (residual) connections that allow gradients to flow directly through the network, enabling training of very deep networks.">
+                    <p class="quiz-question">2. What innovation did ResNet introduce?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Batch normalization</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Max pooling</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Skip (residual) connections</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Dropout</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Data augmentation should only be applied to training data. Validation and test data should represent real-world conditions without artificial modifications.">
+                    <p class="quiz-question">3. When should you apply data augmentation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Only during training</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Only during testing</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) During both training and testing</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Never</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <nav class="page-navigation">
+                <a href="neural-networks.html" class="page-nav-link prev">
+                    <span class="page-nav-label">← Previous</span>
+                    <span class="page-nav-title">Neural Networks</span>
+                </a>
+                <a href="nlp.html" class="page-nav-link next">
+                    <span class="page-nav-label">Next →</span>
+                    <span class="page-nav-title">Natural Language Processing</span>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ML for NOAI</h4>
+                    <p>An educational resource for Singapore secondary school students preparing for the National Olympiad in AI.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="fundamentals.html">ML Fundamentals</a></li>
+                        <li><a href="supervised.html">Supervised Learning</a></li>
+                        <li><a href="neural-networks.html">Neural Networks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>References</h4>
+                    <ul>
+                        <li><a href="https://ioai-official.org/" target="_blank">IOAI Official</a></li>
+                        <li><a href="https://aisingapore.org/" target="_blank">AI Singapore</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Educational content aligned with IOAI Syllabus. Not affiliated with AI Singapore or IOAI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

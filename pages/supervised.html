@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervised Learning - ML for NOAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-icon">🤖</span>
+                <span>ML for NOAI</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="fundamentals.html" class="nav-link">Fundamentals</a></li>
+                <li><a href="supervised.html" class="nav-link active">Supervised Learning</a></li>
+                <li><a href="unsupervised.html" class="nav-link">Unsupervised Learning</a></li>
+                <li><a href="neural-networks.html" class="nav-link">Neural Networks</a></li>
+                <li><a href="computer-vision.html" class="nav-link">Computer Vision</a></li>
+                <li><a href="nlp.html" class="nav-link">NLP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li>Supervised Learning</li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>🎓 Supervised Learning</h1>
+            <p class="subtitle">Learn to build models that predict outcomes from labeled data—the most common type of machine learning.</p>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="overview" class="content-section">
+            <div class="container">
+                <h2>What is Supervised Learning?</h2>
+                <p>In supervised learning, we train models using <strong>labeled data</strong>—examples where we know the correct answer. The model learns to map inputs (features) to outputs (labels) and can then make predictions on new, unseen data.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>📈 Regression</h4>
+                        <p>Predicting <strong>continuous values</strong></p>
+                        <p><em>Examples: house prices, temperature, stock prices, age</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🏷️ Classification</h4>
+                        <p>Predicting <strong>discrete categories</strong></p>
+                        <p><em>Examples: spam/not spam, cat/dog, disease diagnosis</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="linear-regression" class="content-section">
+            <div class="container">
+                <h2>Linear Regression</h2>
+                <p>The simplest regression algorithm. It finds the best straight line (or hyperplane) through the data.</p>
+
+                <div class="algorithm-card">
+                    <h3>Simple Linear Regression</h3>
+                    <div class="algorithm-meta">
+                        <span>📊 Type: Regression</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                    </div>
+
+                    <div class="formula">
+                        <div class="formula-title">Equation</div>
+                        y = wx + b
+
+                        where:
+                        • y = predicted value
+                        • x = input feature
+                        • w = weight (slope)
+                        • b = bias (y-intercept)
+                    </div>
+
+                    <h4>How It Works</h4>
+                    <ol>
+                        <li>Initialize weights randomly</li>
+                        <li>Calculate predictions: ŷ = wx + b</li>
+                        <li>Compute loss (Mean Squared Error)</li>
+                        <li>Update weights to minimize loss using gradient descent</li>
+                        <li>Repeat until convergence</li>
+                    </ol>
+
+                    <div class="formula">
+                        <div class="formula-title">Mean Squared Error (MSE)</div>
+                        MSE = (1/n) × Σ(y_actual - y_predicted)²
+                    </div>
+                </div>
+
+                <h3>Multiple Linear Regression</h3>
+                <p>When we have multiple input features:</p>
+                <div class="formula">
+                    y = w₁x₁ + w₂x₂ + ... + wₙxₙ + b
+                </div>
+
+                <pre><code># Python: Linear Regression
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Create and train model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate
+print(f"Coefficients: {model.coef_}")
+print(f"Intercept: {model.intercept_}")
+print(f"MSE: {mean_squared_error(y_test, y_pred):.3f}")
+print(f"R² Score: {r2_score(y_test, y_pred):.3f}")</code></pre>
+
+                <div class="tip-box">
+                    Linear regression assumes a linear relationship between features and target. If the relationship is non-linear, consider polynomial features or other algorithms.
+                </div>
+            </div>
+        </section>
+
+        <section id="logistic-regression" class="content-section">
+            <div class="container">
+                <h2>Logistic Regression</h2>
+                <p>Despite its name, logistic regression is used for <strong>classification</strong>. It predicts the probability that an input belongs to a class.</p>
+
+                <div class="algorithm-card">
+                    <h3>Binary Classification</h3>
+                    <div class="algorithm-meta">
+                        <span>🏷️ Type: Classification</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                    </div>
+
+                    <div class="formula">
+                        <div class="formula-title">Sigmoid Function</div>
+                        σ(z) = 1 / (1 + e^(-z))
+
+                        where z = wx + b
+
+                        Output is between 0 and 1 (probability)
+                    </div>
+
+                    <h4>Decision Boundary</h4>
+                    <p>If P(class=1) > 0.5, predict class 1; otherwise predict class 0.</p>
+
+                    <div class="formula">
+                        <div class="formula-title">Binary Cross-Entropy Loss</div>
+                        Loss = -[y × log(ŷ) + (1-y) × log(1-ŷ)]
+                    </div>
+                </div>
+
+                <pre><code># Python: Logistic Regression
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
+
+# Create and train model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Predict classes
+y_pred = model.predict(X_test)
+
+# Predict probabilities
+y_prob = model.predict_proba(X_test)
+
+# Evaluate
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")
+print(classification_report(y_test, y_pred))</code></pre>
+
+                <h3>Multi-class Classification</h3>
+                <p>For more than two classes, logistic regression uses:</p>
+                <ul>
+                    <li><strong>One-vs-Rest (OvR):</strong> Train N binary classifiers, one for each class</li>
+                    <li><strong>Softmax (Multinomial):</strong> Directly output probabilities for all classes</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="knn" class="content-section">
+            <div class="container">
+                <h2>K-Nearest Neighbors (KNN)</h2>
+                <p>A simple, intuitive algorithm: classify points based on the majority class of their k nearest neighbors.</p>
+
+                <div class="algorithm-card">
+                    <h3>KNN Algorithm</h3>
+                    <div class="algorithm-meta">
+                        <span>🏷️ Type: Classification / Regression</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                        <span>⚡ Lazy Learner</span>
+                    </div>
+
+                    <h4>How It Works</h4>
+                    <ol>
+                        <li>Store all training data (no explicit training phase)</li>
+                        <li>For a new point, calculate distance to all training points</li>
+                        <li>Find the k nearest neighbors</li>
+                        <li><strong>Classification:</strong> Vote by majority class</li>
+                        <li><strong>Regression:</strong> Average of neighbors' values</li>
+                    </ol>
+
+                    <div class="formula">
+                        <div class="formula-title">Euclidean Distance</div>
+                        d(p, q) = √[(p₁-q₁)² + (p₂-q₂)² + ... + (pₙ-qₙ)²]
+                    </div>
+                </div>
+
+                <h3>Choosing K</h3>
+                <ul>
+                    <li><strong>Small k (e.g., 1-3):</strong> More sensitive to noise, can overfit</li>
+                    <li><strong>Large k:</strong> Smoother boundaries, may underfit</li>
+                    <li><strong>Odd k:</strong> Avoids ties in binary classification</li>
+                    <li>Use cross-validation to find optimal k</li>
+                </ul>
+
+                <pre><code># Python: K-Nearest Neighbors
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import StandardScaler
+
+# IMPORTANT: Scale features for KNN!
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Create and train model
+model = KNeighborsClassifier(n_neighbors=5)
+model.fit(X_train_scaled, y_train)
+
+# Predict
+y_pred = model.predict(X_test_scaled)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")</code></pre>
+
+                <div class="warning-box">
+                    KNN is sensitive to feature scales. Always normalize or standardize your features before using KNN!
+                </div>
+            </div>
+        </section>
+
+        <section id="decision-trees" class="content-section">
+            <div class="container">
+                <h2>Decision Trees</h2>
+                <p>Decision trees make predictions by learning simple decision rules from data features. They're intuitive and easy to interpret.</p>
+
+                <div class="algorithm-card">
+                    <h3>How Decision Trees Work</h3>
+                    <div class="algorithm-meta">
+                        <span>🏷️ Type: Classification / Regression</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                        <span>👁️ Interpretable</span>
+                    </div>
+
+                    <h4>Building the Tree</h4>
+                    <ol>
+                        <li>Start with all data at the root</li>
+                        <li>Find the best feature and threshold to split the data</li>
+                        <li>Create child nodes for each split</li>
+                        <li>Recursively repeat for each child</li>
+                        <li>Stop when a stopping criterion is met (max depth, min samples, etc.)</li>
+                    </ol>
+
+                    <h4>Splitting Criteria</h4>
+                    <p>The "best" split maximizes information gain (or minimizes impurity):</p>
+                </div>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Gini Impurity</h4>
+                        <div class="formula">
+                            Gini = 1 - Σ(pᵢ)²
+                        </div>
+                        <p>Probability of misclassifying a randomly chosen element. Range: 0 (pure) to 0.5 (binary)</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Entropy</h4>
+                        <div class="formula">
+                            Entropy = -Σ pᵢ × log₂(pᵢ)
+                        </div>
+                        <p>Measure of disorder/uncertainty. Range: 0 (pure) to 1 (binary)</p>
+                    </div>
+                </div>
+
+                <pre><code># Python: Decision Tree
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+import matplotlib.pyplot as plt
+
+# Create and train model
+model = DecisionTreeClassifier(
+    max_depth=5,           # Limit tree depth
+    min_samples_split=10,  # Min samples to split a node
+    min_samples_leaf=5     # Min samples in a leaf
+)
+model.fit(X_train, y_train)
+
+# Visualize the tree
+plt.figure(figsize=(20, 10))
+plot_tree(model, feature_names=feature_names, filled=True)
+plt.show()
+
+# Feature importance
+importance = dict(zip(feature_names, model.feature_importances_))
+print("Feature Importance:", importance)</code></pre>
+
+                <div class="note-box">
+                    Decision trees are prone to overfitting. Control depth and use pruning, or better yet, use ensemble methods like Random Forest.
+                </div>
+            </div>
+        </section>
+
+        <section id="svm" class="content-section">
+            <div class="container">
+                <h2>Support Vector Machines (SVM)</h2>
+                <p>SVM finds the optimal hyperplane that maximally separates classes with the largest margin.</p>
+
+                <div class="algorithm-card">
+                    <h3>SVM Concepts</h3>
+                    <div class="algorithm-meta">
+                        <span>🏷️ Type: Classification / Regression</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                        <span>💪 Works in High Dimensions</span>
+                    </div>
+
+                    <h4>Key Concepts</h4>
+                    <ul>
+                        <li><strong>Hyperplane:</strong> Decision boundary that separates classes</li>
+                        <li><strong>Support Vectors:</strong> Data points closest to the hyperplane</li>
+                        <li><strong>Margin:</strong> Distance between hyperplane and support vectors</li>
+                        <li><strong>Goal:</strong> Maximize the margin</li>
+                    </ul>
+                </div>
+
+                <h3>The Kernel Trick</h3>
+                <p>For non-linearly separable data, SVM uses <strong>kernels</strong> to map data to higher dimensions where it becomes linearly separable:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Linear Kernel</h4>
+                        <p>K(x, y) = x · y</p>
+                        <p><em>Use when data is linearly separable</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Polynomial Kernel</h4>
+                        <p>K(x, y) = (x · y + c)^d</p>
+                        <p><em>Captures polynomial relationships</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>RBF (Gaussian) Kernel</h4>
+                        <p>K(x, y) = exp(-γ||x-y||²)</p>
+                        <p><em>Most common, works well in practice</em></p>
+                    </div>
+                </div>
+
+                <h3>Hyperparameters</h3>
+                <ul>
+                    <li><strong>C (Regularization):</strong> Trade-off between smooth boundary and classifying training points correctly</li>
+                    <li><strong>γ (Gamma):</strong> For RBF kernel, controls how far influence of single point reaches</li>
+                </ul>
+
+                <pre><code># Python: SVM
+from sklearn.svm import SVC
+from sklearn.preprocessing import StandardScaler
+
+# Scale features (important for SVM!)
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Create and train model
+model = SVC(kernel='rbf', C=1.0, gamma='scale')
+model.fit(X_train_scaled, y_train)
+
+# Predict
+y_pred = model.predict(X_test_scaled)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")
+
+# Support vectors
+print(f"Number of support vectors: {len(model.support_vectors_)}")</code></pre>
+            </div>
+        </section>
+
+        <section id="ensemble" class="content-section">
+            <div class="container">
+                <h2>Ensemble Methods</h2>
+                <p>Ensemble methods combine multiple models to achieve better performance than any single model.</p>
+
+                <h3>Random Forest</h3>
+                <div class="algorithm-card">
+                    <h3>Bagging + Decision Trees</h3>
+                    <div class="algorithm-meta">
+                        <span>🏷️ Type: Classification / Regression</span>
+                        <span>📚 NOAI: Practice</span>
+                        <span>🌲 Ensemble of Trees</span>
+                    </div>
+
+                    <h4>How It Works</h4>
+                    <ol>
+                        <li>Create N bootstrap samples (random sampling with replacement)</li>
+                        <li>Train a decision tree on each sample</li>
+                        <li>At each split, consider only a random subset of features</li>
+                        <li><strong>Classification:</strong> Majority vote across all trees</li>
+                        <li><strong>Regression:</strong> Average predictions</li>
+                    </ol>
+                </div>
+
+                <pre><code># Python: Random Forest
+from sklearn.ensemble import RandomForestClassifier
+
+model = RandomForestClassifier(
+    n_estimators=100,     # Number of trees
+    max_depth=10,         # Max depth per tree
+    min_samples_split=5,
+    random_state=42
+)
+model.fit(X_train, y_train)
+
+# Feature importance
+importance = dict(zip(feature_names, model.feature_importances_))
+print("Top features:", sorted(importance.items(), key=lambda x: -x[1])[:5])</code></pre>
+
+                <h3>Gradient Boosting</h3>
+                <div class="algorithm-card">
+                    <h3>Sequential Learning</h3>
+                    <div class="algorithm-meta">
+                        <span>🏷️ Type: Classification / Regression</span>
+                        <span>📚 NOAI: Practice</span>
+                        <span>🏆 Often Wins Competitions</span>
+                    </div>
+
+                    <h4>How It Works</h4>
+                    <ol>
+                        <li>Train a weak model (shallow tree) on the data</li>
+                        <li>Calculate the residuals (errors)</li>
+                        <li>Train the next model to predict the residuals</li>
+                        <li>Add this model to the ensemble (with a learning rate)</li>
+                        <li>Repeat, each time fitting residuals of the ensemble so far</li>
+                    </ol>
+                </div>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>XGBoost</h4>
+                        <p>Extreme Gradient Boosting. Optimized, regularized gradient boosting. Industry standard.</p>
+                        <code>from xgboost import XGBClassifier</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>LightGBM</h4>
+                        <p>Fast gradient boosting by Microsoft. Great for large datasets.</p>
+                        <code>from lightgbm import LGBMClassifier</code>
+                    </div>
+                </div>
+
+                <pre><code># Python: XGBoost
+from xgboost import XGBClassifier
+
+model = XGBClassifier(
+    n_estimators=100,
+    max_depth=6,
+    learning_rate=0.1,
+    random_state=42
+)
+model.fit(X_train, y_train)
+
+y_pred = model.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")</code></pre>
+
+                <h3>Bagging vs Boosting</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Bagging (Random Forest)</th>
+                            <th>Boosting (XGBoost)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Training</td>
+                            <td>Parallel (independent trees)</td>
+                            <td>Sequential (each learns from previous)</td>
+                        </tr>
+                        <tr>
+                            <td>Focus</td>
+                            <td>Reduces variance (overfitting)</td>
+                            <td>Reduces bias (underfitting)</td>
+                        </tr>
+                        <tr>
+                            <td>Base Models</td>
+                            <td>Deep trees</td>
+                            <td>Shallow trees (stumps)</td>
+                        </tr>
+                        <tr>
+                            <td>Overfitting Risk</td>
+                            <td>Lower</td>
+                            <td>Higher (needs careful tuning)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="regularization" class="content-section">
+            <div class="container">
+                <h2>Regularization: L1 and L2</h2>
+                <p>Regularization prevents overfitting by penalizing complex models.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>L1 Regularization (Lasso)</h4>
+                        <div class="formula">
+                            Loss = MSE + λ × Σ|wᵢ|
+                        </div>
+                        <p>Tends to create <strong>sparse models</strong> (some weights become exactly 0).</p>
+                        <p><em>Use for: Feature selection, when you expect few important features</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>L2 Regularization (Ridge)</h4>
+                        <div class="formula">
+                            Loss = MSE + λ × Σwᵢ²
+                        </div>
+                        <p>Shrinks all weights toward zero but rarely exactly zero.</p>
+                        <p><em>Use for: When all features may be relevant, handling multicollinearity</em></p>
+                    </div>
+                </div>
+
+                <pre><code># Python: Regularized Regression
+from sklearn.linear_model import Ridge, Lasso, ElasticNet
+
+# Ridge (L2)
+ridge = Ridge(alpha=1.0)
+ridge.fit(X_train, y_train)
+
+# Lasso (L1)
+lasso = Lasso(alpha=1.0)
+lasso.fit(X_train, y_train)
+
+# ElasticNet (L1 + L2)
+elastic = ElasticNet(alpha=1.0, l1_ratio=0.5)
+elastic.fit(X_train, y_train)
+
+# Check which features Lasso eliminated
+print("Non-zero features:", sum(lasso.coef_ != 0))</code></pre>
+            </div>
+        </section>
+
+        <section id="comparison" class="content-section">
+            <div class="container">
+                <h2>Algorithm Comparison</h2>
+                <p>When to use which algorithm? Here's a quick guide:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Strengths</th>
+                            <th>Weaknesses</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Linear/Logistic Regression</strong></td>
+                            <td>Simple, interpretable, fast</td>
+                            <td>Assumes linearity</td>
+                            <td>Baseline, linear relationships</td>
+                        </tr>
+                        <tr>
+                            <td><strong>KNN</strong></td>
+                            <td>Simple, no training, intuitive</td>
+                            <td>Slow inference, sensitive to scale</td>
+                            <td>Small datasets, quick prototyping</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Decision Tree</strong></td>
+                            <td>Interpretable, handles non-linearity</td>
+                            <td>Overfits easily</td>
+                            <td>When interpretability is crucial</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SVM</strong></td>
+                            <td>Works in high dimensions, effective with clear margins</td>
+                            <td>Slow on large datasets, sensitive to scale</td>
+                            <td>Medium-sized datasets, text classification</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Random Forest</strong></td>
+                            <td>Robust, handles non-linearity, feature importance</td>
+                            <td>Less interpretable, slower</td>
+                            <td>General purpose, when accuracy matters</td>
+                        </tr>
+                        <tr>
+                            <td><strong>XGBoost</strong></td>
+                            <td>Often best performance, handles missing data</td>
+                            <td>Many hyperparameters, can overfit</td>
+                            <td>Competitions, tabular data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="quiz" class="content-section">
+            <div class="container">
+                <h2>Test Your Understanding</h2>
+
+                <div class="quiz-container" data-correct="b" data-explanation="The sigmoid function outputs values between 0 and 1, representing probabilities.">
+                    <p class="quiz-question">1. What is the output range of the sigmoid function in logistic regression?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) -1 to 1</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) 0 to 1</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) -∞ to +∞</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) 0 to +∞</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="KNN stores all training data and computes distances at prediction time, making it a lazy learner.">
+                    <p class="quiz-question">2. Why is KNN called a "lazy learner"?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It only uses a subset of training data</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It trains very slowly</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It does no work during training, all computation at prediction</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It ignores some features</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="L1 regularization can shrink weights to exactly zero, effectively selecting features.">
+                    <p class="quiz-question">3. Which regularization technique is useful for feature selection?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) L1 (Lasso)</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) L2 (Ridge)</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Both equally</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Neither</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <nav class="page-navigation">
+                <a href="fundamentals.html" class="page-nav-link prev">
+                    <span class="page-nav-label">← Previous</span>
+                    <span class="page-nav-title">ML Fundamentals</span>
+                </a>
+                <a href="unsupervised.html" class="page-nav-link next">
+                    <span class="page-nav-label">Next →</span>
+                    <span class="page-nav-title">Unsupervised Learning</span>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ML for NOAI</h4>
+                    <p>An educational resource for Singapore secondary school students preparing for the National Olympiad in AI.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="fundamentals.html">ML Fundamentals</a></li>
+                        <li><a href="supervised.html">Supervised Learning</a></li>
+                        <li><a href="neural-networks.html">Neural Networks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>References</h4>
+                    <ul>
+                        <li><a href="https://ioai-official.org/" target="_blank">IOAI Official</a></li>
+                        <li><a href="https://aisingapore.org/" target="_blank">AI Singapore</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Educational content aligned with IOAI Syllabus. Not affiliated with AI Singapore or IOAI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

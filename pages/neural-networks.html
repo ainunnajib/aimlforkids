@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Networks & Deep Learning - ML for NOAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-icon">🤖</span>
+                <span>ML for NOAI</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="fundamentals.html" class="nav-link">Fundamentals</a></li>
+                <li><a href="supervised.html" class="nav-link">Supervised Learning</a></li>
+                <li><a href="unsupervised.html" class="nav-link">Unsupervised Learning</a></li>
+                <li><a href="neural-networks.html" class="nav-link active">Neural Networks</a></li>
+                <li><a href="computer-vision.html" class="nav-link">Computer Vision</a></li>
+                <li><a href="nlp.html" class="nav-link">NLP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li>Neural Networks</li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>🧠 Neural Networks & Deep Learning</h1>
+            <p class="subtitle">Understand how neural networks learn, from single perceptrons to deep architectures.</p>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="perceptron" class="content-section">
+            <div class="container">
+                <h2>The Perceptron</h2>
+                <p>The perceptron is the simplest neural network—a single artificial neuron that makes binary decisions.</p>
+
+                <div class="algorithm-card">
+                    <h3>How a Perceptron Works</h3>
+                    <div class="algorithm-meta">
+                        <span>🧠 Type: Single Neuron</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                    </div>
+
+                    <h4>The Process</h4>
+                    <ol>
+                        <li><strong>Inputs:</strong> Receive input values (x₁, x₂, ..., xₙ)</li>
+                        <li><strong>Weights:</strong> Multiply each input by its weight (w₁, w₂, ..., wₙ)</li>
+                        <li><strong>Sum:</strong> Add all weighted inputs plus bias: z = Σ(wᵢxᵢ) + b</li>
+                        <li><strong>Activation:</strong> Apply activation function to get output</li>
+                    </ol>
+
+                    <div class="formula">
+                        <div class="formula-title">Perceptron Equation</div>
+                        z = w₁x₁ + w₂x₂ + ... + wₙxₙ + b
+                        output = activation(z)
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    A single perceptron can only learn <strong>linearly separable</strong> patterns. For complex patterns (like XOR), we need multiple layers.
+                </div>
+            </div>
+        </section>
+
+        <section id="activation" class="content-section">
+            <div class="container">
+                <h2>Activation Functions</h2>
+                <p>Activation functions introduce <strong>non-linearity</strong>, allowing networks to learn complex patterns.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Sigmoid</h4>
+                        <div class="formula">
+                            σ(z) = 1 / (1 + e⁻ᶻ)
+                        </div>
+                        <p>Output: (0, 1)</p>
+                        <p><em>Used in: output layer for binary classification</em></p>
+                        <p>⚠️ Vanishing gradient problem for deep networks</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Tanh</h4>
+                        <div class="formula">
+                            tanh(z) = (eᶻ - e⁻ᶻ) / (eᶻ + e⁻ᶻ)
+                        </div>
+                        <p>Output: (-1, 1)</p>
+                        <p><em>Zero-centered, better than sigmoid</em></p>
+                        <p>⚠️ Still has vanishing gradient</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>ReLU (Rectified Linear Unit)</h4>
+                        <div class="formula">
+                            ReLU(z) = max(0, z)
+                        </div>
+                        <p>Output: [0, ∞)</p>
+                        <p><em>Most popular for hidden layers</em></p>
+                        <p>✓ Fast, no vanishing gradient</p>
+                        <p>⚠️ "Dying ReLU" problem</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Softmax</h4>
+                        <div class="formula">
+                            softmax(zᵢ) = eᶻⁱ / Σeᶻʲ
+                        </div>
+                        <p>Output: probabilities that sum to 1</p>
+                        <p><em>Used in: output layer for multi-class classification</em></p>
+                    </div>
+                </div>
+
+                <h3>Choosing Activation Functions</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Layer</th>
+                            <th>Task</th>
+                            <th>Recommended</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hidden layers</td>
+                            <td>Any</td>
+                            <td>ReLU (or variants: Leaky ReLU, ELU)</td>
+                        </tr>
+                        <tr>
+                            <td>Output layer</td>
+                            <td>Binary classification</td>
+                            <td>Sigmoid</td>
+                        </tr>
+                        <tr>
+                            <td>Output layer</td>
+                            <td>Multi-class classification</td>
+                            <td>Softmax</td>
+                        </tr>
+                        <tr>
+                            <td>Output layer</td>
+                            <td>Regression</td>
+                            <td>None (linear)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="mlp" class="content-section">
+            <div class="container">
+                <h2>Multi-Layer Perceptron (MLP)</h2>
+                <p>An MLP stacks multiple layers of perceptrons to learn complex, non-linear patterns.</p>
+
+                <div class="algorithm-card">
+                    <h3>MLP Architecture</h3>
+                    <div class="algorithm-meta">
+                        <span>🧠 Type: Feedforward Network</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                    </div>
+
+                    <h4>Structure</h4>
+                    <ul>
+                        <li><strong>Input Layer:</strong> Receives features (no computation)</li>
+                        <li><strong>Hidden Layers:</strong> 1+ layers that learn representations</li>
+                        <li><strong>Output Layer:</strong> Produces predictions</li>
+                    </ul>
+
+                    <h4>Forward Pass</h4>
+                    <ol>
+                        <li>Input data flows through network layer by layer</li>
+                        <li>Each layer: z = Wx + b, then a = activation(z)</li>
+                        <li>Output layer produces prediction</li>
+                    </ol>
+                </div>
+
+                <pre><code># PyTorch: Simple MLP
+import torch
+import torch.nn as nn
+
+class MLP(nn.Module):
+    def __init__(self, input_size, hidden_size, num_classes):
+        super(MLP, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.relu = nn.ReLU()
+        self.fc2 = nn.Linear(hidden_size, hidden_size)
+        self.fc3 = nn.Linear(hidden_size, num_classes)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.fc2(x)
+        x = self.relu(x)
+        x = self.fc3(x)
+        return x
+
+# Create model
+model = MLP(input_size=784, hidden_size=256, num_classes=10)</code></pre>
+            </div>
+        </section>
+
+        <section id="loss-functions" class="content-section">
+            <div class="container">
+                <h2>Loss Functions</h2>
+                <p>The loss function measures how wrong our predictions are. Training minimizes this loss.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Mean Squared Error (MSE)</h4>
+                        <div class="formula">
+                            MSE = (1/n) × Σ(y - ŷ)²
+                        </div>
+                        <p><em>Used for: Regression</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Mean Absolute Error (MAE)</h4>
+                        <div class="formula">
+                            MAE = (1/n) × Σ|y - ŷ|
+                        </div>
+                        <p><em>Used for: Regression (robust to outliers)</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Binary Cross-Entropy</h4>
+                        <div class="formula">
+                            BCE = -[y×log(ŷ) + (1-y)×log(1-ŷ)]
+                        </div>
+                        <p><em>Used for: Binary classification</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Categorical Cross-Entropy</h4>
+                        <div class="formula">
+                            CCE = -Σ yᵢ × log(ŷᵢ)
+                        </div>
+                        <p><em>Used for: Multi-class classification</em></p>
+                    </div>
+                </div>
+
+                <pre><code># PyTorch: Loss Functions
+import torch.nn as nn
+
+# Regression
+mse_loss = nn.MSELoss()
+mae_loss = nn.L1Loss()
+
+# Classification
+bce_loss = nn.BCEWithLogitsLoss()  # Binary
+ce_loss = nn.CrossEntropyLoss()    # Multi-class
+
+# Example usage
+loss = ce_loss(predictions, targets)</code></pre>
+            </div>
+        </section>
+
+        <section id="backpropagation" class="content-section">
+            <div class="container">
+                <h2>Backpropagation</h2>
+                <p>Backpropagation is how neural networks learn. It calculates gradients of the loss with respect to each weight.</p>
+
+                <div class="algorithm-card">
+                    <h3>The Chain Rule</h3>
+                    <div class="algorithm-meta">
+                        <span>📐 Type: Gradient Computation</span>
+                        <span>📚 NOAI: Theory</span>
+                    </div>
+
+                    <h4>Key Insight</h4>
+                    <p>Use calculus chain rule to propagate gradients backward through the network:</p>
+
+                    <div class="formula">
+                        <div class="formula-title">Chain Rule</div>
+                        ∂L/∂w = ∂L/∂ŷ × ∂ŷ/∂z × ∂z/∂w
+
+                        where:
+                        L = loss
+                        ŷ = prediction
+                        z = weighted sum
+                        w = weight
+                    </div>
+
+                    <h4>Steps</h4>
+                    <ol>
+                        <li><strong>Forward pass:</strong> Compute predictions and loss</li>
+                        <li><strong>Backward pass:</strong> Compute gradients using chain rule</li>
+                        <li><strong>Update:</strong> Adjust weights using gradient descent</li>
+                    </ol>
+                </div>
+
+                <div class="note-box">
+                    Deep learning frameworks (PyTorch, TensorFlow) compute gradients automatically using "autograd". You don't need to implement backpropagation manually!
+                </div>
+            </div>
+        </section>
+
+        <section id="gradient-descent" class="content-section">
+            <div class="container">
+                <h2>Gradient Descent & Optimizers</h2>
+                <p>Gradient descent updates weights in the direction that reduces the loss.</p>
+
+                <div class="formula">
+                    <div class="formula-title">Weight Update Rule</div>
+                    w_new = w_old - η × ∂L/∂w
+
+                    where η (eta) is the learning rate
+                </div>
+
+                <h3>Types of Gradient Descent</h3>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Batch Gradient Descent</h4>
+                        <p>Computes gradient using <strong>entire dataset</strong></p>
+                        <p>✓ Stable convergence</p>
+                        <p>✗ Slow, needs lots of memory</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Stochastic Gradient Descent (SGD)</h4>
+                        <p>Computes gradient using <strong>single sample</strong></p>
+                        <p>✓ Fast updates</p>
+                        <p>✗ Noisy, oscillates</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Mini-Batch Gradient Descent</h4>
+                        <p>Computes gradient using <strong>small batch</strong> (e.g., 32-256 samples)</p>
+                        <p>✓ Best of both worlds</p>
+                        <p>✓ Most commonly used</p>
+                    </div>
+                </div>
+
+                <h3>Advanced Optimizers</h3>
+
+                <div class="algorithm-card">
+                    <h3>Adam (Adaptive Moment Estimation)</h3>
+                    <div class="algorithm-meta">
+                        <span>⚡ Type: Optimizer</span>
+                        <span>📚 NOAI: Practice</span>
+                        <span>🏆 Most Popular</span>
+                    </div>
+
+                    <p>Adam combines the benefits of:</p>
+                    <ul>
+                        <li><strong>Momentum:</strong> Accelerates in consistent directions</li>
+                        <li><strong>RMSprop:</strong> Adapts learning rate per parameter</li>
+                    </ul>
+
+                    <h4>Key Features</h4>
+                    <ul>
+                        <li>Adaptive learning rates for each parameter</li>
+                        <li>Works well out of the box</li>
+                        <li>Good default: lr=0.001, β₁=0.9, β₂=0.999</li>
+                    </ul>
+                </div>
+
+                <pre><code># PyTorch: Optimizers
+import torch.optim as optim
+
+# SGD with momentum
+optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
+
+# Adam (most common)
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# AdamW (Adam with weight decay)
+optimizer = optim.AdamW(model.parameters(), lr=0.001, weight_decay=0.01)
+
+# Training step
+optimizer.zero_grad()     # Clear gradients
+loss = criterion(output, target)
+loss.backward()           # Compute gradients
+optimizer.step()          # Update weights</code></pre>
+
+                <h3>Learning Rate</h3>
+                <p>The learning rate (η) is crucial:</p>
+                <ul>
+                    <li><strong>Too high:</strong> Overshoots minimum, may diverge</li>
+                    <li><strong>Too low:</strong> Very slow convergence, may get stuck</li>
+                    <li><strong>Just right:</strong> Smooth, fast convergence</li>
+                </ul>
+
+                <div class="tip-box">
+                    Use learning rate schedulers to decrease the learning rate during training. Start high for fast progress, then reduce for fine-tuning.
+                </div>
+            </div>
+        </section>
+
+        <section id="regularization" class="content-section">
+            <div class="container">
+                <h2>Regularization Techniques</h2>
+                <p>Prevent overfitting in neural networks with these techniques:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Dropout</h4>
+                        <p>Randomly "drop" (set to zero) neurons during training with probability p.</p>
+                        <p>Forces network to learn redundant representations.</p>
+                        <p><em>Common: p=0.2-0.5</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Weight Decay (L2)</h4>
+                        <p>Add penalty for large weights to the loss function.</p>
+                        <div class="formula">
+                            Loss = Loss + λ × Σw²
+                        </div>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Early Stopping</h4>
+                        <p>Stop training when validation loss stops improving.</p>
+                        <p>Prevents overfitting to training data.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Data Augmentation</h4>
+                        <p>Create variations of training data (flip, rotate, crop images).</p>
+                        <p>Increases effective dataset size.</p>
+                    </div>
+                </div>
+
+                <h3>Batch Normalization</h3>
+                <div class="algorithm-card">
+                    <h3>Normalizing Activations</h3>
+                    <div class="algorithm-meta">
+                        <span>📊 Type: Normalization</span>
+                        <span>📚 NOAI: Practice</span>
+                    </div>
+
+                    <p>Normalize the inputs to each layer to have mean=0 and std=1:</p>
+
+                    <div class="formula">
+                        <div class="formula-title">Batch Normalization</div>
+                        x̂ = (x - μ_batch) / √(σ²_batch + ε)
+                        y = γx̂ + β
+
+                        γ and β are learned parameters
+                    </div>
+
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Faster training</li>
+                        <li>Allows higher learning rates</li>
+                        <li>Reduces sensitivity to initialization</li>
+                        <li>Has slight regularization effect</li>
+                    </ul>
+                </div>
+
+                <pre><code># PyTorch: Regularization
+import torch.nn as nn
+
+class RegularizedMLP(nn.Module):
+    def __init__(self, input_size, hidden_size, num_classes):
+        super().__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.bn1 = nn.BatchNorm1d(hidden_size)  # Batch normalization
+        self.dropout = nn.Dropout(p=0.3)         # Dropout
+        self.fc2 = nn.Linear(hidden_size, num_classes)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.bn1(x)
+        x = torch.relu(x)
+        x = self.dropout(x)
+        x = self.fc2(x)
+        return x
+
+# Weight decay via optimizer
+optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-5)</code></pre>
+            </div>
+        </section>
+
+        <section id="training-loop" class="content-section">
+            <div class="container">
+                <h2>Complete Training Loop</h2>
+                <p>Putting it all together: a complete PyTorch training pipeline.</p>
+
+                <pre><code># Complete PyTorch Training Loop
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader
+
+# 1. Define model
+model = MLP(input_size=784, hidden_size=256, num_classes=10)
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model = model.to(device)
+
+# 2. Define loss and optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# 3. Create data loaders
+train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
+val_loader = DataLoader(val_dataset, batch_size=64, shuffle=False)
+
+# 4. Training loop
+num_epochs = 10
+for epoch in range(num_epochs):
+    # Training phase
+    model.train()
+    train_loss = 0
+    for batch_x, batch_y in train_loader:
+        batch_x, batch_y = batch_x.to(device), batch_y.to(device)
+
+        # Forward pass
+        outputs = model(batch_x)
+        loss = criterion(outputs, batch_y)
+
+        # Backward pass
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+        train_loss += loss.item()
+
+    # Validation phase
+    model.eval()
+    val_loss = 0
+    correct = 0
+    total = 0
+    with torch.no_grad():
+        for batch_x, batch_y in val_loader:
+            batch_x, batch_y = batch_x.to(device), batch_y.to(device)
+            outputs = model(batch_x)
+            loss = criterion(outputs, batch_y)
+            val_loss += loss.item()
+
+            _, predicted = outputs.max(1)
+            total += batch_y.size(0)
+            correct += predicted.eq(batch_y).sum().item()
+
+    train_loss /= len(train_loader)
+    val_loss /= len(val_loader)
+    accuracy = 100. * correct / total
+
+    print(f'Epoch {epoch+1}/{num_epochs}')
+    print(f'  Train Loss: {train_loss:.4f}')
+    print(f'  Val Loss: {val_loss:.4f}, Accuracy: {accuracy:.2f}%')</code></pre>
+            </div>
+        </section>
+
+        <section id="autoencoders" class="content-section">
+            <div class="container">
+                <h2>Autoencoders</h2>
+                <p>Autoencoders learn compressed representations of data by encoding and decoding.</p>
+
+                <div class="algorithm-card">
+                    <h3>Autoencoder Architecture</h3>
+                    <div class="algorithm-meta">
+                        <span>🗜️ Type: Unsupervised Learning</span>
+                        <span>📚 NOAI: Practice</span>
+                    </div>
+
+                    <h4>Components</h4>
+                    <ul>
+                        <li><strong>Encoder:</strong> Compresses input to lower-dimensional latent space</li>
+                        <li><strong>Latent Space:</strong> Compressed representation (bottleneck)</li>
+                        <li><strong>Decoder:</strong> Reconstructs input from latent space</li>
+                    </ul>
+
+                    <h4>Training</h4>
+                    <p>Minimize reconstruction error: ||x - decoder(encoder(x))||²</p>
+                </div>
+
+                <h3>Applications</h3>
+                <ul>
+                    <li><strong>Dimensionality reduction:</strong> Use encoder for compressed features</li>
+                    <li><strong>Denoising:</strong> Train to reconstruct clean data from noisy input</li>
+                    <li><strong>Anomaly detection:</strong> High reconstruction error = anomaly</li>
+                    <li><strong>Feature learning:</strong> Pre-train encoders for other tasks</li>
+                </ul>
+
+                <pre><code># PyTorch: Simple Autoencoder
+class Autoencoder(nn.Module):
+    def __init__(self, input_dim, latent_dim):
+        super().__init__()
+        # Encoder
+        self.encoder = nn.Sequential(
+            nn.Linear(input_dim, 256),
+            nn.ReLU(),
+            nn.Linear(256, 64),
+            nn.ReLU(),
+            nn.Linear(64, latent_dim)
+        )
+        # Decoder
+        self.decoder = nn.Sequential(
+            nn.Linear(latent_dim, 64),
+            nn.ReLU(),
+            nn.Linear(64, 256),
+            nn.ReLU(),
+            nn.Linear(256, input_dim),
+            nn.Sigmoid()  # Output in [0,1]
+        )
+
+    def forward(self, x):
+        latent = self.encoder(x)
+        reconstructed = self.decoder(latent)
+        return reconstructed
+
+    def encode(self, x):
+        return self.encoder(x)
+
+# Train with reconstruction loss
+criterion = nn.MSELoss()
+loss = criterion(model(x), x)  # Compare output to input</code></pre>
+            </div>
+        </section>
+
+        <section id="quiz" class="content-section">
+            <div class="container">
+                <h2>Test Your Understanding</h2>
+
+                <div class="quiz-container" data-correct="c" data-explanation="ReLU (Rectified Linear Unit) is the most commonly used activation for hidden layers because it's fast and avoids the vanishing gradient problem.">
+                    <p class="quiz-question">1. Which activation function is most commonly used in hidden layers?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Sigmoid</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Softmax</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) ReLU</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Linear</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Backpropagation computes gradients by propagating errors backward through the network using the chain rule.">
+                    <p class="quiz-question">2. What is the purpose of backpropagation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Make predictions on new data</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Calculate gradients for weight updates</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Initialize network weights</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Normalize input data</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Dropout randomly deactivates neurons during training, which prevents the network from relying too heavily on any single neuron and reduces overfitting.">
+                    <p class="quiz-question">3. What does dropout do during training?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Removes layers from the network</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Increases learning rate</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Adds noise to the loss function</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Randomly deactivates neurons</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <nav class="page-navigation">
+                <a href="unsupervised.html" class="page-nav-link prev">
+                    <span class="page-nav-label">← Previous</span>
+                    <span class="page-nav-title">Unsupervised Learning</span>
+                </a>
+                <a href="computer-vision.html" class="page-nav-link next">
+                    <span class="page-nav-label">Next →</span>
+                    <span class="page-nav-title">Computer Vision</span>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ML for NOAI</h4>
+                    <p>An educational resource for Singapore secondary school students preparing for the National Olympiad in AI.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="fundamentals.html">ML Fundamentals</a></li>
+                        <li><a href="supervised.html">Supervised Learning</a></li>
+                        <li><a href="neural-networks.html">Neural Networks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>References</h4>
+                    <ul>
+                        <li><a href="https://ioai-official.org/" target="_blank">IOAI Official</a></li>
+                        <li><a href="https://aisingapore.org/" target="_blank">AI Singapore</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Educational content aligned with IOAI Syllabus. Not affiliated with AI Singapore or IOAI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Fundamentals - ML for NOAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-icon">🤖</span>
+                <span>ML for NOAI</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="fundamentals.html" class="nav-link active">Fundamentals</a></li>
+                <li><a href="supervised.html" class="nav-link">Supervised Learning</a></li>
+                <li><a href="unsupervised.html" class="nav-link">Unsupervised Learning</a></li>
+                <li><a href="neural-networks.html" class="nav-link">Neural Networks</a></li>
+                <li><a href="computer-vision.html" class="nav-link">Computer Vision</a></li>
+                <li><a href="nlp.html" class="nav-link">NLP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li>ML Fundamentals</li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>📊 Machine Learning Fundamentals</h1>
+            <p class="subtitle">Master the essential concepts, data processing techniques, and evaluation metrics that form the foundation of all machine learning.</p>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="what-is-ml" class="content-section">
+            <div class="container">
+                <h2>What is Machine Learning?</h2>
+                <p>Machine Learning (ML) is a subset of Artificial Intelligence that enables computers to <strong>learn patterns from data</strong> without being explicitly programmed. Instead of writing rules by hand, we let algorithms discover these rules automatically.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Traditional Programming</h4>
+                        <p><strong>Input:</strong> Data + Rules<br><strong>Output:</strong> Answers</p>
+                        <p>Example: If temperature > 30°C, turn on AC</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Machine Learning</h4>
+                        <p><strong>Input:</strong> Data + Answers<br><strong>Output:</strong> Rules (Model)</p>
+                        <p>Example: Learn from past data when to turn on AC</p>
+                    </div>
+                </div>
+
+                <h3>Types of Machine Learning</h3>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>🎓 Supervised Learning</h4>
+                        <p>Learning from <strong>labeled data</strong> where we know the correct answers. The model learns to map inputs to outputs.</p>
+                        <p><em>Example: Predicting house prices from features like size and location</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🔍 Unsupervised Learning</h4>
+                        <p>Finding patterns in <strong>unlabeled data</strong>. The model discovers hidden structures without guidance.</p>
+                        <p><em>Example: Grouping customers by purchasing behavior</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🎮 Reinforcement Learning</h4>
+                        <p>Learning through <strong>trial and error</strong> by receiving rewards or penalties for actions.</p>
+                        <p><em>Example: Training an AI to play chess</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ml-workflow" class="content-section">
+            <div class="container">
+                <h2>The Machine Learning Workflow</h2>
+                <p>Every ML project follows a systematic process:</p>
+
+                <div class="algorithm-card">
+                    <h3>The 7-Step ML Pipeline</h3>
+                    <ol>
+                        <li><strong>Define the Problem:</strong> What are you trying to predict or discover?</li>
+                        <li><strong>Collect Data:</strong> Gather relevant data from various sources</li>
+                        <li><strong>Prepare Data:</strong> Clean, transform, and preprocess the data</li>
+                        <li><strong>Explore Data:</strong> Visualize and understand patterns (EDA)</li>
+                        <li><strong>Train Model:</strong> Choose and train appropriate algorithms</li>
+                        <li><strong>Evaluate Model:</strong> Measure performance using metrics</li>
+                        <li><strong>Deploy & Monitor:</strong> Put the model into production</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="data-splitting" class="content-section">
+            <div class="container">
+                <h2>Data Splitting: Train, Validation, and Test Sets</h2>
+                <p>To properly evaluate how well a model will perform on new, unseen data, we split our dataset into separate portions:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Training Set (60-80%)</h4>
+                        <p>The data used to <strong>train the model</strong>. The model learns patterns from this data.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Validation Set (10-20%)</h4>
+                        <p>Used to <strong>tune hyperparameters</strong> and make decisions during training. Helps prevent overfitting.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Test Set (10-20%)</h4>
+                        <p>Held out until the very end to give an <strong>unbiased evaluation</strong> of the final model.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    Never use test data for training or hyperparameter tuning! This would give you an overly optimistic estimate of your model's performance.
+                </div>
+
+                <h3>Cross-Validation</h3>
+                <p>When data is limited, <strong>k-fold cross-validation</strong> provides a more robust evaluation:</p>
+
+                <ol>
+                    <li>Split data into k equal parts (folds)</li>
+                    <li>Train on k-1 folds, validate on the remaining fold</li>
+                    <li>Repeat k times, using each fold as validation once</li>
+                    <li>Average the results for final performance estimate</li>
+                </ol>
+
+                <div class="formula">
+                    <div class="formula-title">Common Values</div>
+                    k = 5 (5-fold CV) or k = 10 (10-fold CV) are most common
+                </div>
+
+                <pre><code># Python example: K-Fold Cross Validation
+from sklearn.model_selection import cross_val_score, KFold
+from sklearn.linear_model import LogisticRegression
+
+# Create model and k-fold splitter
+model = LogisticRegression()
+kfold = KFold(n_splits=5, shuffle=True, random_state=42)
+
+# Perform cross-validation
+scores = cross_val_score(model, X, y, cv=kfold, scoring='accuracy')
+print(f"Accuracy: {scores.mean():.3f} (+/- {scores.std():.3f})")</code></pre>
+            </div>
+        </section>
+
+        <section id="data-preprocessing" class="content-section">
+            <div class="container">
+                <h2>Data Preprocessing</h2>
+                <p>Raw data is rarely ready for machine learning. Preprocessing transforms data into a format that algorithms can effectively learn from.</p>
+
+                <h3>Handling Missing Data</h3>
+                <p>Real-world data often has missing values. Common strategies:</p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Strategy</th>
+                            <th>Description</th>
+                            <th>When to Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Mean/Median Imputation</strong></td>
+                            <td>Replace missing values with mean (numerical) or mode (categorical)</td>
+                            <td>Missing values are random, small percentage</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Forward/Backward Fill</strong></td>
+                            <td>Use previous or next value in sequence</td>
+                            <td>Time series data</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Drop Rows/Columns</strong></td>
+                            <td>Remove data with missing values</td>
+                            <td>Large dataset, few missing values</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Model-based Imputation</strong></td>
+                            <td>Predict missing values using other features</td>
+                            <td>Complex relationships between features</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Normalization and Standardization</h3>
+                <p>Scaling features to similar ranges helps many algorithms converge faster and perform better.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Min-Max Normalization</h4>
+                        <p>Scales values to [0, 1] range</p>
+                        <div class="formula">
+                            x_normalized = (x - x_min) / (x_max - x_min)
+                        </div>
+                        <p><em>Use when: you need bounded values, neural networks</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Standardization (Z-score)</h4>
+                        <p>Transforms to mean=0, std=1</p>
+                        <div class="formula">
+                            x_standardized = (x - μ) / σ
+                        </div>
+                        <p><em>Use when: data has outliers, SVM, logistic regression</em></p>
+                    </div>
+                </div>
+
+                <pre><code># Python example: Scaling
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+# Min-Max Normalization
+minmax_scaler = MinMaxScaler()
+X_normalized = minmax_scaler.fit_transform(X)
+
+# Standardization
+standard_scaler = StandardScaler()
+X_standardized = standard_scaler.fit_transform(X)</code></pre>
+
+                <h3>Encoding Categorical Variables</h3>
+                <p>Machine learning algorithms work with numbers. Categorical data must be converted:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>One-Hot Encoding</h4>
+                        <p>Creates binary columns for each category</p>
+                        <p><code>Color: [Red, Blue, Green] → [1,0,0], [0,1,0], [0,0,1]</code></p>
+                        <p><em>Use for: nominal categories (no order)</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Label Encoding</h4>
+                        <p>Assigns integer to each category</p>
+                        <p><code>Size: [S, M, L] → [0, 1, 2]</code></p>
+                        <p><em>Use for: ordinal categories (has order)</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="evaluation-metrics" class="content-section">
+            <div class="container">
+                <h2>Model Evaluation Metrics</h2>
+                <p>Different metrics measure different aspects of model performance. Choosing the right metric depends on your problem.</p>
+
+                <h3>Classification Metrics</h3>
+
+                <h4>Confusion Matrix</h4>
+                <p>A table showing predictions vs actual values:</p>
+
+                <div class="algorithm-card">
+                    <table class="comparison-table" style="max-width: 500px;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Predicted Positive</th>
+                                <th>Predicted Negative</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Actual Positive</strong></td>
+                                <td style="background: rgba(34, 197, 94, 0.2);">True Positive (TP)</td>
+                                <td style="background: rgba(239, 68, 68, 0.2);">False Negative (FN)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Actual Negative</strong></td>
+                                <td style="background: rgba(239, 68, 68, 0.2);">False Positive (FP)</td>
+                                <td style="background: rgba(34, 197, 94, 0.2);">True Negative (TN)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Accuracy</h4>
+                        <div class="formula">
+                            Accuracy = (TP + TN) / (TP + TN + FP + FN)
+                        </div>
+                        <p>Overall correctness. Misleading for imbalanced classes.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Precision</h4>
+                        <div class="formula">
+                            Precision = TP / (TP + FP)
+                        </div>
+                        <p>"Of all positive predictions, how many are correct?"</p>
+                        <p><em>High precision = few false alarms</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Recall (Sensitivity)</h4>
+                        <div class="formula">
+                            Recall = TP / (TP + FN)
+                        </div>
+                        <p>"Of all actual positives, how many did we find?"</p>
+                        <p><em>High recall = catches most positives</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>F1 Score</h4>
+                        <div class="formula">
+                            F1 = 2 × (Precision × Recall) / (Precision + Recall)
+                        </div>
+                        <p>Harmonic mean of precision and recall. Good for imbalanced data.</p>
+                    </div>
+                </div>
+
+                <h4>ROC Curve and AUC</h4>
+                <p>The <strong>ROC (Receiver Operating Characteristic)</strong> curve plots True Positive Rate vs False Positive Rate at different classification thresholds.</p>
+                <p><strong>AUC (Area Under Curve)</strong> summarizes the ROC curve as a single number (0.5 = random, 1.0 = perfect).</p>
+
+                <h3>Regression Metrics</h3>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Mean Squared Error (MSE)</h4>
+                        <div class="formula">
+                            MSE = (1/n) × Σ(y_actual - y_predicted)²
+                        </div>
+                        <p>Penalizes larger errors more heavily.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Mean Absolute Error (MAE)</h4>
+                        <div class="formula">
+                            MAE = (1/n) × Σ|y_actual - y_predicted|
+                        </div>
+                        <p>Average absolute difference. Less sensitive to outliers.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Root Mean Squared Error (RMSE)</h4>
+                        <div class="formula">
+                            RMSE = √MSE
+                        </div>
+                        <p>Same units as target variable. Most commonly used.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>R² Score</h4>
+                        <div class="formula">
+                            R² = 1 - (SS_residual / SS_total)
+                        </div>
+                        <p>Proportion of variance explained (0 to 1). 1 = perfect fit.</p>
+                    </div>
+                </div>
+
+                <pre><code># Python example: Evaluation metrics
+from sklearn.metrics import (accuracy_score, precision_score, recall_score,
+                             f1_score, confusion_matrix, mean_squared_error, r2_score)
+
+# Classification metrics
+y_pred = model.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")
+print(f"Precision: {precision_score(y_test, y_pred):.3f}")
+print(f"Recall: {recall_score(y_test, y_pred):.3f}")
+print(f"F1 Score: {f1_score(y_test, y_pred):.3f}")
+
+# Regression metrics
+print(f"MSE: {mean_squared_error(y_test, y_pred):.3f}")
+print(f"R² Score: {r2_score(y_test, y_pred):.3f}")</code></pre>
+            </div>
+        </section>
+
+        <section id="overfitting" class="content-section">
+            <div class="container">
+                <h2>Overfitting and Underfitting</h2>
+                <p>Understanding the bias-variance tradeoff is crucial for building models that generalize well.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Underfitting (High Bias)</h4>
+                        <p>Model is <strong>too simple</strong> to capture patterns in the data.</p>
+                        <p><strong>Signs:</strong> Poor performance on both training AND test data</p>
+                        <p><strong>Solutions:</strong> Use more complex model, add features, reduce regularization</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Overfitting (High Variance)</h4>
+                        <p>Model <strong>memorizes training data</strong> instead of learning general patterns.</p>
+                        <p><strong>Signs:</strong> Great training performance, poor test performance</p>
+                        <p><strong>Solutions:</strong> Get more data, simplify model, add regularization, use dropout</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Good Fit (Balanced)</h4>
+                        <p>Model captures true patterns without memorizing noise.</p>
+                        <p><strong>Signs:</strong> Similar performance on training and test data</p>
+                        <p><strong>Goal:</strong> Find the sweet spot between bias and variance</p>
+                    </div>
+                </div>
+
+                <h3>Regularization</h3>
+                <p>Regularization adds a penalty for model complexity, helping prevent overfitting:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>L1 Regularization (Lasso)</h4>
+                        <div class="formula">
+                            Loss = Original Loss + λ × Σ|weights|
+                        </div>
+                        <p>Can shrink weights to exactly zero → feature selection</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>L2 Regularization (Ridge)</h4>
+                        <div class="formula">
+                            Loss = Original Loss + λ × Σ(weights)²
+                        </div>
+                        <p>Shrinks weights but rarely to zero → prevents large weights</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    λ (lambda) is a hyperparameter that controls regularization strength. Higher λ = more regularization = simpler model.
+                </div>
+            </div>
+        </section>
+
+        <section id="feature-engineering" class="content-section">
+            <div class="container">
+                <h2>Feature Engineering</h2>
+                <p>Creating and selecting the right features often matters more than choosing the algorithm. Good features can dramatically improve model performance.</p>
+
+                <h3>Feature Creation Techniques</h3>
+                <ul>
+                    <li><strong>Polynomial Features:</strong> Create x², x³, x₁×x₂ to capture non-linear relationships</li>
+                    <li><strong>Binning:</strong> Convert continuous variables into categories (age groups, income brackets)</li>
+                    <li><strong>Log Transform:</strong> Reduce skewness in data with long tails</li>
+                    <li><strong>Date/Time Features:</strong> Extract day of week, month, year, is_weekend, etc.</li>
+                    <li><strong>Text Features:</strong> Word counts, TF-IDF scores, sentiment indicators</li>
+                    <li><strong>Domain-Specific:</strong> BMI from height/weight, price-per-sqft from price/area</li>
+                </ul>
+
+                <h3>Feature Selection</h3>
+                <p>Not all features help—some add noise. Methods to select important features:</p>
+
+                <ul>
+                    <li><strong>Filter Methods:</strong> Statistical tests (correlation, chi-square, ANOVA)</li>
+                    <li><strong>Wrapper Methods:</strong> Try feature subsets (forward selection, backward elimination)</li>
+                    <li><strong>Embedded Methods:</strong> Built into algorithms (L1 regularization, tree feature importance)</li>
+                </ul>
+
+                <pre><code># Python example: Feature importance from Random Forest
+from sklearn.ensemble import RandomForestClassifier
+import pandas as pd
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+# Get feature importances
+importance = pd.DataFrame({
+    'feature': feature_names,
+    'importance': model.feature_importances_
+}).sort_values('importance', ascending=False)
+
+print(importance.head(10))</code></pre>
+            </div>
+        </section>
+
+        <section id="python-tools" class="content-section">
+            <div class="container">
+                <h2>Python Tools for ML</h2>
+                <p>These are the essential Python libraries you need to know for NOAI:</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>NumPy</h4>
+                        <p>Numerical computing with arrays and matrices. Foundation for all ML libraries.</p>
+                        <code>import numpy as np</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Pandas</h4>
+                        <p>Data manipulation and analysis with DataFrames. Loading, cleaning, transforming data.</p>
+                        <code>import pandas as pd</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Matplotlib / Seaborn</h4>
+                        <p>Data visualization. Creating plots, charts, and graphs.</p>
+                        <code>import matplotlib.pyplot as plt</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Scikit-learn</h4>
+                        <p>Classical ML algorithms, preprocessing, evaluation. The go-to ML library.</p>
+                        <code>from sklearn import ...</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>PyTorch</h4>
+                        <p>Deep learning framework. Building and training neural networks.</p>
+                        <code>import torch</code>
+                    </div>
+                </div>
+
+                <pre><code># Complete ML workflow example
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+# 1. Load data
+df = pd.read_csv('data.csv')
+X = df.drop('target', axis=1)
+y = df['target']
+
+# 2. Split data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# 3. Preprocess
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# 4. Train model
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train_scaled, y_train)
+
+# 5. Evaluate
+y_pred = model.predict(X_test_scaled)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")
+print(classification_report(y_test, y_pred))</code></pre>
+            </div>
+        </section>
+
+        <section id="quiz" class="content-section">
+            <div class="container">
+                <h2>Test Your Understanding</h2>
+
+                <div class="quiz-container" data-correct="c" data-explanation="F1 score is the harmonic mean of precision and recall, making it ideal for imbalanced datasets.">
+                    <p class="quiz-question">1. Which metric is best for evaluating a model on imbalanced data (e.g., 95% negative, 5% positive)?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a">
+                            <span>A) Accuracy</span>
+                        </div>
+                        <div class="quiz-option" data-value="b">
+                            <span>B) Mean Squared Error</span>
+                        </div>
+                        <div class="quiz-option" data-value="c">
+                            <span>C) F1 Score</span>
+                        </div>
+                        <div class="quiz-option" data-value="d">
+                            <span>D) R² Score</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Overfitting occurs when a model performs well on training data but poorly on test data.">
+                    <p class="quiz-question">2. Your model has 98% training accuracy but only 65% test accuracy. This is a sign of:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a">
+                            <span>A) Underfitting</span>
+                        </div>
+                        <div class="quiz-option" data-value="b">
+                            <span>B) Overfitting</span>
+                        </div>
+                        <div class="quiz-option" data-value="c">
+                            <span>C) Good generalization</span>
+                        </div>
+                        <div class="quiz-option" data-value="d">
+                            <span>D) Data leakage</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Standardization (Z-score normalization) transforms data to have mean=0 and standard deviation=1.">
+                    <p class="quiz-question">3. Which preprocessing technique transforms features to have mean=0 and std=1?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a">
+                            <span>A) Min-Max Normalization</span>
+                        </div>
+                        <div class="quiz-option" data-value="b">
+                            <span>B) Standardization</span>
+                        </div>
+                        <div class="quiz-option" data-value="c">
+                            <span>C) One-Hot Encoding</span>
+                        </div>
+                        <div class="quiz-option" data-value="d">
+                            <span>D) Label Encoding</span>
+                        </div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <nav class="page-navigation">
+                <a href="../index.html" class="page-nav-link prev">
+                    <span class="page-nav-label">← Previous</span>
+                    <span class="page-nav-title">Home</span>
+                </a>
+                <a href="supervised.html" class="page-nav-link next">
+                    <span class="page-nav-label">Next →</span>
+                    <span class="page-nav-title">Supervised Learning</span>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ML for NOAI</h4>
+                    <p>An educational resource for Singapore secondary school students preparing for the National Olympiad in AI.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="fundamentals.html">ML Fundamentals</a></li>
+                        <li><a href="supervised.html">Supervised Learning</a></li>
+                        <li><a href="neural-networks.html">Neural Networks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>References</h4>
+                    <ul>
+                        <li><a href="https://ioai-official.org/" target="_blank">IOAI Official</a></li>
+                        <li><a href="https://aisingapore.org/" target="_blank">AI Singapore</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Educational content aligned with IOAI Syllabus. Not affiliated with AI Singapore or IOAI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
