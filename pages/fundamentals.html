@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Fundamentals - ML for NOAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-icon">🤖</span>
+                <span>ML for NOAI</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="fundamentals.html" class="nav-link active">Fundamentals</a></li>
+                <li><a href="supervised.html" class="nav-link">Supervised Learning</a></li>
+                <li><a href="unsupervised.html" class="nav-link">Unsupervised Learning</a></li>
+                <li><a href="neural-networks.html" class="nav-link">Neural Networks</a></li>
+                <li><a href="computer-vision.html" class="nav-link">Computer Vision</a></li>
+                <li><a href="nlp.html" class="nav-link">NLP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li>ML Fundamentals</li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>📊 Machine Learning Fundamentals</h1>
+            <p class="subtitle">Master the essential concepts that form the foundation of all machine learning—key for NOAI Prelims!</p>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- SECTION 1: Types of Machine Learning -->
+        <section id="types-of-ml" class="content-section">
+            <div class="container">
+                <h2>Types of Machine Learning</h2>
+                <p>Understanding the three main types of machine learning is fundamental—this appears frequently in NOAI!</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>🎓 Supervised Learning</h4>
+                        <p>Learning from <strong>labeled data</strong> where we know the correct answers.</p>
+                        <p><strong>Goal:</strong> Learn a mapping from inputs to outputs</p>
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                            <li>Classification: spam detection, disease diagnosis</li>
+                            <li>Regression: house price prediction, weather forecasting</li>
+                        </ul>
+                        <p><strong>Algorithms:</strong> Linear Regression, Logistic Regression, SVM, Decision Trees, Random Forest</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🔍 Unsupervised Learning</h4>
+                        <p>Finding patterns in <strong>unlabeled data</strong> without guidance.</p>
+                        <p><strong>Goal:</strong> Discover hidden structure in data</p>
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                            <li>Clustering: customer segmentation</li>
+                            <li>Dimensionality reduction: data visualization</li>
+                        </ul>
+                        <p><strong>Algorithms:</strong> K-Means, PCA, DBSCAN, Hierarchical Clustering</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🎮 Reinforcement Learning</h4>
+                        <p>Learning through <strong>trial and error</strong> via rewards and penalties.</p>
+                        <p><strong>Goal:</strong> Maximize cumulative reward in an environment</p>
+                        <p><strong>Key concepts:</strong></p>
+                        <ul>
+                            <li>Agent, Environment, State, Action</li>
+                            <li>Reward signal, Policy</li>
+                        </ul>
+                        <p><strong>Examples:</strong> Game playing (AlphaGo), robotics, autonomous driving</p>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <strong>NOAI Tip:</strong> Know how to distinguish these three types! A common question is: "Which property best distinguishes reinforcement learning?" Answer: Learning from rewards and penalties in an environment.
+                </div>
+
+                <!-- MCQ Practice -->
+                <h3>Practice MCQs</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="PCA (Principal Component Analysis) is an unsupervised learning algorithm used for dimensionality reduction. It doesn't require labeled data.">
+                    <p class="quiz-question">1. Which of the following is an example of an unsupervised learning algorithm?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Support Vector Machine</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Principal Component Analysis</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Logistic Regression</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Decision Tree</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Reinforcement learning is uniquely characterized by an agent learning from rewards and penalties while interacting with an environment, without labeled training data.">
+                    <p class="quiz-question">2. Which of the following properties best distinguishes a reinforcement learning problem?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The presence of labeled training data</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Learning from rewards and penalties in an environment</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The assumption that data points are independent of each other</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The use of unsupervised clustering techniques</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Classification predicts discrete categories (like spam/not spam), while regression predicts continuous values (like prices). Spam detection outputs a category.">
+                    <p class="quiz-question">3. Email spam detection is an example of which type of problem?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Regression</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Clustering</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Classification</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Reinforcement Learning</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Customer segmentation groups customers without predefined labels, making it an unsupervised clustering problem.">
+                    <p class="quiz-question">4. Grouping customers based on purchasing behavior without predefined categories is an example of:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Unsupervised Learning</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Supervised Learning</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Reinforcement Learning</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Semi-supervised Learning</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Bias-Variance Tradeoff -->
+        <section id="bias-variance" class="content-section">
+            <div class="container">
+                <h2>Bias-Variance Tradeoff</h2>
+                <p>Understanding this tradeoff is essential for building models that generalize well.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>High Bias (Underfitting)</h4>
+                        <p>Model is <strong>too simple</strong> to capture the underlying pattern.</p>
+                        <p><strong>Signs:</strong></p>
+                        <ul>
+                            <li>High training error</li>
+                            <li>High validation error</li>
+                            <li>Training ≈ Validation (both bad)</li>
+                        </ul>
+                        <p><strong>Solutions:</strong> More complex model, add features, reduce regularization</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>High Variance (Overfitting)</h4>
+                        <p>Model <strong>memorizes training data</strong> instead of learning patterns.</p>
+                        <p><strong>Signs:</strong></p>
+                        <ul>
+                            <li>Low training error</li>
+                            <li>High validation error</li>
+                            <li>Big gap between training and validation</li>
+                        </ul>
+                        <p><strong>Solutions:</strong> More data, simpler model, regularization, dropout</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Good Fit (Balanced)</h4>
+                        <p>Model captures true patterns without memorizing noise.</p>
+                        <p><strong>Signs:</strong></p>
+                        <ul>
+                            <li>Low training error</li>
+                            <li>Low validation error</li>
+                            <li>Small gap between them</li>
+                        </ul>
+                        <p><strong>Goal:</strong> Find the sweet spot!</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Key Memory Aid:</strong>
+                    <ul>
+                        <li><strong>Underfitting:</strong> Both errors HIGH (model too simple)</li>
+                        <li><strong>Overfitting:</strong> Training LOW, Validation HIGH (memorized training data)</li>
+                        <li><strong>Good fit:</strong> Both errors LOW and similar</li>
+                    </ul>
+                </div>
+
+                <h3>Practice MCQs</h3>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Underfitting occurs when the model is too simple, resulting in high error on BOTH training and validation data.">
+                    <p class="quiz-question">5. Which of the following indicates that a model is underfitting the data?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) High training error and low validation error</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Low training error and high validation error</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) High training error and high validation error</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Low training error and low validation error</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Overfitting is characterized by good performance on training data (low error) but poor generalization to new data (high validation error).">
+                    <p class="quiz-question">6. A model with 99% training accuracy but 60% validation accuracy is likely:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Underfitting</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Overfitting</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Well-generalized</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Perfectly balanced</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="More training data helps the model learn true patterns rather than memorizing noise, reducing overfitting.">
+                    <p class="quiz-question">7. Which technique helps reduce overfitting?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Increasing model complexity</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Removing regularization</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Training for more epochs without early stopping</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Getting more training data</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="A model with high bias is too simple and makes strong assumptions, leading to systematic errors (underfitting).">
+                    <p class="quiz-question">8. High bias in a model indicates:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The model is too simple</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The model is too complex</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The model has learned the training data perfectly</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The learning rate is too high</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Ensemble Methods -->
+        <section id="ensemble" class="content-section">
+            <div class="container">
+                <h2>Ensemble Methods</h2>
+                <p>Ensemble methods combine multiple models for better performance. Two key concepts: <strong>Bagging</strong> and <strong>Boosting</strong>.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Bagging (Bootstrap Aggregating)</h4>
+                        <p>Train models <strong>in parallel</strong> on random subsets of data.</p>
+                        <p><strong>Purpose:</strong> Decrease variance (reduce overfitting)</p>
+                        <p><strong>How it works:</strong></p>
+                        <ol>
+                            <li>Create multiple bootstrap samples (random with replacement)</li>
+                            <li>Train a model on each sample</li>
+                            <li>Average predictions (regression) or vote (classification)</li>
+                        </ol>
+                        <p><strong>Example:</strong> Random Forest</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Boosting</h4>
+                        <p>Train models <strong>sequentially</strong>, each fixing previous errors.</p>
+                        <p><strong>Purpose:</strong> Decrease bias (reduce underfitting)</p>
+                        <p><strong>How it works:</strong></p>
+                        <ol>
+                            <li>Train a weak learner</li>
+                            <li>Focus on misclassified examples</li>
+                            <li>Train next model to correct errors</li>
+                            <li>Combine all models with weights</li>
+                        </ol>
+                        <p><strong>Examples:</strong> AdaBoost, XGBoost, LightGBM</p>
+                    </div>
+                </div>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Bagging</th>
+                            <th>Boosting</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Training</td>
+                            <td>Parallel (independent)</td>
+                            <td>Sequential (dependent)</td>
+                        </tr>
+                        <tr>
+                            <td>Goal</td>
+                            <td>Reduce variance</td>
+                            <td>Reduce bias</td>
+                        </tr>
+                        <tr>
+                            <td>Base learners</td>
+                            <td>Often complex (deep trees)</td>
+                            <td>Often simple (stumps)</td>
+                        </tr>
+                        <tr>
+                            <td>Overfitting risk</td>
+                            <td>Lower</td>
+                            <td>Higher (needs tuning)</td>
+                        </tr>
+                        <tr>
+                            <td>Example</td>
+                            <td>Random Forest</td>
+                            <td>XGBoost, AdaBoost</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Practice MCQs</h3>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Bagging (Bootstrap Aggregating) trains multiple models on random subsets to reduce variance and prevent overfitting.">
+                    <p class="quiz-question">9. In ensemble methods, what is 'bagging' typically used for?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To decrease variance</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To decrease bias</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To optimize the loss function</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To increase interpretability</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Boosting works by training weak learners sequentially, where each new model focuses on correcting the errors of the previous models.">
+                    <p class="quiz-question">10. In ensemble learning, what is the key assumption behind boosting?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Weak learners can be combined sequentially to create a strong learner</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) All models in the ensemble must be independent of each other</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The data needs to be divided into disjoint subsets</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Boosting is effective only for unsupervised learning</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Random Forest is an ensemble of decision trees trained using bagging, with random feature selection at each split.">
+                    <p class="quiz-question">11. Random Forest is an example of which ensemble technique?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Boosting</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Stacking</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Bagging</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Voting</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="XGBoost (Extreme Gradient Boosting) is a boosting algorithm where models are trained sequentially to correct previous errors.">
+                    <p class="quiz-question">12. XGBoost belongs to which category of ensemble methods?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Bagging</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Boosting</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Stacking</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Random Subspace</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Evaluation Metrics -->
+        <section id="evaluation" class="content-section">
+            <div class="container">
+                <h2>Model Evaluation Metrics</h2>
+                <p>Choosing the right metric depends on your problem. Know these for NOAI!</p>
+
+                <h3>Classification Metrics</h3>
+
+                <div class="algorithm-card">
+                    <h4>Confusion Matrix</h4>
+                    <table class="comparison-table" style="max-width: 500px;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Predicted Positive</th>
+                                <th>Predicted Negative</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Actual Positive</strong></td>
+                                <td style="background: rgba(34, 197, 94, 0.2);">True Positive (TP)</td>
+                                <td style="background: rgba(239, 68, 68, 0.2);">False Negative (FN)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Actual Negative</strong></td>
+                                <td style="background: rgba(239, 68, 68, 0.2);">False Positive (FP)</td>
+                                <td style="background: rgba(34, 197, 94, 0.2);">True Negative (TN)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Accuracy</h4>
+                        <div class="formula">
+                            Accuracy = (TP + TN) / Total
+                        </div>
+                        <p>Overall correctness.</p>
+                        <p><strong>⚠️ Problem:</strong> Misleading for imbalanced classes!</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Precision</h4>
+                        <div class="formula">
+                            Precision = TP / (TP + FP)
+                        </div>
+                        <p>"Of all predicted positives, how many are correct?"</p>
+                        <p><strong>Use when:</strong> False positives are costly (spam filter)</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Recall (Sensitivity)</h4>
+                        <div class="formula">
+                            Recall = TP / (TP + FN)
+                        </div>
+                        <p>"Of all actual positives, how many did we find?"</p>
+                        <p><strong>Use when:</strong> False negatives are costly (disease detection)</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>F1 Score</h4>
+                        <div class="formula">
+                            F1 = 2 × (Precision × Recall) / (Precision + Recall)
+                        </div>
+                        <p>Harmonic mean of precision and recall.</p>
+                        <p><strong>Use when:</strong> Need balance, imbalanced classes</p>
+                    </div>
+                </div>
+
+                <h3>Regression Metrics</h3>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>MSE (Mean Squared Error)</h4>
+                        <div class="formula">
+                            MSE = (1/n) × Σ(y - ŷ)²
+                        </div>
+                        <p>Penalizes larger errors more. Most common for training.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>MAE (Mean Absolute Error)</h4>
+                        <div class="formula">
+                            MAE = (1/n) × Σ|y - ŷ|
+                        </div>
+                        <p>More robust to outliers than MSE.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>R² Score</h4>
+                        <div class="formula">
+                            R² = 1 - (SS_res / SS_tot)
+                        </div>
+                        <p>Proportion of variance explained. 1 = perfect, 0 = baseline.</p>
+                    </div>
+                </div>
+
+                <h3>Practice MCQs</h3>
+
+                <div class="quiz-container" data-correct="c" data-explanation="For imbalanced data (95% negative, 5% positive), accuracy can be misleading (95% by always predicting negative). F1 Score balances precision and recall.">
+                    <p class="quiz-question">13. For a dataset with 95% negative and 5% positive samples, which metric is most appropriate?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Accuracy</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Mean Squared Error</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) F1 Score</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) R² Score</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="In medical diagnosis, missing a disease (False Negative) is more dangerous than a false alarm. High recall ensures we catch most positive cases.">
+                    <p class="quiz-question">14. In a medical diagnosis system for a serious disease, which metric should be prioritized?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Precision</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Recall</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Accuracy</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Specificity</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Precision measures how many of our spam predictions are correct. High precision means fewer legitimate emails go to spam.">
+                    <p class="quiz-question">15. For a spam filter where marking legitimate emails as spam is very costly, which metric is most important?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Precision</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Recall</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Accuracy</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) MSE</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="MSE squares the errors, so larger errors contribute disproportionately more to the total. MAE treats all errors linearly.">
+                    <p class="quiz-question">16. Which loss function penalizes larger errors more heavily?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) MAE (Mean Absolute Error)</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Huber Loss</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Log Loss</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) MSE (Mean Squared Error)</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Regularization -->
+        <section id="regularization" class="content-section">
+            <div class="container">
+                <h2>Regularization</h2>
+                <p>Regularization adds a penalty to prevent overfitting by discouraging complex models.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>L1 Regularization (Lasso)</h4>
+                        <div class="formula">
+                            Loss = Original Loss + λ × Σ|wᵢ|
+                        </div>
+                        <p><strong>Effect:</strong> Can shrink weights to exactly zero</p>
+                        <p><strong>Use for:</strong> Feature selection (sparse models)</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>L2 Regularization (Ridge)</h4>
+                        <div class="formula">
+                            Loss = Original Loss + λ × Σwᵢ²
+                        </div>
+                        <p><strong>Effect:</strong> Shrinks weights toward zero but rarely exactly zero</p>
+                        <p><strong>Use for:</strong> When all features may be relevant</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Elastic Net</h4>
+                        <div class="formula">
+                            Loss = Original Loss + λ₁Σ|wᵢ| + λ₂Σwᵢ²
+                        </div>
+                        <p><strong>Effect:</strong> Combines L1 and L2</p>
+                        <p><strong>Use for:</strong> Best of both worlds</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Memory Aid:</strong>
+                    <ul>
+                        <li><strong>L1 (Lasso):</strong> L for "Leaves out" features (sparse)</li>
+                        <li><strong>L2 (Ridge):</strong> R for "Reduces" all weights</li>
+                    </ul>
+                </div>
+
+                <h3>Practice MCQs</h3>
+
+                <div class="quiz-container" data-correct="a" data-explanation="L1 regularization can shrink weights to exactly zero, effectively removing features. This makes it useful for feature selection.">
+                    <p class="quiz-question">17. Which regularization technique can be used for automatic feature selection?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) L1 (Lasso)</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) L2 (Ridge)</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Both equally</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Neither</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="L2 (Ridge) regularization shrinks weights but doesn't make them exactly zero, so it keeps all features with reduced impact.">
+                    <p class="quiz-question">18. Which regularization keeps all features but reduces their impact?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) L1 (Lasso)</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) L2 (Ridge)</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Dropout</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Early Stopping</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Higher λ (regularization strength) means more penalty for complex models, resulting in simpler models with smaller weights.">
+                    <p class="quiz-question">19. Increasing the regularization parameter λ typically results in:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) More complex models</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Higher variance</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Simpler models</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Faster training</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: Cross-Validation -->
+        <section id="cross-validation" class="content-section">
+            <div class="container">
+                <h2>Cross-Validation</h2>
+                <p>Cross-validation gives a more robust estimate of model performance by using multiple train-test splits.</p>
+
+                <div class="algorithm-card">
+                    <h3>K-Fold Cross-Validation</h3>
+                    <ol>
+                        <li>Split data into K equal folds</li>
+                        <li>For each fold:
+                            <ul>
+                                <li>Use that fold as validation</li>
+                                <li>Train on remaining K-1 folds</li>
+                            </ul>
+                        </li>
+                        <li>Average results across all K iterations</li>
+                    </ol>
+                    <p><strong>Common values:</strong> K=5 or K=10</p>
+                </div>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Advantages</h4>
+                        <ul>
+                            <li>Uses all data for training and validation</li>
+                            <li>More reliable performance estimate</li>
+                            <li>Good for small datasets</li>
+                        </ul>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Variants</h4>
+                        <ul>
+                            <li><strong>Stratified K-Fold:</strong> Preserves class distribution</li>
+                            <li><strong>Leave-One-Out (LOO):</strong> K = n (extreme case)</li>
+                            <li><strong>Time Series Split:</strong> For temporal data</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Practice MCQs</h3>
+
+                <div class="quiz-container" data-correct="c" data-explanation="In 5-fold CV, data is split into 5 parts. Each iteration uses 4 folds for training (80%) and 1 fold for validation (20%).">
+                    <p class="quiz-question">20. In 5-fold cross-validation, what percentage of data is used for training in each iteration?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) 50%</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) 70%</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) 80%</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) 90%</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Stratified K-Fold ensures each fold has the same proportion of classes as the original dataset, important for imbalanced data.">
+                    <p class="quiz-question">21. What does Stratified K-Fold cross-validation ensure?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Faster computation</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Each fold has the same class distribution as the original data</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) No overlap between folds</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Random ordering of samples</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Cross-validation's main purpose is to get a reliable estimate of how well the model will generalize to new, unseen data.">
+                    <p class="quiz-question">22. The primary purpose of cross-validation is to:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Estimate model generalization performance</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Increase training data size</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Reduce training time</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Eliminate the need for a test set</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: Data Preprocessing -->
+        <section id="preprocessing" class="content-section">
+            <div class="container">
+                <h2>Data Preprocessing</h2>
+                <p>Proper data preprocessing is crucial for model performance.</p>
+
+                <h3>Feature Scaling</h3>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Standardization (Z-score)</h4>
+                        <div class="formula">
+                            x' = (x - μ) / σ
+                        </div>
+                        <p>Transforms to mean=0, std=1</p>
+                        <p><strong>Use for:</strong> SVM, Logistic Regression, Neural Networks</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Min-Max Normalization</h4>
+                        <div class="formula">
+                            x' = (x - min) / (max - min)
+                        </div>
+                        <p>Transforms to [0, 1] range</p>
+                        <p><strong>Use for:</strong> Neural Networks, when you need bounded values</p>
+                    </div>
+                </div>
+
+                <h3>Handling Missing Data</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Description</th>
+                            <th>When to Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mean/Median Imputation</td>
+                            <td>Replace with average value</td>
+                            <td>Numerical, random missing</td>
+                        </tr>
+                        <tr>
+                            <td>Mode Imputation</td>
+                            <td>Replace with most frequent value</td>
+                            <td>Categorical data</td>
+                        </tr>
+                        <tr>
+                            <td>Forward/Backward Fill</td>
+                            <td>Use adjacent values</td>
+                            <td>Time series data</td>
+                        </tr>
+                        <tr>
+                            <td>Drop rows</td>
+                            <td>Remove incomplete samples</td>
+                            <td>Small % missing, large dataset</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Practice MCQs</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Standardization transforms data to have mean=0 and standard deviation=1 using the formula (x - μ) / σ.">
+                    <p class="quiz-question">23. Which preprocessing technique transforms features to have mean=0 and std=1?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Min-Max Normalization</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Standardization</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) One-Hot Encoding</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Label Encoding</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="KNN uses distance calculations, so features with larger scales would dominate. Scaling ensures all features contribute equally.">
+                    <p class="quiz-question">24. Why is feature scaling important for KNN?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It speeds up training</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It improves interpretability</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Features with larger scales would dominate distance calculations</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It's not important for KNN</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="One-hot encoding creates binary columns for each category, while label encoding assigns integers which might imply ordinal relationships.">
+                    <p class="quiz-question">25. For a nominal categorical variable with no inherent order (like colors), which encoding is preferred?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) One-Hot Encoding</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Label Encoding</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Ordinal Encoding</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Target Encoding</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="container">
+            <nav class="page-navigation">
+                <a href="../index.html" class="page-nav-link prev">
+                    <span class="page-nav-label">← Previous</span>
+                    <span class="page-nav-title">Home</span>
+                </a>
+                <a href="supervised.html" class="page-nav-link next">
+                    <span class="page-nav-label">Next →</span>
+                    <span class="page-nav-title">Supervised Learning</span>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ML for NOAI</h4>
+                    <p>Comprehensive preparation for Singapore's National Olympiad in AI.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="fundamentals.html">ML Fundamentals</a></li>
+                        <li><a href="supervised.html">Supervised Learning</a></li>
+                        <li><a href="neural-networks.html">Neural Networks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>References</h4>
+                    <ul>
+                        <li><a href="https://ioai-official.org/" target="_blank">IOAI Official</a></li>
+                        <li><a href="https://aisingapore.org/" target="_blank">AI Singapore</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Based on NOAI 2025 MCQ patterns. Not affiliated with AI Singapore or IOAI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

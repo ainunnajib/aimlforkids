@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsupervised Learning - ML for NOAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-icon">🤖</span>
+                <span>ML for NOAI</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="fundamentals.html" class="nav-link">Fundamentals</a></li>
+                <li><a href="supervised.html" class="nav-link">Supervised Learning</a></li>
+                <li><a href="unsupervised.html" class="nav-link active">Unsupervised Learning</a></li>
+                <li><a href="neural-networks.html" class="nav-link">Neural Networks</a></li>
+                <li><a href="computer-vision.html" class="nav-link">Computer Vision</a></li>
+                <li><a href="nlp.html" class="nav-link">NLP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li>Unsupervised Learning</li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>🔍 Unsupervised Learning</h1>
+            <p class="subtitle">Discover hidden patterns and structures in data without labeled examples.</p>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="overview" class="content-section">
+            <div class="container">
+                <h2>What is Unsupervised Learning?</h2>
+                <p>Unlike supervised learning, unsupervised learning works with <strong>unlabeled data</strong>. The algorithm must discover patterns, structures, and relationships on its own without any guidance about what the "correct" answer should be.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>🎯 Clustering</h4>
+                        <p>Group similar data points together</p>
+                        <p><em>Example: Customer segmentation, document grouping</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>📉 Dimensionality Reduction</h4>
+                        <p>Reduce number of features while preserving information</p>
+                        <p><em>Example: Data visualization, noise reduction</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🔗 Association</h4>
+                        <p>Find rules that describe relationships</p>
+                        <p><em>Example: Market basket analysis ("bought X also bought Y")</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kmeans" class="content-section">
+            <div class="container">
+                <h2>K-Means Clustering</h2>
+                <p>The most popular clustering algorithm. It partitions data into K clusters where each point belongs to the cluster with the nearest mean (centroid).</p>
+
+                <div class="algorithm-card">
+                    <h3>K-Means Algorithm</h3>
+                    <div class="algorithm-meta">
+                        <span>🎯 Type: Clustering</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                        <span>⏱️ O(n×k×i×d)</span>
+                    </div>
+
+                    <h4>How It Works</h4>
+                    <ol>
+                        <li><strong>Initialize:</strong> Randomly place K centroids</li>
+                        <li><strong>Assign:</strong> Assign each point to its nearest centroid</li>
+                        <li><strong>Update:</strong> Move each centroid to the mean of its assigned points</li>
+                        <li><strong>Repeat:</strong> Steps 2-3 until centroids stop moving (convergence)</li>
+                    </ol>
+
+                    <div class="formula">
+                        <div class="formula-title">Objective: Minimize Within-Cluster Sum of Squares (WCSS)</div>
+                        WCSS = Σᵢ Σₓ∈Cᵢ ||x - μᵢ||²
+
+                        where μᵢ is the centroid of cluster Cᵢ
+                    </div>
+                </div>
+
+                <h3>Choosing K: The Elbow Method</h3>
+                <p>How do we know how many clusters to use? The <strong>Elbow Method</strong> helps:</p>
+                <ol>
+                    <li>Run K-Means for different values of K (e.g., 1 to 10)</li>
+                    <li>Calculate WCSS (inertia) for each K</li>
+                    <li>Plot K vs WCSS</li>
+                    <li>Find the "elbow" where adding more clusters doesn't significantly reduce WCSS</li>
+                </ol>
+
+                <pre><code># Python: K-Means Clustering
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+
+# Find optimal K using elbow method
+wcss = []
+K_range = range(1, 11)
+for k in K_range:
+    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+    kmeans.fit(X)
+    wcss.append(kmeans.inertia_)
+
+# Plot elbow curve
+plt.plot(K_range, wcss, 'bo-')
+plt.xlabel('Number of Clusters (K)')
+plt.ylabel('WCSS (Inertia)')
+plt.title('Elbow Method')
+plt.show()
+
+# Train final model
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=10)
+clusters = kmeans.fit_predict(X)
+
+# Get cluster centers
+print("Centroids:", kmeans.cluster_centers_)</code></pre>
+
+                <div class="warning-box">
+                    K-Means assumes spherical clusters of similar size. It may not work well for clusters with different shapes or densities. Also, always scale your features before using K-Means!
+                </div>
+
+                <h3>K-Means Limitations</h3>
+                <ul>
+                    <li>Must specify K in advance</li>
+                    <li>Sensitive to initial centroid placement (use k-means++ initialization)</li>
+                    <li>Assumes spherical, similar-sized clusters</li>
+                    <li>Sensitive to outliers</li>
+                    <li>May converge to local minimum</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="hierarchical" class="content-section">
+            <div class="container">
+                <h2>Hierarchical Clustering</h2>
+                <p>Builds a tree of clusters (dendrogram) that shows how clusters are related at different levels of granularity.</p>
+
+                <div class="algorithm-card">
+                    <h3>Agglomerative (Bottom-Up) Clustering</h3>
+                    <div class="algorithm-meta">
+                        <span>🎯 Type: Clustering</span>
+                        <span>📚 NOAI: Practice</span>
+                        <span>🌳 Creates Dendrogram</span>
+                    </div>
+
+                    <h4>How It Works</h4>
+                    <ol>
+                        <li>Start with each point as its own cluster</li>
+                        <li>Find the two closest clusters</li>
+                        <li>Merge them into one cluster</li>
+                        <li>Repeat until all points are in one cluster</li>
+                        <li>Cut the dendrogram at desired level to get K clusters</li>
+                    </ol>
+                </div>
+
+                <h3>Linkage Methods</h3>
+                <p>How do we measure distance between clusters?</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Single Linkage</h4>
+                        <p>Distance = minimum distance between any two points</p>
+                        <p><em>Can create long, chain-like clusters</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Complete Linkage</h4>
+                        <p>Distance = maximum distance between any two points</p>
+                        <p><em>Creates compact, spherical clusters</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Average Linkage</h4>
+                        <p>Distance = average of all pairwise distances</p>
+                        <p><em>Balanced approach</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Ward's Method</h4>
+                        <p>Minimizes variance within clusters</p>
+                        <p><em>Often produces best results</em></p>
+                    </div>
+                </div>
+
+                <pre><code># Python: Hierarchical Clustering
+from sklearn.cluster import AgglomerativeClustering
+from scipy.cluster.hierarchy import dendrogram, linkage
+import matplotlib.pyplot as plt
+
+# Create linkage matrix and plot dendrogram
+Z = linkage(X, method='ward')
+plt.figure(figsize=(12, 5))
+dendrogram(Z)
+plt.title('Hierarchical Clustering Dendrogram')
+plt.xlabel('Sample Index')
+plt.ylabel('Distance')
+plt.show()
+
+# Fit model
+model = AgglomerativeClustering(n_clusters=3, linkage='ward')
+clusters = model.fit_predict(X)</code></pre>
+            </div>
+        </section>
+
+        <section id="dbscan" class="content-section">
+            <div class="container">
+                <h2>DBSCAN</h2>
+                <p>Density-Based Spatial Clustering of Applications with Noise. Finds arbitrarily shaped clusters based on density.</p>
+
+                <div class="algorithm-card">
+                    <h3>DBSCAN Algorithm</h3>
+                    <div class="algorithm-meta">
+                        <span>🎯 Type: Clustering</span>
+                        <span>📚 NOAI: Practice</span>
+                        <span>🎭 Handles Noise</span>
+                    </div>
+
+                    <h4>Key Concepts</h4>
+                    <ul>
+                        <li><strong>ε (epsilon):</strong> Maximum distance between two points to be considered neighbors</li>
+                        <li><strong>MinPts:</strong> Minimum points needed to form a dense region</li>
+                        <li><strong>Core Point:</strong> Has at least MinPts within ε distance</li>
+                        <li><strong>Border Point:</strong> Within ε of a core point but not core itself</li>
+                        <li><strong>Noise Point:</strong> Neither core nor border</li>
+                    </ul>
+
+                    <h4>How It Works</h4>
+                    <ol>
+                        <li>Find all core points</li>
+                        <li>Connect core points that are within ε of each other</li>
+                        <li>Assign border points to nearest cluster</li>
+                        <li>Label remaining points as noise (-1)</li>
+                    </ol>
+                </div>
+
+                <pre><code># Python: DBSCAN
+from sklearn.cluster import DBSCAN
+from sklearn.preprocessing import StandardScaler
+
+# Scale data
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Fit DBSCAN
+model = DBSCAN(eps=0.5, min_samples=5)
+clusters = model.fit_predict(X_scaled)
+
+# Check results
+n_clusters = len(set(clusters)) - (1 if -1 in clusters else 0)
+n_noise = list(clusters).count(-1)
+print(f"Clusters found: {n_clusters}")
+print(f"Noise points: {n_noise}")</code></pre>
+
+                <h3>DBSCAN vs K-Means</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>K-Means</th>
+                            <th>DBSCAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Number of clusters</td>
+                            <td>Must specify K</td>
+                            <td>Automatic</td>
+                        </tr>
+                        <tr>
+                            <td>Cluster shape</td>
+                            <td>Spherical</td>
+                            <td>Arbitrary</td>
+                        </tr>
+                        <tr>
+                            <td>Outliers</td>
+                            <td>Assigned to clusters</td>
+                            <td>Labeled as noise</td>
+                        </tr>
+                        <tr>
+                            <td>Parameters</td>
+                            <td>K</td>
+                            <td>ε, MinPts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="pca" class="content-section">
+            <div class="container">
+                <h2>Principal Component Analysis (PCA)</h2>
+                <p>PCA is the most popular dimensionality reduction technique. It finds new axes (principal components) that capture the maximum variance in the data.</p>
+
+                <div class="algorithm-card">
+                    <h3>PCA Algorithm</h3>
+                    <div class="algorithm-meta">
+                        <span>📉 Type: Dimensionality Reduction</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                        <span>📊 Linear Transformation</span>
+                    </div>
+
+                    <h4>How It Works</h4>
+                    <ol>
+                        <li><strong>Standardize</strong> the data (mean=0, std=1)</li>
+                        <li>Compute the <strong>covariance matrix</strong></li>
+                        <li>Calculate <strong>eigenvectors and eigenvalues</strong></li>
+                        <li>Sort eigenvectors by eigenvalue (descending)</li>
+                        <li>Select top K eigenvectors as <strong>principal components</strong></li>
+                        <li>Transform data to new K-dimensional space</li>
+                    </ol>
+
+                    <h4>Key Properties</h4>
+                    <ul>
+                        <li>Principal components are orthogonal (uncorrelated)</li>
+                        <li>PC1 captures most variance, PC2 second most, etc.</li>
+                        <li>Total variance preserved = sum of selected eigenvalues / total eigenvalues</li>
+                    </ul>
+                </div>
+
+                <h3>How Many Components?</h3>
+                <p>Look at the <strong>explained variance ratio</strong>:</p>
+                <ul>
+                    <li>Plot cumulative explained variance vs number of components</li>
+                    <li>Choose K where you capture enough variance (e.g., 95%)</li>
+                </ul>
+
+                <pre><code># Python: PCA
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+# Standardize first!
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Fit PCA
+pca = PCA()
+pca.fit(X_scaled)
+
+# Plot explained variance
+plt.figure(figsize=(10, 4))
+
+# Individual variance
+plt.subplot(1, 2, 1)
+plt.bar(range(1, len(pca.explained_variance_ratio_) + 1),
+        pca.explained_variance_ratio_)
+plt.xlabel('Principal Component')
+plt.ylabel('Explained Variance Ratio')
+
+# Cumulative variance
+plt.subplot(1, 2, 2)
+plt.plot(range(1, len(pca.explained_variance_ratio_) + 1),
+         pca.explained_variance_ratio_.cumsum(), 'bo-')
+plt.axhline(y=0.95, color='r', linestyle='--', label='95% threshold')
+plt.xlabel('Number of Components')
+plt.ylabel('Cumulative Explained Variance')
+plt.legend()
+plt.show()
+
+# Transform to 2D for visualization
+pca_2d = PCA(n_components=2)
+X_2d = pca_2d.fit_transform(X_scaled)
+print(f"Variance captured: {pca_2d.explained_variance_ratio_.sum():.2%}")</code></pre>
+
+                <h3>PCA Applications</h3>
+                <ul>
+                    <li><strong>Visualization:</strong> Reduce to 2D/3D for plotting</li>
+                    <li><strong>Noise Reduction:</strong> Keep components with signal, drop noisy ones</li>
+                    <li><strong>Feature Extraction:</strong> Create new meaningful features</li>
+                    <li><strong>Preprocessing:</strong> Reduce dimensionality before feeding to ML models</li>
+                </ul>
+
+                <div class="tip-box">
+                    PCA works best when features are correlated. If features are independent, PCA won't help much. Also, always standardize before PCA!
+                </div>
+            </div>
+        </section>
+
+        <section id="tsne-umap" class="content-section">
+            <div class="container">
+                <h2>t-SNE and UMAP</h2>
+                <p>Non-linear dimensionality reduction techniques specifically designed for visualization. They preserve local structure better than PCA.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>t-SNE</h4>
+                        <p><strong>t-distributed Stochastic Neighbor Embedding</strong></p>
+                        <ul>
+                            <li>Preserves local neighborhoods</li>
+                            <li>Great for visualization</li>
+                            <li>Computationally expensive</li>
+                            <li>Results vary with perplexity parameter</li>
+                        </ul>
+                    </div>
+                    <div class="concept-card">
+                        <h4>UMAP</h4>
+                        <p><strong>Uniform Manifold Approximation and Projection</strong></p>
+                        <ul>
+                            <li>Faster than t-SNE</li>
+                            <li>Preserves both local and global structure</li>
+                            <li>More consistent results</li>
+                            <li>Can be used for general dimensionality reduction</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <pre><code># Python: t-SNE
+from sklearn.manifold import TSNE
+import matplotlib.pyplot as plt
+
+# t-SNE (for visualization)
+tsne = TSNE(n_components=2, perplexity=30, random_state=42)
+X_tsne = tsne.fit_transform(X_scaled)
+
+plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=labels, cmap='viridis')
+plt.title('t-SNE Visualization')
+plt.show()
+
+# UMAP (need to install: pip install umap-learn)
+import umap
+
+reducer = umap.UMAP(n_components=2, random_state=42)
+X_umap = reducer.fit_transform(X_scaled)
+
+plt.scatter(X_umap[:, 0], X_umap[:, 1], c=labels, cmap='viridis')
+plt.title('UMAP Visualization')
+plt.show()</code></pre>
+
+                <h3>When to Use What?</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Best For</th>
+                            <th>Limitations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>PCA</strong></td>
+                            <td>Feature reduction, linear relationships, preprocessing</td>
+                            <td>Linear only, may miss complex patterns</td>
+                        </tr>
+                        <tr>
+                            <td><strong>t-SNE</strong></td>
+                            <td>Visualizing clusters, exploring data</td>
+                            <td>Slow, not for preprocessing, non-deterministic</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UMAP</strong></td>
+                            <td>Visualization + preprocessing, large datasets</td>
+                            <td>Requires hyperparameter tuning</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="warning-box">
+                    t-SNE and UMAP are for visualization and exploration. Don't interpret distances between clusters as meaningful—only within-cluster relationships are preserved reliably.
+                </div>
+            </div>
+        </section>
+
+        <section id="evaluation" class="content-section">
+            <div class="container">
+                <h2>Evaluating Clustering</h2>
+                <p>Without labels, how do we know if our clustering is good? We use internal metrics that measure cluster quality.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Silhouette Score</h4>
+                        <p>Measures how similar points are to their own cluster vs other clusters.</p>
+                        <div class="formula">
+                            s(i) = (b(i) - a(i)) / max(a(i), b(i))
+                        </div>
+                        <p>Range: -1 to 1 (higher is better)</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Davies-Bouldin Index</h4>
+                        <p>Ratio of within-cluster distances to between-cluster distances.</p>
+                        <p>Lower is better (0 = perfect clustering)</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Calinski-Harabasz Index</h4>
+                        <p>Ratio of between-cluster dispersion to within-cluster dispersion.</p>
+                        <p>Higher is better</p>
+                    </div>
+                </div>
+
+                <pre><code># Python: Clustering Evaluation
+from sklearn.metrics import silhouette_score, davies_bouldin_score
+from sklearn.metrics import calinski_harabasz_score
+
+# Assuming 'clusters' contains cluster labels
+print(f"Silhouette Score: {silhouette_score(X, clusters):.3f}")
+print(f"Davies-Bouldin Index: {davies_bouldin_score(X, clusters):.3f}")
+print(f"Calinski-Harabasz: {calinski_harabasz_score(X, clusters):.3f}")
+
+# Compare different K values
+for k in range(2, 8):
+    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+    labels = kmeans.fit_predict(X)
+    score = silhouette_score(X, labels)
+    print(f"K={k}: Silhouette = {score:.3f}")</code></pre>
+            </div>
+        </section>
+
+        <section id="quiz" class="content-section">
+            <div class="container">
+                <h2>Test Your Understanding</h2>
+
+                <div class="quiz-container" data-correct="b" data-explanation="K-Means requires you to specify the number of clusters beforehand, while DBSCAN discovers it automatically.">
+                    <p class="quiz-question">1. Which clustering algorithm automatically determines the number of clusters?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) K-Means</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) DBSCAN</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Both</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Neither</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="PCA finds the direction of maximum variance first (PC1), then the next orthogonal direction with maximum remaining variance (PC2), and so on.">
+                    <p class="quiz-question">2. What does the first principal component (PC1) capture?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The smallest variance in the data</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The mean of all features</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The direction of maximum variance</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The most important feature</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="A silhouette score close to 1 indicates well-defined clusters where points are close to their own cluster and far from others.">
+                    <p class="quiz-question">3. A silhouette score of 0.85 indicates:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Good clustering with well-separated clusters</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Poor clustering</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Overlapping clusters</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Too many clusters</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <nav class="page-navigation">
+                <a href="supervised.html" class="page-nav-link prev">
+                    <span class="page-nav-label">← Previous</span>
+                    <span class="page-nav-title">Supervised Learning</span>
+                </a>
+                <a href="neural-networks.html" class="page-nav-link next">
+                    <span class="page-nav-label">Next →</span>
+                    <span class="page-nav-title">Neural Networks</span>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ML for NOAI</h4>
+                    <p>An educational resource for Singapore secondary school students preparing for the National Olympiad in AI.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="fundamentals.html">ML Fundamentals</a></li>
+                        <li><a href="supervised.html">Supervised Learning</a></li>
+                        <li><a href="neural-networks.html">Neural Networks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>References</h4>
+                    <ul>
+                        <li><a href="https://ioai-official.org/" target="_blank">IOAI Official</a></li>
+                        <li><a href="https://aisingapore.org/" target="_blank">AI Singapore</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Educational content aligned with IOAI Syllabus. Not affiliated with AI Singapore or IOAI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

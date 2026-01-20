@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Language Processing - ML for NOAI</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="nav-logo">
+                <span class="logo-icon">🤖</span>
+                <span>ML for NOAI</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="fundamentals.html" class="nav-link">Fundamentals</a></li>
+                <li><a href="supervised.html" class="nav-link">Supervised Learning</a></li>
+                <li><a href="unsupervised.html" class="nav-link">Unsupervised Learning</a></li>
+                <li><a href="neural-networks.html" class="nav-link">Neural Networks</a></li>
+                <li><a href="computer-vision.html" class="nav-link">Computer Vision</a></li>
+                <li><a href="nlp.html" class="nav-link active">NLP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li>Natural Language Processing</li>
+            </ul>
+        </div>
+    </div>
+
+    <header class="page-header">
+        <div class="container">
+            <h1>💬 Natural Language Processing</h1>
+            <p class="subtitle">Teaching machines to understand, interpret, and generate human language.</p>
+        </div>
+    </header>
+
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section id="overview" class="content-section">
+            <div class="container">
+                <h2>Introduction to NLP</h2>
+                <p>Natural Language Processing (NLP) enables computers to understand, interpret, and generate human language. It bridges the gap between human communication and machine understanding.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>📝 Text Classification</h4>
+                        <p>Categorize text into predefined labels</p>
+                        <p><em>Spam detection, sentiment analysis</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🏷️ Named Entity Recognition</h4>
+                        <p>Identify entities like names, places, dates</p>
+                        <p><em>"Apple Inc. is in California"</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>❓ Question Answering</h4>
+                        <p>Extract answers from text given questions</p>
+                        <p><em>Q: "Who founded Tesla?" A: "Elon Musk"</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🔄 Machine Translation</h4>
+                        <p>Translate between languages</p>
+                        <p><em>English → Chinese</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>📊 Text Summarization</h4>
+                        <p>Create concise summaries of documents</p>
+                        <p><em>Long article → Key points</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>✍️ Text Generation</h4>
+                        <p>Generate human-like text</p>
+                        <p><em>ChatGPT, story writing</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="preprocessing" class="content-section">
+            <div class="container">
+                <h2>Text Preprocessing</h2>
+                <p>Before feeding text to models, we need to clean and convert it to numerical form.</p>
+
+                <h3>Tokenization</h3>
+                <p>Breaking text into smaller units (tokens).</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Word Tokenization</h4>
+                        <p>"I love NLP" → ["I", "love", "NLP"]</p>
+                        <p><em>Simple but has vocabulary issues</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Subword Tokenization</h4>
+                        <p>"unhappiness" → ["un", "happiness"]</p>
+                        <p><em>Handles rare words better (BPE, WordPiece)</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Character Tokenization</h4>
+                        <p>"hello" → ["h", "e", "l", "l", "o"]</p>
+                        <p><em>Small vocabulary, longer sequences</em></p>
+                    </div>
+                </div>
+
+                <h3>Common Preprocessing Steps</h3>
+                <ul>
+                    <li><strong>Lowercasing:</strong> "Hello" → "hello"</li>
+                    <li><strong>Removing punctuation:</strong> "Hello!" → "Hello"</li>
+                    <li><strong>Removing stopwords:</strong> Remove common words (the, is, at)</li>
+                    <li><strong>Stemming:</strong> "running" → "run" (chop endings)</li>
+                    <li><strong>Lemmatization:</strong> "better" → "good" (use dictionary)</li>
+                </ul>
+
+                <pre><code># Python: Text Preprocessing
+import re
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+
+text = "The cats are running quickly through the gardens!"
+
+# Lowercase
+text = text.lower()
+
+# Remove punctuation
+text = re.sub(r'[^\w\s]', '', text)
+
+# Tokenize
+tokens = word_tokenize(text)
+# ['the', 'cats', 'are', 'running', 'quickly', 'through', 'the', 'gardens']
+
+# Remove stopwords
+stop_words = set(stopwords.words('english'))
+tokens = [t for t in tokens if t not in stop_words]
+# ['cats', 'running', 'quickly', 'gardens']
+
+# Stemming
+stemmer = PorterStemmer()
+stems = [stemmer.stem(t) for t in tokens]
+# ['cat', 'run', 'quick', 'garden']</code></pre>
+
+                <div class="tip-box">
+                    Modern deep learning models (like BERT) often work with raw text and learn their own representations. Heavy preprocessing may not be needed!
+                </div>
+            </div>
+        </section>
+
+        <section id="embeddings" class="content-section">
+            <div class="container">
+                <h2>Word Embeddings</h2>
+                <p>Word embeddings convert words into dense vectors that capture semantic meaning.</p>
+
+                <h3>Why Embeddings?</h3>
+                <p>One-hot encoding (where "cat" = [1,0,0,...]) has problems:</p>
+                <ul>
+                    <li>Vectors are huge (vocabulary size)</li>
+                    <li>All words are equally different (no similarity)</li>
+                    <li>"cat" and "dog" should be closer than "cat" and "airplane"</li>
+                </ul>
+
+                <div class="algorithm-card">
+                    <h3>Word2Vec</h3>
+                    <div class="algorithm-meta">
+                        <span>📊 Type: Embedding</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                    </div>
+
+                    <p>Learn word vectors by predicting context. Two architectures:</p>
+
+                    <h4>Skip-gram</h4>
+                    <p>Given a word, predict surrounding words</p>
+                    <p><em>"The [cat] sat on" → predict "The", "sat", "on"</em></p>
+
+                    <h4>CBOW (Continuous Bag of Words)</h4>
+                    <p>Given surrounding words, predict the center word</p>
+                    <p><em>"The __ sat on" → predict "cat"</em></p>
+
+                    <h4>Key Property</h4>
+                    <div class="formula">
+                        king - man + woman ≈ queen
+                    </div>
+                    <p>Embeddings capture semantic relationships!</p>
+                </div>
+
+                <h3>Using Pre-trained Embeddings</h3>
+                <pre><code># Python: Word Embeddings with Gensim
+from gensim.models import KeyedVectors
+
+# Load pre-trained Word2Vec (Google News)
+model = KeyedVectors.load_word2vec_format('GoogleNews-vectors.bin', binary=True)
+
+# Get word vector
+vector = model['computer']  # 300-dimensional vector
+
+# Find similar words
+similar = model.most_similar('king', topn=5)
+# [('kings', 0.71), ('queen', 0.65), ('monarch', 0.64), ...]
+
+# Analogy: king - man + woman = ?
+result = model.most_similar(positive=['king', 'woman'], negative=['man'])
+# [('queen', 0.71), ...]</code></pre>
+            </div>
+        </section>
+
+        <section id="rnn" class="content-section">
+            <div class="container">
+                <h2>Recurrent Neural Networks (RNNs)</h2>
+                <p>RNNs process sequences by maintaining a "memory" (hidden state) that captures information from previous steps.</p>
+
+                <div class="algorithm-card">
+                    <h3>Basic RNN</h3>
+                    <div class="algorithm-meta">
+                        <span>🔄 Type: Sequence Model</span>
+                        <span>📚 NOAI: Theory</span>
+                    </div>
+
+                    <div class="formula">
+                        <div class="formula-title">RNN Equations</div>
+                        hₜ = tanh(Wₕₕ × hₜ₋₁ + Wₓₕ × xₜ + b)
+                        yₜ = Wₕᵧ × hₜ
+
+                        hₜ = hidden state at time t
+                        xₜ = input at time t
+                    </div>
+
+                    <h4>Problem: Vanishing Gradient</h4>
+                    <p>For long sequences, gradients become very small, making it hard to learn long-range dependencies.</p>
+                </div>
+
+                <h3>LSTM (Long Short-Term Memory)</h3>
+                <div class="algorithm-card">
+                    <div class="algorithm-meta">
+                        <span>🧠 Type: Gated RNN</span>
+                        <span>📚 NOAI: Practice</span>
+                    </div>
+
+                    <p>LSTM solves vanishing gradients with <strong>gates</strong> that control information flow:</p>
+
+                    <ul>
+                        <li><strong>Forget Gate:</strong> What to remove from memory</li>
+                        <li><strong>Input Gate:</strong> What new information to store</li>
+                        <li><strong>Output Gate:</strong> What to output</li>
+                        <li><strong>Cell State:</strong> Long-term memory (can persist unchanged)</li>
+                    </ul>
+                </div>
+
+                <pre><code># PyTorch: LSTM for Text Classification
+import torch.nn as nn
+
+class LSTMClassifier(nn.Module):
+    def __init__(self, vocab_size, embed_dim, hidden_dim, num_classes):
+        super().__init__()
+        self.embedding = nn.Embedding(vocab_size, embed_dim)
+        self.lstm = nn.LSTM(embed_dim, hidden_dim, batch_first=True,
+                           bidirectional=True)
+        self.fc = nn.Linear(hidden_dim * 2, num_classes)  # *2 for bidirectional
+
+    def forward(self, x):
+        # x shape: (batch, seq_len)
+        embedded = self.embedding(x)  # (batch, seq_len, embed_dim)
+        lstm_out, (hidden, cell) = self.lstm(embedded)
+
+        # Use final hidden state from both directions
+        hidden = torch.cat((hidden[-2], hidden[-1]), dim=1)
+        output = self.fc(hidden)
+        return output</code></pre>
+            </div>
+        </section>
+
+        <section id="attention" class="content-section">
+            <div class="container">
+                <h2>Attention Mechanism</h2>
+                <p>Attention allows models to focus on relevant parts of the input when producing output.</p>
+
+                <div class="algorithm-card">
+                    <h3>The Attention Idea</h3>
+                    <div class="algorithm-meta">
+                        <span>🎯 Type: Mechanism</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                    </div>
+
+                    <h4>Problem with RNNs</h4>
+                    <p>All information must pass through a fixed-size hidden state (bottleneck).</p>
+
+                    <h4>Solution: Attention</h4>
+                    <p>Look at ALL input positions and compute weighted importance for each.</p>
+
+                    <div class="formula">
+                        <div class="formula-title">Attention Computation</div>
+                        1. Query (Q): what we're looking for
+                        2. Keys (K): what we're searching through
+                        3. Values (V): the actual content
+
+                        Attention(Q, K, V) = softmax(QKᵀ/√dₖ) × V
+                    </div>
+                </div>
+
+                <h3>Self-Attention</h3>
+                <p>When Q, K, V all come from the same sequence. Each word attends to all other words in the sentence.</p>
+                <p><em>"The cat sat on the mat because it was tired"</em></p>
+                <p>Self-attention helps "it" understand it refers to "cat".</p>
+            </div>
+        </section>
+
+        <section id="transformers" class="content-section">
+            <div class="container">
+                <h2>Transformers</h2>
+                <p>Transformers replaced RNNs as the dominant architecture for NLP. They use only attention—no recurrence!</p>
+
+                <div class="algorithm-card">
+                    <h3>Transformer Architecture</h3>
+                    <div class="algorithm-meta">
+                        <span>🏗️ Type: Architecture</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                        <span>🏆 Foundation of Modern NLP</span>
+                    </div>
+
+                    <h4>Key Components</h4>
+                    <ul>
+                        <li><strong>Multi-Head Attention:</strong> Multiple attention layers in parallel</li>
+                        <li><strong>Positional Encoding:</strong> Adds position information (since no recurrence)</li>
+                        <li><strong>Feed-Forward Networks:</strong> Process attention outputs</li>
+                        <li><strong>Layer Normalization:</strong> Stabilize training</li>
+                        <li><strong>Residual Connections:</strong> Skip connections like ResNet</li>
+                    </ul>
+
+                    <h4>Advantages over RNNs</h4>
+                    <ul>
+                        <li><strong>Parallelization:</strong> Process all positions simultaneously</li>
+                        <li><strong>Long-range dependencies:</strong> Direct connections between any positions</li>
+                        <li><strong>Scalability:</strong> Train much larger models</li>
+                    </ul>
+                </div>
+
+                <h3>Encoder vs Decoder</h3>
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Encoder-only</h4>
+                        <p>Understands input text</p>
+                        <p><em>Example: BERT</em></p>
+                        <p>Tasks: Classification, NER</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Decoder-only</h4>
+                        <p>Generates text autoregressively</p>
+                        <p><em>Example: GPT</em></p>
+                        <p>Tasks: Text generation</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Encoder-Decoder</h4>
+                        <p>Maps input to output sequence</p>
+                        <p><em>Example: T5, BART</em></p>
+                        <p>Tasks: Translation, summarization</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bert" class="content-section">
+            <div class="container">
+                <h2>BERT and Pre-trained Models</h2>
+                <p>Pre-trained language models revolutionized NLP by learning general language understanding from massive text corpora.</p>
+
+                <div class="algorithm-card">
+                    <h3>BERT (Bidirectional Encoder Representations from Transformers)</h3>
+                    <div class="algorithm-meta">
+                        <span>🤖 Type: Pre-trained Model</span>
+                        <span>📚 NOAI: Theory + Practice</span>
+                    </div>
+
+                    <h4>Pre-training Tasks</h4>
+                    <ul>
+                        <li><strong>Masked Language Model (MLM):</strong> Predict masked words
+                            <p>"The [MASK] sat on the mat" → predict "cat"</p>
+                        </li>
+                        <li><strong>Next Sentence Prediction:</strong> Are two sentences consecutive?</li>
+                    </ul>
+
+                    <h4>Why Bidirectional?</h4>
+                    <p>Unlike GPT (left-to-right), BERT sees context from BOTH directions.</p>
+                </div>
+
+                <h3>Using BERT with Hugging Face</h3>
+                <pre><code># Python: BERT with Hugging Face Transformers
+from transformers import BertTokenizer, BertForSequenceClassification
+from transformers import Trainer, TrainingArguments
+
+# Load pre-trained BERT
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForSequenceClassification.from_pretrained(
+    'bert-base-uncased',
+    num_labels=2  # For binary classification
+)
+
+# Tokenize input
+text = "This movie was amazing!"
+inputs = tokenizer(text, return_tensors='pt', padding=True, truncation=True)
+
+# Get prediction
+outputs = model(**inputs)
+predictions = outputs.logits.argmax(dim=-1)
+
+# Fine-tuning
+training_args = TrainingArguments(
+    output_dir='./results',
+    num_train_epochs=3,
+    per_device_train_batch_size=16,
+    learning_rate=2e-5,
+)
+
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=train_dataset,
+    eval_dataset=eval_dataset,
+)
+trainer.train()</code></pre>
+
+                <h3>Popular Pre-trained Models</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Type</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>BERT</strong></td>
+                            <td>Encoder</td>
+                            <td>Classification, NER, QA</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RoBERTa</strong></td>
+                            <td>Encoder</td>
+                            <td>Same as BERT, better performance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GPT-2/3/4</strong></td>
+                            <td>Decoder</td>
+                            <td>Text generation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>T5</strong></td>
+                            <td>Encoder-Decoder</td>
+                            <td>Any text-to-text task</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DistilBERT</strong></td>
+                            <td>Encoder</td>
+                            <td>Faster, smaller BERT</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="text-classification" class="content-section">
+            <div class="container">
+                <h2>Text Classification Pipeline</h2>
+                <p>A complete workflow for text classification tasks like sentiment analysis.</p>
+
+                <pre><code># Complete Text Classification with BERT
+import torch
+from torch.utils.data import Dataset, DataLoader
+from transformers import BertTokenizer, BertForSequenceClassification, AdamW
+from sklearn.model_selection import train_test_split
+
+# 1. Custom Dataset
+class TextDataset(Dataset):
+    def __init__(self, texts, labels, tokenizer, max_len=128):
+        self.texts = texts
+        self.labels = labels
+        self.tokenizer = tokenizer
+        self.max_len = max_len
+
+    def __len__(self):
+        return len(self.texts)
+
+    def __getitem__(self, idx):
+        text = self.texts[idx]
+        label = self.labels[idx]
+
+        encoding = self.tokenizer(
+            text,
+            max_length=self.max_len,
+            padding='max_length',
+            truncation=True,
+            return_tensors='pt'
+        )
+
+        return {
+            'input_ids': encoding['input_ids'].flatten(),
+            'attention_mask': encoding['attention_mask'].flatten(),
+            'label': torch.tensor(label)
+        }
+
+# 2. Setup
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
+
+# 3. Prepare data
+train_texts, val_texts, train_labels, val_labels = train_test_split(
+    texts, labels, test_size=0.2
+)
+
+train_dataset = TextDataset(train_texts, train_labels, tokenizer)
+val_dataset = TextDataset(val_texts, val_labels, tokenizer)
+
+train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+val_loader = DataLoader(val_dataset, batch_size=16)
+
+# 4. Training loop
+optimizer = AdamW(model.parameters(), lr=2e-5)
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model.to(device)
+
+for epoch in range(3):
+    model.train()
+    for batch in train_loader:
+        input_ids = batch['input_ids'].to(device)
+        attention_mask = batch['attention_mask'].to(device)
+        labels = batch['label'].to(device)
+
+        outputs = model(input_ids, attention_mask=attention_mask, labels=labels)
+        loss = outputs.loss
+
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+
+    print(f"Epoch {epoch+1} completed")</code></pre>
+            </div>
+        </section>
+
+        <section id="language-modeling" class="content-section">
+            <div class="container">
+                <h2>Language Modeling</h2>
+                <p>Language models predict the probability of text sequences. They're the foundation of modern NLP.</p>
+
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>Autoregressive LM</h4>
+                        <p>Predict next word given previous words</p>
+                        <p>P(wₜ | w₁, w₂, ..., wₜ₋₁)</p>
+                        <p><em>Examples: GPT series</em></p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Masked LM</h4>
+                        <p>Predict masked words given context</p>
+                        <p>P(wₘₐₛₖₑₐ | context)</p>
+                        <p><em>Examples: BERT</em></p>
+                    </div>
+                </div>
+
+                <h3>Perplexity</h3>
+                <p>The standard metric for language models. Lower is better.</p>
+                <div class="formula">
+                    <div class="formula-title">Perplexity</div>
+                    PPL = exp(average negative log-likelihood)
+
+                    PPL = 10 means model is "confused" between 10 choices on average
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz" class="content-section">
+            <div class="container">
+                <h2>NOAI Practice Questions - Natural Language Processing</h2>
+
+                <div class="tip-box">
+                    <strong>NOAI Exam Tips:</strong> NLP questions focus on understanding transformers, attention mechanisms, and the differences between models like BERT and GPT. Remember: BERT is bidirectional (encoder), GPT is autoregressive (decoder), and attention allows focusing on relevant input parts!
+                </div>
+
+                <h3>Tokenization & Text Processing</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Subword tokenization (BPE, WordPiece) handles rare and out-of-vocabulary words by breaking them into smaller pieces. It balances vocabulary size with sequence length.">
+                    <p class="quiz-question">1. What is the main advantage of subword tokenization over word tokenization?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It produces shorter sequences</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It handles rare and out-of-vocabulary words better</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It requires no training</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It preserves punctuation</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Character tokenization has a very small fixed vocabulary (alphabet size) but produces very long sequences. It's rarely used alone in modern NLP but can handle any text.">
+                    <p class="quiz-question">2. What is a disadvantage of character-level tokenization?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Large vocabulary size</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Cannot handle rare words</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Very long sequences that are harder to model</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Requires language-specific rules</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Word Embeddings</h3>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Word embeddings capture semantic meaning, placing similar words closer together in vector space, unlike one-hot encoding where all words are equally distant.">
+                    <p class="quiz-question">3. Why are word embeddings better than one-hot encoding?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) They use less memory</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) They're faster to compute</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) They capture semantic similarity between words</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) They work with any language automatically</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Skip-gram predicts context words given a center word ('cat' -> predict 'the', 'sat', 'on'). CBOW does the opposite - predicts center word from context.">
+                    <p class="quiz-question">4. In Word2Vec, what does the Skip-gram model predict?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Context words given a center word</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The center word given context words</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The next sentence</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Part-of-speech tags</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="CBOW (Continuous Bag of Words) predicts the center word from surrounding context words. Skip-gram does the opposite. CBOW is faster but Skip-gram works better for rare words.">
+                    <p class="quiz-question">5. How does CBOW differ from Skip-gram in Word2Vec?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) CBOW uses character-level processing</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) CBOW predicts center word from context, Skip-gram predicts context from center</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) CBOW produces higher-dimensional vectors</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Skip-gram cannot handle multiple meanings</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>RNN & LSTM</h3>
+
+                <div class="quiz-container" data-correct="d" data-explanation="The vanishing gradient problem occurs in RNNs when gradients become very small during backpropagation through many time steps, making it hard to learn long-range dependencies.">
+                    <p class="quiz-question">6. What problem do basic RNNs face with long sequences?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) They run out of memory</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) They cannot process variable-length inputs</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) They require too much training data</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Vanishing gradients make learning long-range dependencies difficult</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="LSTMs use gate mechanisms (forget, input, output) that control information flow and allow gradients to flow through the cell state, solving the vanishing gradient problem.">
+                    <p class="quiz-question">7. How do LSTMs address the vanishing gradient problem?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) By using larger hidden states</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) By processing sequences backwards</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) By using gate mechanisms that control information flow</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) By reducing sequence length</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Attention Mechanism</h3>
+
+                <div class="quiz-container" data-correct="a" data-explanation="NOAI 2025 Style: Attention mechanisms allow the model to focus on relevant parts of the input sequence when producing each output, rather than compressing everything into a fixed-size vector.">
+                    <p class="quiz-question">8. [NOAI Style] What is the primary purpose of attention mechanisms in neural networks?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Allow the model to focus on relevant parts of the input sequence</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Reduce the number of model parameters</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Speed up inference time</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Handle variable-length inputs</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="In self-attention, each token attends to all other tokens in the same sequence, computing weighted representations. This captures relationships like 'it' referring to 'cat' in 'The cat sat because it was tired'.">
+                    <p class="quiz-question">9. What happens in self-attention?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The model attends only to the previous token</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Each token attends to all tokens in the same sequence</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The model attends to external knowledge bases</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Attention is applied only to the last layer</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Transformer Architecture</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Transformers use positional encodings to add position information since, unlike RNNs, they process all positions in parallel and have no inherent notion of order.">
+                    <p class="quiz-question">10. How do Transformers know the order of words without recurrence?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) They don't need order information</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Positional encodings added to input embeddings</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Attention weights implicitly encode position</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Layer normalization preserves order</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Multi-head attention runs multiple attention operations in parallel with different learned projections, allowing the model to capture different types of relationships simultaneously.">
+                    <p class="quiz-question">11. What is the purpose of multi-head attention in Transformers?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To process multiple sequences at once</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To reduce computational cost</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To capture different types of relationships in parallel</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To handle longer sequences</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>BERT vs GPT</h3>
+
+                <div class="quiz-container" data-correct="a" data-explanation="BERT uses Masked Language Modeling (MLM) where random words are masked and the model learns to predict them using bidirectional context from both left and right.">
+                    <p class="quiz-question">12. What pre-training task does BERT primarily use?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Masked Language Modeling (MLM)</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Next word prediction</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Machine translation</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Sentiment classification</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="NOAI 2025 Style: GPT uses causal (unidirectional) masking to prevent the model from attending to future tokens during training. This ensures autoregressive generation where each token only depends on previous tokens.">
+                    <p class="quiz-question">13. [NOAI Style] Why does GPT use causal masking during training?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To reduce memory usage</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To improve training speed</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To handle multiple languages</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To prevent the model from attending to future tokens</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="BERT is encoder-only (bidirectional, good for understanding tasks). GPT is decoder-only (unidirectional, good for generation). BERT sees context from both sides; GPT only sees past tokens.">
+                    <p class="quiz-question">14. What is the key architectural difference between BERT and GPT?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) BERT is smaller than GPT</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) BERT is encoder-only (bidirectional), GPT is decoder-only (unidirectional)</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) GPT uses attention, BERT does not</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) BERT can only handle English text</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="NOAI 2025 Style: The [CLS] token in BERT is a special token at the start of input that aggregates sequence-level information. Its final hidden state represents a pooled representation used for classification tasks.">
+                    <p class="quiz-question">15. [NOAI Style] What is the purpose of the [CLS] token in BERT?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To mark the end of a sentence</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To separate two sentences in the input</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To provide a pooled representation for classification tasks</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To indicate masked positions</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Pre-training & Fine-tuning</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="NOAI 2025 Style: BERT (and similar pre-trained models) are commonly used for transfer learning in NLP, where a model pre-trained on large corpora is fine-tuned on specific downstream tasks.">
+                    <p class="quiz-question">16. [NOAI Style] Which model is commonly used as a starting point for transfer learning in NLP tasks?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Word2Vec</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) BERT</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Basic RNN</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Bag of Words</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Next Sentence Prediction (NSP) was one of BERT's original pre-training tasks, where the model learns to predict if two sentences are consecutive in the original text.">
+                    <p class="quiz-question">17. What does BERT's Next Sentence Prediction (NSP) task involve?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Predicting if two sentences are consecutive in the original text</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Generating the next sentence given context</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Translating sentences to another language</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Classifying sentence sentiment</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Fine-tuning updates all model weights on task-specific data with a small learning rate. Feature extraction freezes pre-trained weights and only trains a new classifier head.">
+                    <p class="quiz-question">18. What is the difference between fine-tuning and feature extraction in transfer learning?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Fine-tuning is faster</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Feature extraction requires more data</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Fine-tuning only works with BERT</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Fine-tuning updates all weights, feature extraction freezes pre-trained weights</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Text Generation & Decoding</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="NOAI 2025 Style: Beam search optimizes the decoding process by exploring multiple candidate output sequences simultaneously and keeping the top-k most probable sequences at each step.">
+                    <p class="quiz-question">19. [NOAI Style] What is the purpose of beam search in text generation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To speed up training</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To optimize decoding by exploring multiple output sequences</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To reduce model size</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To handle longer input sequences</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Greedy decoding always picks the highest probability token at each step. Beam search maintains multiple candidates. Greedy is faster but may miss globally better sequences.">
+                    <p class="quiz-question">20. How does greedy decoding differ from beam search?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Greedy decoding is slower but more accurate</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Beam search only considers the last token</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Greedy always picks the highest probability token, beam search keeps multiple candidates</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) There is no practical difference</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="algorithm-card">
+                    <h3>NOAI Memory Aids - NLP</h3>
+                    <ul>
+                        <li><strong>BERT = Bidirectional:</strong> Sees context from BOTH sides (encoder-only, good for understanding)</li>
+                        <li><strong>GPT = Generative:</strong> Sees only PAST tokens (decoder-only, good for generation)</li>
+                        <li><strong>Attention = Spotlight:</strong> Shines light on relevant parts of input</li>
+                        <li><strong>[CLS] = Summary:</strong> Aggregates sequence information for classification</li>
+                        <li><strong>Causal Mask = No Cheating:</strong> Prevents looking at future tokens during training</li>
+                        <li><strong>MLM = Fill in the Blank:</strong> BERT's pre-training task, predicts masked words</li>
+                        <li><strong>Beam Search = Multiple Paths:</strong> Explores several sequences, picks best overall</li>
+                        <li><strong>Skip-gram = Center->Context:</strong> Predicts surrounding words from center word</li>
+                        <li><strong>CBOW = Context->Center:</strong> Predicts center word from surrounding context</li>
+                        <li><strong>Positional Encoding = Order Matters:</strong> Tells Transformer where each token is in sequence</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Common NOAI Traps:</strong>
+                    <ul>
+                        <li>BERT is NOT for text generation (it's bidirectional, can't generate left-to-right)</li>
+                        <li>GPT uses causal masking, NOT random masking like BERT</li>
+                        <li>Attention doesn't replace embeddings - they work together</li>
+                        <li>Fine-tuning updates ALL weights, not just the classifier head</li>
+                        <li>Transformers still need positional information - it's just added differently than RNNs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <nav class="page-navigation">
+                <a href="computer-vision.html" class="page-nav-link prev">
+                    <span class="page-nav-label">← Previous</span>
+                    <span class="page-nav-title">Computer Vision</span>
+                </a>
+                <a href="../index.html" class="page-nav-link next">
+                    <span class="page-nav-label">Back to →</span>
+                    <span class="page-nav-title">Home</span>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ML for NOAI</h4>
+                    <p>An educational resource for Singapore secondary school students preparing for the National Olympiad in AI.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="fundamentals.html">ML Fundamentals</a></li>
+                        <li><a href="supervised.html">Supervised Learning</a></li>
+                        <li><a href="neural-networks.html">Neural Networks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>References</h4>
+                    <ul>
+                        <li><a href="https://ioai-official.org/" target="_blank">IOAI Official</a></li>
+                        <li><a href="https://aisingapore.org/" target="_blank">AI Singapore</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Educational content aligned with IOAI Syllabus. Not affiliated with AI Singapore or IOAI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

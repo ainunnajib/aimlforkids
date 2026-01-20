@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML for NOAI - Machine Learning for Secondary School Students</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🤖</span>
+                <span>ML for NOAI</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="pages/fundamentals.html" class="nav-link">Fundamentals</a></li>
+                <li><a href="pages/supervised.html" class="nav-link">Supervised Learning</a></li>
+                <li><a href="pages/unsupervised.html" class="nav-link">Unsupervised Learning</a></li>
+                <li><a href="pages/neural-networks.html" class="nav-link">Neural Networks</a></li>
+                <li><a href="pages/computer-vision.html" class="nav-link">Computer Vision</a></li>
+                <li><a href="pages/nlp.html" class="nav-link">NLP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Machine Learning for NOAI</h1>
+            <p class="hero-subtitle">Your complete guide to mastering ML concepts for Singapore's National Olympiad in AI</p>
+            <div class="hero-badges">
+                <span class="badge">Secondary School Level</span>
+                <span class="badge">IOAI Aligned</span>
+                <span class="badge">Interactive Learning</span>
+            </div>
+            <a href="#topics" class="btn btn-primary">Start Learning</a>
+        </div>
+        <div class="hero-visual">
+            <div class="neural-network-animation">
+                <div class="node" style="--delay: 0s"></div>
+                <div class="node" style="--delay: 0.2s"></div>
+                <div class="node" style="--delay: 0.4s"></div>
+                <div class="node" style="--delay: 0.6s"></div>
+                <div class="node" style="--delay: 0.8s"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-section">
+            <div class="container">
+                <h2>What is NOAI?</h2>
+                <p>The <strong>National Olympiad in Artificial Intelligence (NOAI)</strong> is Singapore's premier AI competition for students, organized by AI Singapore. It serves as the selection platform for students to represent Singapore at the <strong>International Olympiad in AI (IOAI)</strong>.</p>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="info-icon">📚</div>
+                        <h3>Theory & Practice</h3>
+                        <p>NOAI tests both theoretical understanding and practical coding skills in AI and machine learning.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🎯</div>
+                        <h3>Competition Format</h3>
+                        <p>The competition includes written assessments on AI concepts and hands-on programming challenges.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">🌏</div>
+                        <h3>International Pathway</h3>
+                        <p>Top performers represent Singapore at IOAI. Singapore will host IOAI 2027!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="topics" class="topics-section">
+            <div class="container">
+                <h2>Learning Topics</h2>
+                <p class="section-intro">Master these six core areas to excel in NOAI. Each topic builds upon the previous, so we recommend following the order below.</p>
+
+                <div class="topics-grid">
+                    <a href="pages/fundamentals.html" class="topic-card">
+                        <div class="topic-number">01</div>
+                        <div class="topic-icon">📊</div>
+                        <h3>ML Fundamentals</h3>
+                        <p>Data processing, evaluation metrics, train/test splits, and the ML workflow.</p>
+                        <ul class="topic-tags">
+                            <li>Data Preprocessing</li>
+                            <li>Evaluation Metrics</li>
+                            <li>Cross-Validation</li>
+                        </ul>
+                        <span class="topic-arrow">→</span>
+                    </a>
+
+                    <a href="pages/supervised.html" class="topic-card">
+                        <div class="topic-number">02</div>
+                        <div class="topic-icon">🎓</div>
+                        <h3>Supervised Learning</h3>
+                        <p>Learn algorithms that predict outcomes from labeled training data.</p>
+                        <ul class="topic-tags">
+                            <li>Linear Regression</li>
+                            <li>Decision Trees</li>
+                            <li>SVM</li>
+                        </ul>
+                        <span class="topic-arrow">→</span>
+                    </a>
+
+                    <a href="pages/unsupervised.html" class="topic-card">
+                        <div class="topic-number">03</div>
+                        <div class="topic-icon">🔍</div>
+                        <h3>Unsupervised Learning</h3>
+                        <p>Discover patterns in data without labeled examples.</p>
+                        <ul class="topic-tags">
+                            <li>K-Means</li>
+                            <li>PCA</li>
+                            <li>Clustering</li>
+                        </ul>
+                        <span class="topic-arrow">→</span>
+                    </a>
+
+                    <a href="pages/neural-networks.html" class="topic-card">
+                        <div class="topic-number">04</div>
+                        <div class="topic-icon">🧠</div>
+                        <h3>Neural Networks</h3>
+                        <p>Deep learning fundamentals from perceptrons to modern architectures.</p>
+                        <ul class="topic-tags">
+                            <li>Backpropagation</li>
+                            <li>Activation Functions</li>
+                            <li>Optimization</li>
+                        </ul>
+                        <span class="topic-arrow">→</span>
+                    </a>
+
+                    <a href="pages/computer-vision.html" class="topic-card">
+                        <div class="topic-number">05</div>
+                        <div class="topic-icon">👁️</div>
+                        <h3>Computer Vision</h3>
+                        <p>Teaching machines to see and understand visual information.</p>
+                        <ul class="topic-tags">
+                            <li>CNNs</li>
+                            <li>Image Classification</li>
+                            <li>Object Detection</li>
+                        </ul>
+                        <span class="topic-arrow">→</span>
+                    </a>
+
+                    <a href="pages/nlp.html" class="topic-card">
+                        <div class="topic-number">06</div>
+                        <div class="topic-icon">💬</div>
+                        <h3>Natural Language Processing</h3>
+                        <p>Processing and understanding human language with AI.</p>
+                        <ul class="topic-tags">
+                            <li>Tokenization</li>
+                            <li>Transformers</li>
+                            <li>BERT</li>
+                        </ul>
+                        <span class="topic-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="syllabus-section">
+            <div class="container">
+                <h2>NOAI Syllabus Overview</h2>
+                <p class="section-intro">The NOAI follows the IOAI syllabus, which categorizes topics as Theory (T), Practice (P), or Both (B).</p>
+
+                <div class="syllabus-table-container">
+                    <table class="syllabus-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Topics</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="6"><strong>Supervised Learning</strong></td>
+                                <td>Linear Regression</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>Logistic Regression</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>K-Nearest Neighbors (KNN)</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>Decision Trees</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>Support Vector Machines (SVM)</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>Ensemble Methods (Random Forest, XGBoost)</td>
+                                <td><span class="type-badge practice">Practice</span></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="3"><strong>Unsupervised Learning</strong></td>
+                                <td>K-Means Clustering</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>Principal Component Analysis (PCA)</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>t-SNE, UMAP, DBSCAN</td>
+                                <td><span class="type-badge practice">Practice</span></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="4"><strong>Neural Networks</strong></td>
+                                <td>Perceptron, Gradient Descent, Backpropagation</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>Activation Functions, Loss Functions</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>Optimization (SGD, Adam)</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>Regularization (Dropout, Batch Norm)</td>
+                                <td><span class="type-badge practice">Practice</span></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2"><strong>Computer Vision</strong></td>
+                                <td>CNNs, ResNet, Image Classification</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>Object Detection, GANs, Diffusion Models</td>
+                                <td><span class="type-badge practice">Practice</span></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2"><strong>NLP</strong></td>
+                                <td>Tokenization, Word Embeddings, Text Classification</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                            <tr>
+                                <td>Transformers, BERT, Language Models</td>
+                                <td><span class="type-badge both">Both</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="resources-section">
+            <div class="container">
+                <h2>Official Resources</h2>
+                <div class="resources-grid">
+                    <a href="https://aisingapore.org/talent/national-olympiad-in-artificial-intelligence/" target="_blank" class="resource-card">
+                        <div class="resource-icon">🇸🇬</div>
+                        <h3>AI Singapore - NOAI</h3>
+                        <p>Official NOAI information and registration</p>
+                    </a>
+                    <a href="https://ioai-official.org/resources/" target="_blank" class="resource-card">
+                        <div class="resource-icon">🌐</div>
+                        <h3>IOAI Resources</h3>
+                        <p>Educational materials from the International Olympiad in AI</p>
+                    </a>
+                    <a href="https://learn.aisingapore.org/national-olympiad-in-artificial-intelligence/" target="_blank" class="resource-card">
+                        <div class="resource-icon">📖</div>
+                        <h3>LearnAI Portal</h3>
+                        <p>AI Singapore's learning platform for NOAI preparation</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>ML for NOAI</h4>
+                    <p>An educational resource for Singapore secondary school students preparing for the National Olympiad in AI.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="pages/fundamentals.html">ML Fundamentals</a></li>
+                        <li><a href="pages/supervised.html">Supervised Learning</a></li>
+                        <li><a href="pages/neural-networks.html">Neural Networks</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>References</h4>
+                    <ul>
+                        <li><a href="https://ioai-official.org/" target="_blank">IOAI Official</a></li>
+                        <li><a href="https://aisingapore.org/" target="_blank">AI Singapore</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Educational content aligned with IOAI Syllabus. Not affiliated with AI Singapore or IOAI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
