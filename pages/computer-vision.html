@@ -479,7 +479,13 @@ val_transform = transforms.Compose([
 
         <section id="quiz" class="content-section">
             <div class="container">
-                <h2>Test Your Understanding</h2>
+                <h2>NOAI Practice Questions - Computer Vision</h2>
+
+                <div class="tip-box">
+                    <strong>NOAI Exam Tips:</strong> Computer vision questions often test your understanding of CNN components, architectures, and object detection methods. Remember: pooling reduces dimensions, skip connections enable deep networks, and YOLO is a single-stage detector!
+                </div>
+
+                <h3>CNN Fundamentals</h3>
 
                 <div class="quiz-container" data-correct="b" data-explanation="CNNs use weight sharing (same filter applied across entire image) and local connectivity, dramatically reducing parameters compared to fully connected networks.">
                     <p class="quiz-question">1. Why do CNNs have fewer parameters than MLPs for image tasks?</p>
@@ -492,26 +498,238 @@ val_transform = transforms.Compose([
                     <div class="quiz-feedback"></div>
                 </div>
 
-                <div class="quiz-container" data-correct="c" data-explanation="ResNet introduced skip (residual) connections that allow gradients to flow directly through the network, enabling training of very deep networks.">
-                    <p class="quiz-question">2. What innovation did ResNet introduce?</p>
+                <div class="quiz-container" data-correct="a" data-explanation="Stride controls how much the filter moves at each step. A stride of 2 means the filter moves 2 pixels at a time, reducing output dimensions by half.">
+                    <p class="quiz-question">2. In a convolutional layer, what does the 'stride' parameter control?</p>
                     <div class="quiz-options">
-                        <div class="quiz-option" data-value="a"><span>A) Batch normalization</span></div>
-                        <div class="quiz-option" data-value="b"><span>B) Max pooling</span></div>
-                        <div class="quiz-option" data-value="c"><span>C) Skip (residual) connections</span></div>
-                        <div class="quiz-option" data-value="d"><span>D) Dropout</span></div>
+                        <div class="quiz-option" data-value="a"><span>A) How many pixels the filter moves at each step</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The size of the convolutional filter</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The number of output channels</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The activation function used</span></div>
                     </div>
                     <div class="quiz-feedback"></div>
                 </div>
 
+                <div class="quiz-container" data-correct="c" data-explanation="Padding adds zeros around the input borders. 'Same' padding preserves spatial dimensions, while 'valid' (no padding) reduces output size.">
+                    <p class="quiz-question">3. What is the purpose of padding in CNNs?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To increase the number of parameters</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To speed up training</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To preserve spatial dimensions and process border pixels</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To reduce overfitting</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="The number of output channels equals the number of filters (kernels) used. Each filter learns to detect a different feature pattern.">
+                    <p class="quiz-question">4. What determines the number of output channels in a convolutional layer?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The kernel size</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The stride value</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The input image dimensions</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The number of filters used</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Pooling Layers</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="NOAI 2025 Style: Pooling layers reduce the spatial dimensions (height and width) of feature maps, decreasing computation and providing translation invariance.">
+                    <p class="quiz-question">5. [NOAI Style] What is the primary purpose of pooling layers in CNNs?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To increase the depth of feature maps</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To reduce spatial dimensions of feature maps</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To add non-linearity to the network</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To normalize the input data</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Max pooling takes the maximum value in each pooling window, while average pooling computes the mean. Max pooling is more common as it preserves prominent features.">
+                    <p class="quiz-question">6. How does max pooling differ from average pooling?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Max pooling takes the highest value, average pooling computes the mean</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Max pooling is faster to compute</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Average pooling produces larger output dimensions</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Max pooling requires more memory</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Famous Architectures</h3>
+
+                <div class="quiz-container" data-correct="c" data-explanation="ResNet introduced skip (residual) connections that allow gradients to flow directly through the network, enabling training of very deep networks (100+ layers).">
+                    <p class="quiz-question">7. What innovation did ResNet introduce that enabled training very deep networks?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Batch normalization</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Max pooling</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Skip (residual) connections</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Dropout regularization</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="VGGNet showed that using many small 3x3 filters stacked together is more effective than using larger filters. Two 3x3 convolutions have the same receptive field as one 5x5 but with fewer parameters.">
+                    <p class="quiz-question">8. What key insight did VGGNet demonstrate about filter sizes?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Larger filters (7x7) work better for all tasks</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Stacking small 3x3 filters is more effective than large filters</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Filter size doesn't matter for accuracy</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) 1x1 filters are sufficient for classification</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="AlexNet (2012) was the breakthrough CNN that won ImageNet with a large margin, popularizing deep learning for computer vision. It used ReLU, dropout, and GPU training.">
+                    <p class="quiz-question">9. Which architecture marked the breakthrough moment for deep learning in computer vision by winning ImageNet 2012?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) AlexNet</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) VGGNet</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) ResNet</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) LeNet</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="NOAI 2025 Style: Depthwise separable convolutions split the standard convolution into depthwise and pointwise operations, significantly reducing parameters and computational cost while maintaining similar accuracy.">
+                    <p class="quiz-question">10. [NOAI Style] What is the main advantage of depthwise separable convolutions used in MobileNet?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) They increase model accuracy significantly</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) They allow processing of larger images</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) They reduce parameters and computational cost</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) They eliminate the need for pooling layers</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Transfer Learning & Data Augmentation</h3>
+
                 <div class="quiz-container" data-correct="a" data-explanation="Data augmentation should only be applied to training data. Validation and test data should represent real-world conditions without artificial modifications.">
-                    <p class="quiz-question">3. When should you apply data augmentation?</p>
+                    <p class="quiz-question">11. When should you apply data augmentation?</p>
                     <div class="quiz-options">
                         <div class="quiz-option" data-value="a"><span>A) Only during training</span></div>
                         <div class="quiz-option" data-value="b"><span>B) Only during testing</span></div>
                         <div class="quiz-option" data-value="c"><span>C) During both training and testing</span></div>
-                        <div class="quiz-option" data-value="d"><span>D) Never</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Never - it hurts performance</span></div>
                     </div>
                     <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="With a small dataset similar to ImageNet, feature extraction (freezing pre-trained layers) works best. Fine-tuning all layers risks overfitting on small data.">
+                    <p class="quiz-question">12. You have a small dataset of dog breeds (similar to ImageNet). What transfer learning strategy is most appropriate?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Train from scratch</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Feature extraction - freeze most pre-trained layers</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Fine-tune all layers with high learning rate</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Only use the first few layers</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Horizontal flip is not appropriate for digit recognition because flipped digits represent different numbers (e.g., 6 becomes 9). Rotation and noise are acceptable augmentations.">
+                    <p class="quiz-question">13. Which augmentation technique would be INAPPROPRIATE for a digit recognition task?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Small rotation</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Slight scaling</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Adding Gaussian noise</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Horizontal flip</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Object Detection</h3>
+
+                <div class="quiz-container" data-correct="a" data-explanation="NOAI 2025 Style: YOLO (You Only Look Once) is a single-stage detector that combines region proposal and classification into one unified network pass, making it fast for real-time detection.">
+                    <p class="quiz-question">14. [NOAI Style] What distinguishes YOLO from two-stage detectors like Faster R-CNN?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) YOLO combines region proposal and classification in one step</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) YOLO uses larger input images</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) YOLO has higher accuracy</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) YOLO requires more training data</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="NOAI 2025 Style: The Region Proposal Network (RPN) in Faster R-CNN suggests candidate object regions (bounding box proposals) in the feature map, which are then classified by the detection head.">
+                    <p class="quiz-question">15. [NOAI Style] What is the role of the Region Proposal Network (RPN) in Faster R-CNN?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Classify objects into categories</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Extract feature maps from input images</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Suggest candidate object regions in the feature map</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Perform non-maximum suppression</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="IoU (Intersection over Union) measures the overlap between predicted and ground truth bounding boxes. IoU = Area of Overlap / Area of Union. Higher is better, with 0.5+ typically considered a match.">
+                    <p class="quiz-question">16. What does IoU (Intersection over Union) measure in object detection?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The confidence score of predictions</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The overlap between predicted and ground truth boxes</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The number of detected objects</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The processing speed of the model</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Segmentation Tasks</h3>
+
+                <div class="quiz-container" data-correct="d" data-explanation="NOAI 2025 Style: Mask R-CNN extends Faster R-CNN by adding a mask prediction branch, enabling instance segmentation - detecting objects AND generating pixel-level masks for each instance.">
+                    <p class="quiz-question">17. [NOAI Style] Which architecture is specifically designed for instance segmentation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) VGGNet</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) YOLO</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) U-Net</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Mask R-CNN</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Semantic segmentation classifies each pixel but doesn't distinguish between instances of the same class. Instance segmentation identifies separate objects (cat #1 vs cat #2).">
+                    <p class="quiz-question">18. What is the key difference between semantic segmentation and instance segmentation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Semantic segmentation is faster</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Instance segmentation only works on single objects</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Instance segmentation distinguishes different objects of the same class</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Semantic segmentation uses bounding boxes</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>GANs and Advanced Topics</h3>
+
+                <div class="quiz-container" data-correct="a" data-explanation="In GANs, the generator creates fake images trying to fool the discriminator, while the discriminator tries to distinguish real images from generated fakes. They compete in a minimax game.">
+                    <p class="quiz-question">19. In a GAN, what is the relationship between the generator and discriminator?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Generator creates fakes, discriminator distinguishes real from fake</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Both networks classify images</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Discriminator generates images, generator evaluates quality</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) They work together to segment images</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Vision Transformers (ViT) treat image patches as tokens (like words in NLP), applying self-attention across patches. This allows capturing global relationships from the first layer.">
+                    <p class="quiz-question">20. How do Vision Transformers (ViT) process images?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Using convolutional filters exclusively</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Treating image patches as tokens and applying self-attention</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Processing one pixel at a time sequentially</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Using recurrent connections like RNNs</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="algorithm-card">
+                    <h3>NOAI Memory Aids - Computer Vision</h3>
+                    <ul>
+                        <li><strong>Pooling = Shrinking:</strong> Reduces spatial dimensions, provides translation invariance</li>
+                        <li><strong>YOLO = One Look:</strong> Single-stage detector, fast but may sacrifice some accuracy</li>
+                        <li><strong>R-CNN Family = Two-Stage:</strong> Propose regions first, then classify (more accurate, slower)</li>
+                        <li><strong>ResNet = Highway:</strong> Skip connections let gradients flow like a highway</li>
+                        <li><strong>IoU = Overlap Score:</strong> Area of intersection / Area of union (0 to 1)</li>
+                        <li><strong>Mask R-CNN = Faster R-CNN + Masks:</strong> Adds pixel-level segmentation to detection</li>
+                        <li><strong>Depthwise Separable = Split & Save:</strong> Separate spatial and channel processing for efficiency</li>
+                    </ul>
                 </div>
             </div>
         </section>
