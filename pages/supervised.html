@@ -624,10 +624,50 @@ print("Non-zero features:", sum(lasso.coef_ != 0))</code></pre>
 
         <section id="quiz" class="content-section">
             <div class="container">
-                <h2>Test Your Understanding</h2>
+                <h2>MCQ Practice - Supervised Learning</h2>
+                <p>Practice with these NOAI-style multiple choice questions covering all supervised learning topics.</p>
+
+                <!-- Linear Regression -->
+                <h3>Linear Regression</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="MSE (Mean Squared Error) squares the errors, which penalizes larger errors more heavily and is commonly used in linear regression.">
+                    <p class="quiz-question">1. In linear regression, the Mean Squared Error (MSE) loss function penalizes:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) All errors equally regardless of magnitude</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Larger errors more heavily than smaller errors</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Smaller errors more heavily than larger errors</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Only errors above a certain threshold</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="R² (coefficient of determination) measures how much variance in the target variable is explained by the model. A value of 0.85 means 85% of variance is explained.">
+                    <p class="quiz-question">2. An R² score of 0.85 in linear regression indicates that:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The model has 85% accuracy</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) 85% of predictions are correct</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) 85% of variance in the target is explained by the model</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The model uses 85% of the features</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="In the equation y = wx + b, the intercept (b) represents the predicted value when all input features are zero.">
+                    <p class="quiz-question">3. In the linear regression equation y = wx + b, what does the intercept (b) represent?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The predicted y when x equals zero</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The rate of change of y with respect to x</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The maximum value of y</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The error in the prediction</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Logistic Regression -->
+                <h3>Logistic Regression</h3>
 
                 <div class="quiz-container" data-correct="b" data-explanation="The sigmoid function outputs values between 0 and 1, representing probabilities.">
-                    <p class="quiz-question">1. What is the output range of the sigmoid function in logistic regression?</p>
+                    <p class="quiz-question">4. What is the output range of the sigmoid function in logistic regression?</p>
                     <div class="quiz-options">
                         <div class="quiz-option" data-value="a"><span>A) -1 to 1</span></div>
                         <div class="quiz-option" data-value="b"><span>B) 0 to 1</span></div>
@@ -637,8 +677,33 @@ print("Non-zero features:", sum(lasso.coef_ != 0))</code></pre>
                     <div class="quiz-feedback"></div>
                 </div>
 
-                <div class="quiz-container" data-correct="c" data-explanation="KNN stores all training data and computes distances at prediction time, making it a lazy learner.">
-                    <p class="quiz-question">2. Why is KNN called a "lazy learner"?</p>
+                <div class="quiz-container" data-correct="d" data-explanation="Despite its name, logistic regression is used for classification tasks, not regression. It predicts class probabilities.">
+                    <p class="quiz-question">5. Why is logistic regression called "regression" even though it's used for classification?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It can also be used for regression tasks</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It regresses features to find patterns</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The name is completely arbitrary</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It models the log-odds as a linear regression</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Binary cross-entropy loss is specifically designed for binary classification and measures the difference between predicted probabilities and actual labels.">
+                    <p class="quiz-question">6. Which loss function is typically used for binary logistic regression?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Mean Squared Error</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Mean Absolute Error</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Binary Cross-Entropy</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Hinge Loss</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- K-Nearest Neighbors -->
+                <h3>K-Nearest Neighbors</h3>
+
+                <div class="quiz-container" data-correct="c" data-explanation="KNN stores all training data and computes distances at prediction time, making it a lazy learner with no explicit training phase.">
+                    <p class="quiz-question">7. Why is KNN called a "lazy learner"?</p>
                     <div class="quiz-options">
                         <div class="quiz-option" data-value="a"><span>A) It only uses a subset of training data</span></div>
                         <div class="quiz-option" data-value="b"><span>B) It trains very slowly</span></div>
@@ -648,13 +713,215 @@ print("Non-zero features:", sum(lasso.coef_ != 0))</code></pre>
                     <div class="quiz-feedback"></div>
                 </div>
 
-                <div class="quiz-container" data-correct="a" data-explanation="L1 regularization can shrink weights to exactly zero, effectively selecting features.">
-                    <p class="quiz-question">3. Which regularization technique is useful for feature selection?</p>
+                <div class="quiz-container" data-correct="b" data-explanation="Feature scaling is crucial for KNN because it uses distance metrics. Without scaling, features with larger scales dominate the distance calculation.">
+                    <p class="quiz-question">8. Why is feature scaling important for KNN?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It speeds up training time</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Distance calculations are dominated by features with larger scales</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It prevents overfitting</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It reduces memory usage</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Using an odd k in binary classification prevents ties when voting, ensuring a clear majority for one class.">
+                    <p class="quiz-question">9. Why is it recommended to use an odd value of k in binary classification with KNN?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To avoid ties when voting</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Odd numbers give better accuracy</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It reduces computation time</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Even k values cause overfitting</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Decision Trees -->
+                <h3>Decision Trees</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Gini impurity measures the probability of incorrectly classifying a randomly chosen element. Lower Gini = purer node.">
+                    <p class="quiz-question">10. In decision trees, what does Gini impurity measure?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The depth of the tree</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The probability of misclassifying a randomly chosen element</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The number of features used</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The size of each node</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Information gain is the reduction in entropy after a split. Decision trees select splits that maximize information gain.">
+                    <p class="quiz-question">11. What is information gain in the context of decision trees?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The increase in accuracy after adding a feature</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The amount of data used in training</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The reduction in entropy after a split</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The number of branches in the tree</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Pruning reduces tree complexity by removing branches, which helps prevent overfitting and improves generalization.">
+                    <p class="quiz-question">12. What is the purpose of pruning in decision trees?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To increase the depth of the tree</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To add more branches</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To speed up training</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To prevent overfitting by removing branches</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- SVM -->
+                <h3>Support Vector Machines</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Support vectors are the data points closest to the decision boundary (hyperplane). They 'support' or define the margin.">
+                    <p class="quiz-question">13. In SVM, what are support vectors?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) All training data points</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Data points closest to the decision boundary</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The feature vectors used for training</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Outliers in the dataset</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="The kernel trick maps data to higher dimensions where it becomes linearly separable, without explicitly computing the transformation.">
+                    <p class="quiz-question">14. What is the purpose of the kernel trick in SVM?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To handle non-linearly separable data by mapping to higher dimensions</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To reduce computational complexity</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To normalize the input features</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To prevent overfitting</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="The RBF (Radial Basis Function) kernel is the most commonly used kernel in SVM as it works well for a wide variety of problems.">
+                    <p class="quiz-question">15. Which SVM kernel is most commonly used for general-purpose classification?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Linear kernel</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Polynomial kernel</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) RBF (Gaussian) kernel</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Sigmoid kernel</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Ensemble Methods -->
+                <h3>Ensemble Methods</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Bagging (Bootstrap Aggregating) trains models on random subsets of data sampled with replacement, then averages predictions. It reduces variance.">
+                    <p class="quiz-question">16. What is the key characteristic of bagging ensemble methods?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Models are trained sequentially, each focusing on previous errors</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Models are trained in parallel on bootstrap samples</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Models share weights during training</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Only the best model is selected</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Random Forest adds extra randomness by considering only a random subset of features at each split, in addition to bootstrap sampling.">
+                    <p class="quiz-question">17. What makes Random Forest different from simple bagging of decision trees?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It also randomly selects features at each split</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It uses boosting instead of bagging</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It only uses shallow trees</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It weights trees by their accuracy</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Boosting trains models sequentially, where each new model focuses on correcting the errors made by previous models.">
+                    <p class="quiz-question">18. In gradient boosting, each subsequent tree is trained to predict:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The original target values</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Random subsets of the data</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The residuals (errors) of the previous ensemble</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Feature importance scores</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Bagging primarily reduces variance by averaging multiple models trained on different data samples. Boosting focuses on reducing bias.">
+                    <p class="quiz-question">19. Bagging helps to reduce which type of error?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Bias</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Irreducible error</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Training error only</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Variance</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Regularization -->
+                <h3>Regularization</h3>
+
+                <div class="quiz-container" data-correct="a" data-explanation="L1 regularization can shrink weights to exactly zero, effectively selecting features and creating sparse models.">
+                    <p class="quiz-question">20. Which regularization technique is useful for feature selection?</p>
                     <div class="quiz-options">
                         <div class="quiz-option" data-value="a"><span>A) L1 (Lasso)</span></div>
                         <div class="quiz-option" data-value="b"><span>B) L2 (Ridge)</span></div>
                         <div class="quiz-option" data-value="c"><span>C) Both equally</span></div>
                         <div class="quiz-option" data-value="d"><span>D) Neither</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="L2 (Ridge) regularization shrinks all weights toward zero but rarely makes them exactly zero. It's useful when all features may be relevant.">
+                    <p class="quiz-question">21. L2 regularization (Ridge) adds which term to the loss function?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Sum of absolute values of weights</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Sum of squared weights</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Maximum weight value</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Number of non-zero weights</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="ElasticNet combines both L1 and L2 regularization, providing a balance between feature selection (L1) and weight shrinkage (L2).">
+                    <p class="quiz-question">22. What is ElasticNet regularization?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) A stronger version of L1</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) A type of dropout for neural networks</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) A combination of L1 and L2 regularization</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) An alternative to cross-validation</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Model Selection -->
+                <h3>Model Selection & Evaluation</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Precision measures how many of the predicted positives are actually positive: TP / (TP + FP).">
+                    <p class="quiz-question">23. In classification, precision is calculated as:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) TP / (TP + FN)</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) TP / (TP + FP)</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) (TP + TN) / Total</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) TN / (TN + FP)</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Recall (sensitivity) measures how many actual positives were correctly identified: TP / (TP + FN). High recall is important when missing positives is costly.">
+                    <p class="quiz-question">24. When is high recall more important than high precision?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) When missing actual positives is costly (e.g., disease detection)</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) When false positives are very costly</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) When classes are perfectly balanced</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) When training data is limited</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Cross-validation helps assess how well a model generalizes to unseen data by training and testing on different subsets of the data.">
+                    <p class="quiz-question">25. The main purpose of k-fold cross-validation is to:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Increase the size of training data</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Select the best features</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Speed up model training</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Get a reliable estimate of model performance on unseen data</span></div>
                     </div>
                     <div class="quiz-feedback"></div>
                 </div>

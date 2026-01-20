@@ -535,9 +535,13 @@ for k in range(2, 8):
 
         <section id="quiz" class="content-section">
             <div class="container">
-                <h2>Test Your Understanding</h2>
+                <h2>MCQ Practice - Unsupervised Learning</h2>
+                <p>Practice with these NOAI-style multiple choice questions covering all unsupervised learning topics.</p>
 
-                <div class="quiz-container" data-correct="b" data-explanation="K-Means requires you to specify the number of clusters beforehand, while DBSCAN discovers it automatically.">
+                <!-- K-Means Clustering -->
+                <h3>K-Means Clustering</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="K-Means requires you to specify the number of clusters (K) beforehand, unlike algorithms like DBSCAN that discover it automatically.">
                     <p class="quiz-question">1. Which clustering algorithm automatically determines the number of clusters?</p>
                     <div class="quiz-options">
                         <div class="quiz-option" data-value="a"><span>A) K-Means</span></div>
@@ -548,8 +552,138 @@ for k in range(2, 8):
                     <div class="quiz-feedback"></div>
                 </div>
 
+                <div class="quiz-container" data-correct="c" data-explanation="The elbow method plots WCSS vs K and looks for the 'elbow' point where adding more clusters gives diminishing returns.">
+                    <p class="quiz-question">2. What is the purpose of the elbow method in K-Means clustering?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To initialize centroids optimally</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To speed up convergence</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To determine the optimal number of clusters</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To evaluate cluster quality</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="K-Means uses Euclidean distance by default, which measures the straight-line distance between points.">
+                    <p class="quiz-question">3. Which distance metric is typically used in K-Means clustering?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Euclidean distance</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Cosine similarity</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Hamming distance</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Jaccard distance</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="K-Means++ initializes centroids by choosing points that are far apart, reducing the chance of poor convergence.">
+                    <p class="quiz-question">4. What problem does K-Means++ initialization solve?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Slow convergence</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Poor results due to random centroid initialization</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Sensitivity to outliers</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Non-spherical cluster shapes</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="K-Means converges when centroids stop moving (or move less than a threshold) between iterations.">
+                    <p class="quiz-question">5. K-Means algorithm converges when:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) All points are assigned to clusters</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) A fixed number of iterations is reached</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The loss reaches zero</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Centroids stop changing between iterations</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Hierarchical Clustering -->
+                <h3>Hierarchical Clustering</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Agglomerative (bottom-up) starts with each point as its own cluster and merges the closest pairs until one cluster remains.">
+                    <p class="quiz-question">6. In agglomerative hierarchical clustering, the algorithm starts by:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Placing all points in one cluster</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Treating each point as its own cluster</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Randomly assigning points to K clusters</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Finding the centroid of all data</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="A dendrogram is a tree diagram showing the hierarchical relationship between clusters at different levels.">
+                    <p class="quiz-question">7. What is a dendrogram in hierarchical clustering?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) A scatter plot of clusters</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) A distance matrix</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) A tree diagram showing cluster hierarchy</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) A bar chart of cluster sizes</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Ward's method minimizes the variance within clusters when merging, often producing the most compact and well-separated clusters.">
+                    <p class="quiz-question">8. Which linkage method typically produces the most compact clusters?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Ward's method</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Single linkage</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Average linkage</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Complete linkage</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- DBSCAN -->
+                <h3>DBSCAN</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="A core point in DBSCAN has at least MinPts neighbors within epsilon distance, making it part of a dense region.">
+                    <p class="quiz-question">9. In DBSCAN, a point is classified as a core point if:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It is at the center of a cluster</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It has at least MinPts points within epsilon distance</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It is furthest from other clusters</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It was visited first during the algorithm</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="DBSCAN labels points that don't belong to any cluster as noise (label = -1), which is a key advantage for handling outliers.">
+                    <p class="quiz-question">10. How does DBSCAN handle outliers?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Assigns them to the nearest cluster</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Creates a separate cluster for outliers</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Labels them as noise (-1)</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Removes them from the dataset</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="DBSCAN uses density-based clustering, allowing it to find clusters of arbitrary shapes, unlike K-Means which assumes spherical clusters.">
+                    <p class="quiz-question">11. What is the main advantage of DBSCAN over K-Means?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Can find clusters of arbitrary shapes</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Faster computation time</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Works better with high-dimensional data</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Requires fewer parameters</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Border points are within epsilon of a core point but don't have MinPts neighbors themselves. They're assigned to the cluster of their nearest core point.">
+                    <p class="quiz-question">12. In DBSCAN, a border point is:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) A point on the edge of the dataset</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) A point that is labeled as noise</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) A point with the maximum neighbors</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) A point within epsilon of a core point but not a core point itself</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- PCA -->
+                <h3>Principal Component Analysis (PCA)</h3>
+
                 <div class="quiz-container" data-correct="c" data-explanation="PCA finds the direction of maximum variance first (PC1), then the next orthogonal direction with maximum remaining variance (PC2), and so on.">
-                    <p class="quiz-question">2. What does the first principal component (PC1) capture?</p>
+                    <p class="quiz-question">13. What does the first principal component (PC1) capture?</p>
                     <div class="quiz-options">
                         <div class="quiz-option" data-value="a"><span>A) The smallest variance in the data</span></div>
                         <div class="quiz-option" data-value="b"><span>B) The mean of all features</span></div>
@@ -559,13 +693,143 @@ for k in range(2, 8):
                     <div class="quiz-feedback"></div>
                 </div>
 
+                <div class="quiz-container" data-correct="b" data-explanation="Principal components are orthogonal (perpendicular) to each other, meaning they are uncorrelated.">
+                    <p class="quiz-question">14. Principal components in PCA are:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Parallel to each other</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Orthogonal (perpendicular) to each other</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Random directions</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Aligned with original features</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="PCA requires standardization because it's based on variance. Features with larger scales would dominate without standardization.">
+                    <p class="quiz-question">15. Why is it important to standardize data before applying PCA?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) PCA is sensitive to feature scales; larger scales dominate variance</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It speeds up the computation</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) PCA requires normally distributed data</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It prevents overfitting</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Eigenvalues represent the amount of variance explained by each principal component. Larger eigenvalues mean more variance captured.">
+                    <p class="quiz-question">16. In PCA, eigenvalues represent:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The direction of principal components</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The number of features to keep</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The amount of variance explained by each component</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The importance of original features</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- t-SNE and UMAP -->
+                <h3>t-SNE and UMAP</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="t-SNE is primarily designed for visualization in 2D or 3D, preserving local neighborhood structure.">
+                    <p class="quiz-question">17. t-SNE is primarily used for:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Feature selection</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Data visualization in 2D or 3D</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Clustering</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Classification</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="The perplexity parameter in t-SNE balances attention between local and global aspects, roughly controlling the effective number of neighbors.">
+                    <p class="quiz-question">18. In t-SNE, the perplexity parameter controls:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The number of dimensions in output</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The learning rate</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The number of iterations</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The effective number of neighbors considered</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="UMAP is generally faster than t-SNE, especially on large datasets, while producing similar quality visualizations.">
+                    <p class="quiz-question">19. Compared to t-SNE, UMAP is typically:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Faster and preserves more global structure</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Slower but more accurate</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Only suitable for small datasets</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Better for supervised learning</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Clustering Evaluation -->
+                <h3>Clustering Evaluation</h3>
+
                 <div class="quiz-container" data-correct="a" data-explanation="A silhouette score close to 1 indicates well-defined clusters where points are close to their own cluster and far from others.">
-                    <p class="quiz-question">3. A silhouette score of 0.85 indicates:</p>
+                    <p class="quiz-question">20. A silhouette score of 0.85 indicates:</p>
                     <div class="quiz-options">
                         <div class="quiz-option" data-value="a"><span>A) Good clustering with well-separated clusters</span></div>
                         <div class="quiz-option" data-value="b"><span>B) Poor clustering</span></div>
                         <div class="quiz-option" data-value="c"><span>C) Overlapping clusters</span></div>
                         <div class="quiz-option" data-value="d"><span>D) Too many clusters</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="The silhouette score ranges from -1 to 1, where 1 is best, 0 indicates overlapping clusters, and -1 indicates wrong clustering.">
+                    <p class="quiz-question">21. The silhouette score ranges from:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) 0 to 1</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) 0 to 100</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) -1 to 1</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) -∞ to +∞</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Davies-Bouldin Index measures the average similarity between clusters. Lower values indicate better clustering (0 is perfect).">
+                    <p class="quiz-question">22. For the Davies-Bouldin Index, a value closer to 0 indicates:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Poor clustering</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Better clustering</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) More clusters needed</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Overfitting</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="WCSS (Within-Cluster Sum of Squares) measures the total distance of points from their cluster centroids. Lower = tighter clusters.">
+                    <p class="quiz-question">23. What does WCSS (inertia) measure in clustering?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Distance between cluster centroids</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Number of points per cluster</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Cluster shape regularity</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Sum of squared distances from points to their centroids</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <!-- Applications -->
+                <h3>Applications</h3>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Customer segmentation is a classic use case for clustering, grouping customers by similar behaviors or characteristics.">
+                    <p class="quiz-question">24. Which unsupervised learning task is most suitable for grouping customers by purchasing behavior?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) PCA</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) t-SNE</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Clustering (K-Means or DBSCAN)</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Association rules</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="PCA is commonly used for noise reduction by keeping only the top principal components that capture the signal and discarding the rest.">
+                    <p class="quiz-question">25. PCA can be used for noise reduction by:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Keeping only components with high eigenvalues</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Removing all outliers first</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Increasing the number of features</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Applying clustering before PCA</span></div>
                     </div>
                     <div class="quiz-feedback"></div>
                 </div>
