@@ -831,6 +831,470 @@ for epoch in range(3):
                     <div class="quiz-feedback"></div>
                 </div>
 
+                <h3>Additional NLP Practice</h3>
+
+                <h4>Advanced Tokenization</h4>
+
+                <div class="quiz-container" data-correct="b" data-explanation="BPE (Byte-Pair Encoding) iteratively merges the most frequent pairs of adjacent tokens, building a vocabulary of subword units that balances vocabulary size with handling of rare words.">
+                    <p class="quiz-question">21. How does Byte-Pair Encoding (BPE) build its vocabulary?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) By splitting words at morpheme boundaries</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) By iteratively merging the most frequent character pairs</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) By using a fixed dictionary of common words</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) By random sampling from the corpus</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="WordPiece, used in BERT, is similar to BPE but uses likelihood-based scoring to decide which merges to perform, optimizing for better language modeling performance.">
+                    <p class="quiz-question">22. [NOAI Style] What tokenization algorithm does BERT use?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) WordPiece</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Word-level tokenization</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Character-level tokenization</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Sentence-level tokenization</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="The [SEP] token in BERT separates two sentences when the input contains a sentence pair, allowing the model to distinguish between segments for tasks like question answering.">
+                    <p class="quiz-question">23. What is the purpose of the [SEP] token in BERT?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To mark positions for masking</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To indicate the start of input</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To pad sequences to equal length</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To separate two sentences in the input</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Word Embeddings Deep Dive</h4>
+
+                <div class="quiz-container" data-correct="c" data-explanation="GloVe (Global Vectors) learns embeddings by factorizing a word co-occurrence matrix, capturing global statistical information unlike Word2Vec's local context windows.">
+                    <p class="quiz-question">24. What distinguishes GloVe from Word2Vec?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) GloVe uses neural networks, Word2Vec doesn't</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) GloVe produces smaller vectors</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) GloVe learns from global word co-occurrence statistics</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) GloVe handles subword information</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="FastText represents words as bags of character n-grams, allowing it to generate embeddings for out-of-vocabulary words by combining their character n-gram vectors.">
+                    <p class="quiz-question">25. How does FastText handle out-of-vocabulary (OOV) words?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It assigns a zero vector to OOV words</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It uses character n-gram embeddings to construct word vectors</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It replaces OOV words with the nearest vocabulary word</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It requires all words to be in the vocabulary</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Static embeddings (Word2Vec, GloVe) give each word a single fixed vector regardless of context. 'Bank' has the same embedding whether meaning 'river bank' or 'financial bank'.">
+                    <p class="quiz-question">26. What is a limitation of static word embeddings like Word2Vec?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) They give the same vector for a word regardless of context</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) They cannot represent common words</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) They require labeled training data</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) They only work for English text</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Contextual embeddings from models like BERT and ELMo produce different vectors for the same word depending on its context, capturing polysemy (multiple meanings).">
+                    <p class="quiz-question">27. [NOAI Style] What makes BERT embeddings 'contextual'?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) They are computed faster than Word2Vec</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) They use a larger vocabulary</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) They handle multiple languages</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The same word gets different representations based on surrounding words</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Sequence Models</h4>
+
+                <div class="quiz-container" data-correct="c" data-explanation="GRU (Gated Recurrent Unit) simplifies LSTM by combining the forget and input gates into a single 'update gate' and merging the cell state with hidden state, using fewer parameters.">
+                    <p class="quiz-question">28. How does GRU differ from LSTM?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) GRU has more gates than LSTM</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) GRU cannot handle long sequences</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) GRU has fewer gates and parameters, combining forget and input gates</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) GRU requires bidirectional processing</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Bidirectional RNNs process sequences in both forward and backward directions, then combine the outputs. This provides context from both past and future for each position.">
+                    <p class="quiz-question">29. What is the purpose of bidirectional RNNs?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To double the processing speed</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To capture context from both past and future positions</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To reduce the number of parameters</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To handle variable-length sequences</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Teacher forcing feeds the ground truth previous token during training instead of the model's own prediction. This accelerates training but can cause exposure bias at inference time.">
+                    <p class="quiz-question">30. What is 'teacher forcing' in sequence-to-sequence models?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Using ground truth tokens as input during training</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Training with multiple teacher models</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Forcing the model to generate longer sequences</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Using human feedback to correct predictions</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Transformer Details</h4>
+
+                <div class="quiz-container" data-correct="d" data-explanation="The scaling factor √dₖ in attention prevents dot products from becoming too large when the dimension is high, which would push softmax into regions with very small gradients.">
+                    <p class="quiz-question">31. [NOAI Style] Why does scaled dot-product attention divide by √dₖ?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To reduce computation time</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To normalize the output to unit length</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To make gradients larger</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To prevent softmax saturation when dimensions are large</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Layer normalization in Transformers normalizes across the feature dimension for each token independently, stabilizing training and allowing faster convergence.">
+                    <p class="quiz-question">32. What does layer normalization do in Transformers?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Normalizes across the batch dimension</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Normalizes attention weights</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Normalizes features for each token independently</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Normalizes the entire layer's outputs together</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Sinusoidal positional encodings use sine and cosine functions of different frequencies to create unique position vectors. They allow the model to extrapolate to longer sequences than seen in training.">
+                    <p class="quiz-question">33. What type of positional encoding does the original Transformer use?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Learned position embeddings only</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Fixed sinusoidal functions of position</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Relative position encodings</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Binary position indicators</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Cross-attention in the decoder attends to encoder outputs, allowing the decoder to focus on relevant parts of the input when generating each output token (e.g., in translation).">
+                    <p class="quiz-question">34. What is the role of cross-attention in encoder-decoder Transformers?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Allows decoder to attend to encoder outputs</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Connects different attention heads</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Processes multiple input sequences</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Normalizes attention across layers</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>BERT Variants and Improvements</h4>
+
+                <div class="quiz-container" data-correct="c" data-explanation="RoBERTa removes Next Sentence Prediction, uses dynamic masking, trains with larger batches and more data, showing that BERT was significantly undertrained.">
+                    <p class="quiz-question">35. [NOAI Style] What key change did RoBERTa make to improve upon BERT?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Added more transformer layers</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Used character-level tokenization</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Removed Next Sentence Prediction and used dynamic masking</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Changed from encoder to decoder architecture</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="DistilBERT uses knowledge distillation to create a smaller, faster model that retains ~97% of BERT's performance with 40% fewer parameters and 60% faster inference.">
+                    <p class="quiz-question">36. How does DistilBERT achieve its efficiency compared to BERT?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) By using smaller vocabulary</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) By knowledge distillation - learning from BERT's outputs</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) By removing attention mechanisms</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) By training on less data</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="ALBERT reduces parameters through factorized embedding parameterization (separating vocabulary and hidden size) and cross-layer parameter sharing, while maintaining performance.">
+                    <p class="quiz-question">37. What technique does ALBERT use to reduce parameters?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Pruning attention heads</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Reducing vocabulary size</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Using fewer transformer layers</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Factorized embeddings and cross-layer parameter sharing</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>GPT and Language Models</h4>
+
+                <div class="quiz-container" data-correct="a" data-explanation="GPT is trained on next token prediction (causal language modeling), predicting each token given all previous tokens. This is different from BERT's masked language modeling.">
+                    <p class="quiz-question">38. What objective is GPT trained on?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Next token prediction (causal language modeling)</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Masked language modeling</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Sentence classification</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Question answering</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Perplexity measures how 'surprised' a language model is by test data. Lower perplexity means the model assigns higher probability to the actual text. PPL = exp(average cross-entropy loss).">
+                    <p class="quiz-question">39. [NOAI Style] What does perplexity measure in language models?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Model size in parameters</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Training speed</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) How well the model predicts the test data (lower is better)</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Vocabulary coverage</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Temperature controls randomness in sampling. Higher temperature makes the distribution more uniform (more random), while lower temperature makes it sharper (more deterministic).">
+                    <p class="quiz-question">40. What effect does increasing temperature have on text generation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Makes output more deterministic and focused</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Makes output more random and diverse</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Generates longer sequences</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Improves grammatical correctness</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Top-k sampling limits choices to the k most likely tokens, then samples from this reduced set. Top-p (nucleus) sampling includes tokens until cumulative probability reaches p.">
+                    <p class="quiz-question">41. What is the difference between top-k and top-p (nucleus) sampling?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Top-k is deterministic, top-p is stochastic</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Top-k works on sentences, top-p on words</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Top-p is faster than top-k</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Top-k uses fixed number of tokens, top-p uses cumulative probability threshold</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>NLP Tasks</h4>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Named Entity Recognition (NER) identifies and classifies entities like person names, organizations, locations, dates, etc. in text. It's a sequence labeling task using schemes like BIO.">
+                    <p class="quiz-question">42. What does Named Entity Recognition (NER) do?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Identifies and classifies named entities like people, organizations, locations</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Generates names for new entities</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Translates entity names between languages</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Detects whether text contains any entities</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="BIO tagging marks B (Beginning) for the first token of an entity, I (Inside) for subsequent tokens, and O (Outside) for non-entity tokens.">
+                    <p class="quiz-question">43. [NOAI Style] In BIO tagging for NER, what does 'B-PER' indicate?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) A token between two person names</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) A generic person reference</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The beginning token of a person entity</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) A token that could be a person</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Extractive summarization selects and concatenates important sentences from the source. Abstractive summarization generates new text that may use different words, like how humans summarize.">
+                    <p class="quiz-question">44. What is the difference between extractive and abstractive summarization?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Extractive is longer than abstractive</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Extractive selects original sentences, abstractive generates new text</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Abstractive only works on news articles</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Extractive requires human review</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="SQuAD-style extractive QA finds the answer span within the given context passage. The model predicts start and end positions of the answer in the passage.">
+                    <p class="quiz-question">45. In extractive question answering, what does the model predict?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Start and end positions of the answer span in the context</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) A yes/no answer</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) A generated text answer</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The relevance score of the question</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Machine Translation</h4>
+
+                <div class="quiz-container" data-correct="d" data-explanation="BLEU (Bilingual Evaluation Understudy) measures n-gram overlap between machine translation output and reference translations, with a brevity penalty for short outputs.">
+                    <p class="quiz-question">46. What does the BLEU score measure in machine translation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Translation speed</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Semantic similarity to the source</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Grammatical correctness</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) N-gram overlap with reference translations</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Encoder-decoder models like T5 and BART are well-suited for translation because they encode the source sentence into a representation, then decode it into the target language.">
+                    <p class="quiz-question">47. [NOAI Style] Which transformer architecture is most suitable for machine translation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Encoder-only (like BERT)</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Encoder-decoder (like T5)</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Decoder-only (like GPT)</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Any architecture works equally well</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Modern LLM Concepts</h4>
+
+                <div class="quiz-container" data-correct="c" data-explanation="In-context learning allows LLMs to perform tasks by providing examples in the prompt, without updating model weights. The model learns the pattern from examples and applies it.">
+                    <p class="quiz-question">48. What is 'in-context learning' in large language models?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Training on domain-specific data</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Fine-tuning on new tasks</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Learning from examples provided in the prompt without weight updates</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Using retrieval to augment generation</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Few-shot prompting provides a few examples of the task in the prompt before the actual query. Zero-shot provides no examples, just instructions. One-shot uses exactly one example.">
+                    <p class="quiz-question">49. What distinguishes few-shot prompting from zero-shot prompting?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Few-shot includes examples in the prompt, zero-shot uses only instructions</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Few-shot trains on a small dataset</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Zero-shot is more accurate</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Few-shot requires model fine-tuning</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Chain-of-thought prompting encourages the model to show its reasoning step-by-step before giving the final answer. This improves performance on complex reasoning tasks.">
+                    <p class="quiz-question">50. [NOAI Style] What is chain-of-thought prompting?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Linking multiple prompts together</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Training on sequential data</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Using attention across prompt chains</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Prompting the model to show reasoning steps before answering</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="RLHF (Reinforcement Learning from Human Feedback) trains models using human preference data. Humans rank model outputs, and the model learns to generate preferred responses.">
+                    <p class="quiz-question">51. What is RLHF used for in training LLMs like ChatGPT?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Reducing model size</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Aligning model outputs with human preferences</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Improving tokenization</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Training on more data</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Instruction tuning fine-tunes models on diverse instruction-following examples, teaching the model to follow human instructions across many tasks, improving zero-shot capabilities.">
+                    <p class="quiz-question">52. What is the purpose of instruction tuning?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Teaching models to generate instructions</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Reducing inference latency</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Training models to follow diverse human instructions</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Compressing model weights</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Evaluation and Metrics</h4>
+
+                <div class="quiz-container" data-correct="a" data-explanation="ROUGE (Recall-Oriented Understudy for Gisting Evaluation) measures overlap between generated and reference summaries, commonly ROUGE-1 (unigram), ROUGE-2 (bigram), and ROUGE-L (longest common subsequence).">
+                    <p class="quiz-question">53. What does ROUGE measure in text summarization?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Overlap between generated summary and reference summaries</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Grammatical correctness of the summary</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Reading difficulty level</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Summary length appropriateness</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="F1 score for NER combines precision (what fraction of predicted entities are correct) and recall (what fraction of actual entities were found) into a single metric.">
+                    <p class="quiz-question">54. [NOAI Style] Which metric is commonly used to evaluate NER models?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) BLEU score</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Perplexity</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) ROUGE score</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) F1 score (entity-level precision and recall)</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Practical NLP Considerations</h4>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Attention mask tells the model which tokens are real content vs. padding. Padded positions get masked out so they don't affect the model's computations.">
+                    <p class="quiz-question">55. What is the purpose of attention masks in transformer inputs?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To select which attention heads to use</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To indicate which tokens are padding vs. real content</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To mask sensitive information</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To limit the context window size</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Gradient accumulation simulates larger batch sizes by accumulating gradients over multiple forward passes before updating weights. This enables training with limited GPU memory.">
+                    <p class="quiz-question">56. What is gradient accumulation used for when training large NLP models?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Speeding up training</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Reducing model size</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Simulating larger batch sizes with limited GPU memory</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Improving model accuracy</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Mixed precision training uses FP16 (half precision) for most computations while keeping critical operations in FP32, reducing memory usage and speeding up training with minimal accuracy loss.">
+                    <p class="quiz-question">57. What is the benefit of mixed precision training (FP16)?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Faster training and lower memory usage</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Higher model accuracy</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Better handling of rare words</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Improved tokenization</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="LoRA (Low-Rank Adaptation) adds small trainable rank decomposition matrices to frozen pre-trained weights, enabling efficient fine-tuning with far fewer parameters.">
+                    <p class="quiz-question">58. [NOAI Style] What is LoRA (Low-Rank Adaptation) used for?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Pre-training language models</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Tokenization of long sequences</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Data augmentation</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Parameter-efficient fine-tuning of large models</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Retrieval-Augmented Generation (RAG) retrieves relevant documents from a knowledge base and includes them in the prompt, allowing models to access up-to-date information beyond their training data.">
+                    <p class="quiz-question">59. What is Retrieval-Augmented Generation (RAG)?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Generating training data through retrieval</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Combining retrieval from a knowledge base with text generation</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Using random sampling in generation</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Regenerating text until it matches criteria</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Hallucination in LLMs refers to generating plausible-sounding but factually incorrect or made-up information. It's a major challenge in deploying LLMs for factual tasks.">
+                    <p class="quiz-question">60. What is 'hallucination' in the context of LLMs?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The model refusing to answer questions</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Extremely slow inference speed</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Generating plausible-sounding but factually incorrect information</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Producing outputs in the wrong language</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
                 <div class="algorithm-card">
                     <h3>NOAI Memory Aids - NLP</h3>
                     <ul>

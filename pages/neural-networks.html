@@ -1267,6 +1267,334 @@ loss = criterion(model(x), x)  # Compare output to input</code></pre>
             </div>
         </section>
 
+        <!-- Additional Neural Network MCQs -->
+        <section id="advanced-nn-mcqs" class="content-section">
+            <div class="container">
+                <h2>Additional Neural Network Practice</h2>
+                <p>More challenging questions covering advanced neural network concepts for NOAI preparation.</p>
+
+                <h3>Architecture Design</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Skip connections (residual connections) allow gradients to flow directly through the network, bypassing layers. This helps mitigate vanishing gradients in very deep networks.">
+                    <p class="quiz-question">33. What is the main purpose of skip connections in ResNet?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To reduce the number of parameters</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To allow gradients to flow directly, mitigating vanishing gradients</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To increase model capacity</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To speed up inference time</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Batch normalization normalizes layer inputs to have zero mean and unit variance, which stabilizes training and allows higher learning rates.">
+                    <p class="quiz-question">34. Batch normalization normalizes activations to have:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Mean=1, Variance=0</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Mean=0.5, Variance=0.5</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Mean=0, Variance=1</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Mean=1, Variance=1</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Layer normalization normalizes across features for each sample, making it independent of batch size. This is preferred for RNNs and transformers where batch statistics are unreliable.">
+                    <p class="quiz-question">35. Layer normalization differs from batch normalization by normalizing across:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Features instead of batch dimension</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Batch dimension instead of features</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Time steps only</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Spatial dimensions only</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="1x1 convolutions (pointwise convolutions) are used to change the number of channels without changing spatial dimensions. They also add non-linearity and reduce computational cost.">
+                    <p class="quiz-question">36. What is the purpose of 1x1 convolutions in neural networks?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To increase spatial resolution</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To apply pooling</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To detect edges</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To change channel dimensions and add non-linearity</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Depthwise separable convolutions split a standard convolution into depthwise (spatial) and pointwise (channel) operations, dramatically reducing parameters and computation.">
+                    <p class="quiz-question">37. Depthwise separable convolutions reduce computation by:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Using smaller kernels</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Separating spatial and channel-wise operations</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Reducing the number of layers</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Using lower precision arithmetic</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Training Dynamics</h3>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Learning rate warmup starts with a small learning rate and gradually increases it. This helps stabilize training in the early stages when gradients can be noisy.">
+                    <p class="quiz-question">38. What is learning rate warmup?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Starting with a high learning rate</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Keeping learning rate constant</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Gradually increasing learning rate from a small value</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Randomly varying learning rate</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Gradient clipping limits gradient magnitudes to prevent exploding gradients. When gradients exceed a threshold, they are scaled down to that maximum value.">
+                    <p class="quiz-question">39. Gradient clipping is used to prevent:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Exploding gradients</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Vanishing gradients</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Overfitting</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Underfitting</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Cosine annealing decreases the learning rate following a cosine curve, providing smooth decay with potential restarts. It often leads to better convergence than step decay.">
+                    <p class="quiz-question">40. Cosine annealing learning rate schedule:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Increases learning rate exponentially</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Keeps learning rate constant</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Decreases learning rate linearly</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Decreases learning rate following a cosine curve</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Xavier/Glorot initialization sets weights based on the number of input and output neurons, maintaining variance across layers. It's designed for tanh/sigmoid activations.">
+                    <p class="quiz-question">41. Xavier initialization is designed for which activation functions?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) ReLU and variants</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Tanh and sigmoid</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Softmax only</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) All activation functions equally</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="He initialization (Kaiming) accounts for ReLU's non-linearity by using a different scaling factor. It initializes with variance 2/n_in, better suited for ReLU networks.">
+                    <p class="quiz-question">42. He (Kaiming) initialization is preferred for:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Networks with ReLU activations</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Networks with tanh activations</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Recurrent networks only</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Networks without activation functions</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Recurrent Networks</h3>
+
+                <div class="quiz-container" data-correct="c" data-explanation="LSTM's forget gate decides what information to discard from the cell state. It outputs values between 0 (forget completely) and 1 (keep completely).">
+                    <p class="quiz-question">43. In LSTM, the forget gate determines:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) What new information to add</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) What to output</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) What information to discard from cell state</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The learning rate</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="GRU combines the forget and input gates into an update gate, making it simpler than LSTM with fewer parameters while achieving similar performance.">
+                    <p class="quiz-question">44. Compared to LSTM, GRU:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Has more gates and parameters</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Has fewer gates and parameters</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Cannot handle long sequences</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Requires more training data</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Bidirectional RNNs process sequences in both forward and backward directions, allowing the model to use context from both past and future at each time step.">
+                    <p class="quiz-question">45. Bidirectional RNNs are useful because they:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Train faster than unidirectional RNNs</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Use less memory</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Have fewer parameters</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Can use context from both past and future</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Teacher forcing uses ground truth tokens as input during training instead of model predictions. This speeds up training but can cause exposure bias at inference time.">
+                    <p class="quiz-question">46. Teacher forcing in sequence-to-sequence models:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Uses ground truth as input during training</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Uses model predictions as input during training</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Increases the learning rate over time</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Removes dropout during training</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Advanced Architectures</h3>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Attention mechanisms allow models to focus on different parts of the input when producing each output element, learning which parts are most relevant dynamically.">
+                    <p class="quiz-question">47. The attention mechanism allows a model to:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Process sequences faster</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Use less memory</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Focus on relevant parts of input when producing output</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Reduce the number of parameters</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Self-attention computes attention weights between all positions in a single sequence, allowing each position to attend to all other positions.">
+                    <p class="quiz-question">48. Self-attention differs from cross-attention by:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Using different weight matrices</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Computing attention within the same sequence</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Being faster to compute</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Not requiring queries and keys</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Multi-head attention runs multiple attention operations in parallel with different learned projections, allowing the model to attend to information from different representation subspaces.">
+                    <p class="quiz-question">49. Multi-head attention uses multiple heads to:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Process longer sequences</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Reduce computation time</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Decrease model size</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Attend to different representation subspaces</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Positional encoding adds position information to embeddings since transformers have no inherent notion of sequence order. Sinusoidal encodings allow the model to learn relative positions.">
+                    <p class="quiz-question">50. Why do transformers need positional encoding?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Self-attention has no inherent notion of position</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To reduce memory usage</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To speed up training</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To handle variable-length sequences</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Generative Models</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="In GANs, the generator tries to create realistic samples to fool the discriminator, while the discriminator tries to distinguish real from generated samples.">
+                    <p class="quiz-question">51. In a GAN, the generator's objective is to:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Classify images correctly</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Generate samples that fool the discriminator</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Minimize reconstruction loss</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Maximize the discriminator's accuracy</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Mode collapse occurs when the generator produces limited variety of outputs, essentially getting stuck generating similar samples that fool the discriminator.">
+                    <p class="quiz-question">52. Mode collapse in GANs refers to:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The discriminator becoming too strong</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Training becoming too slow</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The generator producing limited variety of outputs</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Memory overflow during training</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="VAEs use a regularized latent space with a KL divergence term that encourages the latent distribution to be close to a prior (usually standard normal).">
+                    <p class="quiz-question">53. The KL divergence term in VAE loss:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Regularizes the latent space to match a prior distribution</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Measures reconstruction quality</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Controls the learning rate</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Prevents mode collapse</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="The reparameterization trick allows gradients to flow through the sampling operation by expressing samples as a deterministic function of parameters plus noise.">
+                    <p class="quiz-question">54. The reparameterization trick in VAEs:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Reduces the number of parameters</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Speeds up inference</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Improves reconstruction quality</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Allows gradients to flow through sampling</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h3>Practical Considerations</h3>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Mixed precision training uses FP16 for most operations and FP32 for sensitive operations, reducing memory usage and speeding up training on modern GPUs.">
+                    <p class="quiz-question">55. Mixed precision training uses:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Only 32-bit floating point</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Both 16-bit and 32-bit floating point</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Only 16-bit floating point</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Integer arithmetic only</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Gradient accumulation simulates larger batch sizes by accumulating gradients over multiple forward passes before updating weights, useful when GPU memory is limited.">
+                    <p class="quiz-question">56. Gradient accumulation is used when:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) You want faster training</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) You have excess GPU memory</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) You want larger effective batch size with limited memory</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) You need to reduce overfitting</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Knowledge distillation trains a smaller 'student' model to mimic a larger 'teacher' model, transferring knowledge through soft targets (probability distributions).">
+                    <p class="quiz-question">57. Knowledge distillation involves:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Training a smaller model to mimic a larger one</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Removing unnecessary layers</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Quantizing weights to lower precision</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Pruning connections</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Data augmentation creates variations of training data (rotations, flips, crops, etc.) to increase dataset size and improve model generalization.">
+                    <p class="quiz-question">58. Data augmentation helps neural networks by:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Reducing the model size</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Speeding up training</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Reducing memory usage</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Increasing effective dataset size and improving generalization</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Label smoothing replaces hard labels (0 or 1) with soft labels (e.g., 0.1 and 0.9), preventing the model from becoming overconfident and improving generalization.">
+                    <p class="quiz-question">59. Label smoothing regularization:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Adds noise to input data</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Softens the target labels to prevent overconfidence</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Reduces the number of classes</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Removes ambiguous labels</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Dropout during training randomly sets neuron outputs to zero, but during inference all neurons are used with outputs scaled appropriately. This is crucial for consistent predictions.">
+                    <p class="quiz-question">60. During inference, dropout:</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Is applied with the same rate as training</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Is applied with a higher rate</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Is turned off (all neurons active)</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Only affects certain layers</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
         <div class="container">
             <nav class="page-navigation">
                 <a href="unsupervised.html" class="page-nav-link prev">

@@ -719,6 +719,470 @@ val_transform = transforms.Compose([
                     <div class="quiz-feedback"></div>
                 </div>
 
+                <h3>Additional Computer Vision Practice</h3>
+
+                <h4>Advanced CNN Concepts</h4>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Global Average Pooling (GAP) averages each feature map to a single value, eliminating the need for fully connected layers and reducing parameters while providing spatial invariance.">
+                    <p class="quiz-question">21. What is the purpose of Global Average Pooling (GAP) in modern CNN architectures?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To increase spatial resolution</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To add more trainable parameters</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To reduce each feature map to a single value, replacing FC layers</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To perform data augmentation</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Dilated (atrous) convolutions expand the receptive field without increasing parameters or reducing resolution by inserting gaps between filter elements.">
+                    <p class="quiz-question">22. What advantage do dilated (atrous) convolutions provide?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Faster training convergence</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Larger receptive field without increasing parameters</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Better handling of color images</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Reduced memory usage during inference</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="DenseNet connects each layer to every other layer in a feed-forward fashion, promoting feature reuse, strengthening gradient flow, and substantially reducing parameters.">
+                    <p class="quiz-question">23. What is the key innovation in DenseNet architecture?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Dense connections - each layer receives features from all preceding layers</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Using only 1x1 convolutions throughout</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Removing all pooling layers</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Using larger batch sizes</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="EfficientNet uses compound scaling to uniformly scale network width, depth, and resolution together using a compound coefficient, achieving better accuracy with fewer parameters.">
+                    <p class="quiz-question">24. [NOAI Style] What scaling strategy does EfficientNet use to balance network dimensions?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Only increasing network depth</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Only increasing input resolution</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Random scaling of different dimensions</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Compound scaling of width, depth, and resolution together</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Receptive field is the region of the input image that affects a particular feature map element. Deeper layers have larger receptive fields, allowing them to capture more global patterns.">
+                    <p class="quiz-question">25. What does the 'receptive field' of a CNN neuron refer to?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The number of parameters in the layer</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The output size of the feature map</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The region of input image that influences that neuron's output</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The learning rate used during training</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Object Detection Deep Dive</h4>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Anchor boxes are predefined bounding boxes of various sizes and aspect ratios that serve as reference templates. The detector predicts offsets from these anchors rather than absolute coordinates.">
+                    <p class="quiz-question">26. What are anchor boxes in object detection?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Ground truth bounding boxes from the training data</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Predefined reference boxes at various scales and aspect ratios</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The final output predictions of the model</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Boxes used only during data augmentation</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Non-Maximum Suppression (NMS) removes redundant overlapping detections by keeping only the highest confidence box and suppressing boxes with high IoU overlap.">
+                    <p class="quiz-question">27. [NOAI Style] What is the purpose of Non-Maximum Suppression (NMS) in object detection?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Remove duplicate overlapping detections, keeping the most confident</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Normalize the confidence scores</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Increase the number of detected objects</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Train the detector to recognize new classes</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Feature Pyramid Networks (FPN) create multi-scale feature maps by combining high-resolution low-level features with semantically strong high-level features, improving detection of objects at different scales.">
+                    <p class="quiz-question">28. What problem does Feature Pyramid Network (FPN) solve in object detection?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Reducing training time</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Handling occluded objects</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Detecting objects at multiple scales effectively</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Processing video streams in real-time</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Focal Loss addresses class imbalance by down-weighting the loss from easy (well-classified) examples, focusing training on hard negatives. It was introduced in RetinaNet to handle the extreme imbalance in one-stage detectors.">
+                    <p class="quiz-question">29. [NOAI Style] What problem does Focal Loss address in object detection?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Bounding box regression accuracy</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Multi-scale feature extraction</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Inference speed optimization</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Class imbalance between foreground and background</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="mAP (mean Average Precision) is calculated by averaging the AP across all object classes. AP itself is the area under the precision-recall curve for each class.">
+                    <p class="quiz-question">30. How is mean Average Precision (mAP) calculated in object detection?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Average IoU across all predictions</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Average of per-class Average Precision (area under PR curve)</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Maximum accuracy across IoU thresholds</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Ratio of correct detections to total detections</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Semantic Segmentation</h4>
+
+                <div class="quiz-container" data-correct="a" data-explanation="U-Net uses an encoder-decoder structure with skip connections that concatenate encoder features to decoder features, preserving fine spatial details essential for precise segmentation.">
+                    <p class="quiz-question">31. What architectural feature makes U-Net effective for biomedical image segmentation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Encoder-decoder with skip connections preserving spatial details</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Very deep network with 152 layers</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Multiple detection heads</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Attention mechanisms only</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="FCN (Fully Convolutional Network) replaces fully connected layers with 1x1 convolutions, allowing the network to accept any input size and produce spatial output maps for dense prediction.">
+                    <p class="quiz-question">32. What modification does FCN (Fully Convolutional Network) make to standard CNNs?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Adds recurrent layers for sequence processing</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Uses only pooling layers without convolutions</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Replaces fully connected layers with 1x1 convolutions</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Removes all activation functions</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Transposed convolution (deconvolution) upsamples feature maps by inserting zeros between input values and performing convolution, effectively learning the upsampling operation.">
+                    <p class="quiz-question">33. What operation is used to upsample feature maps in semantic segmentation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Max pooling</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Transposed convolution (deconvolution)</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Batch normalization</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Dropout</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Dice loss measures the overlap between predicted and ground truth segmentation masks. It's especially useful for imbalanced datasets where foreground pixels are rare.">
+                    <p class="quiz-question">34. [NOAI Style] Which loss function is commonly used for segmentation tasks with imbalanced classes?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Mean Squared Error</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Hinge Loss</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Triplet Loss</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Dice Loss</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Image Preprocessing & Normalization</h4>
+
+                <div class="quiz-container" data-correct="a" data-explanation="ImageNet normalization uses mean=[0.485, 0.456, 0.406] and std=[0.229, 0.224, 0.225] for RGB channels. These values were computed from the ImageNet dataset and are used for transfer learning.">
+                    <p class="quiz-question">35. Why do we use ImageNet mean and standard deviation for image normalization?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Pre-trained models expect inputs normalized with these statistics</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It's the only mathematically correct normalization</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It maximizes the image resolution</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It's required by GPU hardware</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Bilinear interpolation uses weighted average of the 4 nearest pixels to compute new pixel values, providing smooth resizing. Nearest neighbor just copies the closest pixel value.">
+                    <p class="quiz-question">36. What is the difference between bilinear and nearest-neighbor image interpolation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Bilinear is faster but lower quality</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Nearest-neighbor produces smoother results</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Bilinear uses weighted average of 4 neighbors; nearest copies closest</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) There is no difference in output quality</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Center crop removes equal portions from all edges to get the center region, while random crop takes a random portion. Center crop is used for validation to ensure consistent evaluation.">
+                    <p class="quiz-question">37. Why is center cropping typically used for validation/test images rather than random cropping?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Center cropping is faster to compute</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To ensure consistent, reproducible evaluation</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Random cropping doesn't work on validation data</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The center always contains the most important features</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Advanced Augmentation Techniques</h4>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Mixup creates new training examples by taking convex combinations of pairs of images and their labels: x_new = λx₁ + (1-λ)x₂, y_new = λy₁ + (1-λ)y₂. This regularizes the model and improves generalization.">
+                    <p class="quiz-question">38. How does Mixup data augmentation work?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Blends two images and their labels with a mixing coefficient</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Randomly erases rectangular regions of images</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Applies multiple augmentations simultaneously</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Swaps color channels between images</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="CutMix cuts a patch from one image and pastes it onto another, mixing labels proportionally to the patch area. Unlike Cutout, the erased region is filled with useful information.">
+                    <p class="quiz-question">39. [NOAI Style] What distinguishes CutMix from Cutout augmentation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) CutMix only works on grayscale images</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Cutout blends entire images together</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) CutMix fills erased regions with patches from other images</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) CutMix requires paired training data</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="AutoAugment uses reinforcement learning to search for optimal augmentation policies for a specific dataset, automatically finding combinations of augmentation operations and their magnitudes.">
+                    <p class="quiz-question">40. What is the key idea behind AutoAugment?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Manually designing augmentation for each dataset</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Using only geometric transformations</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Applying all possible augmentations at once</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Automatically learning optimal augmentation policies</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>GANs and Generative Models</h4>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Mode collapse occurs when the generator produces only a limited variety of outputs, essentially 'collapsing' to generate similar samples regardless of input noise, failing to capture the full data distribution.">
+                    <p class="quiz-question">41. What is 'mode collapse' in GAN training?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The discriminator becomes too powerful</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The generator produces limited variety, ignoring some data modes</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Training converges too quickly</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The network runs out of memory</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Conditional GANs (cGANs) provide additional information like class labels to both generator and discriminator, allowing controlled generation of specific types of outputs.">
+                    <p class="quiz-question">42. What does a Conditional GAN (cGAN) add to the standard GAN framework?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Class labels or other conditioning information for controlled generation</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Multiple discriminators</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Reinforcement learning objectives</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Recursive network structures</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="StyleGAN introduces a mapping network and style-based generator that allows fine-grained control over generated images at different scales (coarse, medium, fine).">
+                    <p class="quiz-question">43. What innovation did StyleGAN introduce for image generation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Using transformers instead of convolutions</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Training without a discriminator</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Style-based generation with controllable attributes at different scales</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Generating images from text descriptions only</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Diffusion models learn to gradually denoise images, starting from pure noise and iteratively removing noise to generate high-quality images. They are more stable to train than GANs.">
+                    <p class="quiz-question">44. [NOAI Style] How do diffusion models generate images?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) By adversarial training between generator and discriminator</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) By encoding and decoding through a bottleneck</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) By directly predicting pixel values from noise</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) By iteratively denoising from pure noise to image</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Vision-Language Models</h4>
+
+                <div class="quiz-container" data-correct="b" data-explanation="CLIP learns a shared embedding space for images and text through contrastive learning, matching images with their text descriptions and separating non-matching pairs.">
+                    <p class="quiz-question">45. How does CLIP learn to connect images and text?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) By generating captions for images</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) By contrastive learning to match image-text pairs in embedding space</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) By training separate models for each modality</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) By using reinforcement learning from human feedback</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Zero-shot classification means classifying images into categories never seen during training, using only textual descriptions of the classes. CLIP enables this through its image-text alignment.">
+                    <p class="quiz-question">46. What is 'zero-shot classification' in the context of CLIP?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Classifying into categories not seen during training using text descriptions</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Training without any labeled data</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Classification that takes zero computational time</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Predicting the absence of objects in images</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Attention in Computer Vision</h4>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Squeeze-and-Excitation (SE) blocks recalibrate channel-wise feature responses by learning to emphasize informative channels and suppress less useful ones through global average pooling and FC layers.">
+                    <p class="quiz-question">47. What do Squeeze-and-Excitation (SE) blocks do in CNNs?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Reduce spatial dimensions like pooling</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Add skip connections between layers</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Learn to weight channel importance adaptively</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Perform data augmentation during training</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="CBAM (Convolutional Block Attention Module) combines both channel and spatial attention, first emphasizing 'what' is important (channel) then 'where' it is (spatial).">
+                    <p class="quiz-question">48. [NOAI Style] What two types of attention does CBAM (Convolutional Block Attention Module) combine?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Self-attention and cross-attention</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Channel attention and spatial attention</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Local attention and global attention</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Temporal attention and frequency attention</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Practical Considerations</h4>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Gradient checkpointing trades computation for memory by not storing all intermediate activations. During backpropagation, it recomputes activations as needed, enabling training of larger models.">
+                    <p class="quiz-question">49. What is the purpose of gradient checkpointing in training large vision models?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To speed up training significantly</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To improve model accuracy</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To enable distributed training</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To reduce memory usage by recomputing activations</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Test-Time Augmentation (TTA) applies augmentations to test images and averages predictions across augmented versions, often improving accuracy at the cost of increased inference time.">
+                    <p class="quiz-question">50. What is Test-Time Augmentation (TTA)?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Applying augmentations during inference and averaging predictions</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Augmenting test data before final evaluation</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Using a different augmentation strategy for testing</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Generating augmented test datasets</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Knowledge distillation transfers knowledge from a large teacher model to a smaller student model by training the student to match the teacher's soft probability outputs (softmax with temperature).">
+                    <p class="quiz-question">51. In knowledge distillation for CNNs, what does the student model learn from?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Only the ground truth labels</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The teacher's architecture</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The teacher's soft probability outputs</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Random noise from the teacher</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="For imbalanced datasets, using weighted loss (giving higher weight to minority classes), oversampling rare classes, or undersampling majority classes can help the model learn minority classes better.">
+                    <p class="quiz-question">52. [NOAI Style] When training on imbalanced image datasets, which strategy helps address class imbalance?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Using larger batch sizes only</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Class-weighted loss or oversampling minority classes</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Training for fewer epochs</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Removing all augmentation</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Learning rate warmup gradually increases the learning rate from near zero to the target value over several iterations, helping stabilize early training when gradients may be unreliable.">
+                    <p class="quiz-question">53. Why is learning rate warmup commonly used when training vision models?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To stabilize training when initial gradients are unreliable</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To increase final model accuracy</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To reduce the total training time</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To enable larger batch sizes</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Evaluation and Metrics</h4>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Top-5 accuracy measures whether the correct label is among the model's top 5 predictions, which is more lenient than top-1 and useful when classes are ambiguous or similar.">
+                    <p class="quiz-question">54. What does Top-5 accuracy measure in image classification?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Accuracy on the 5 most common classes</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Average accuracy across 5 runs</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Accuracy using only 5% of test data</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Whether correct label is in the top 5 predictions</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Pixel accuracy can be misleading for segmentation because it's dominated by the majority class. Mean IoU weights all classes equally, providing better measure for imbalanced segmentation tasks.">
+                    <p class="quiz-question">55. Why is mean IoU preferred over pixel accuracy for evaluating semantic segmentation?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Pixel accuracy is harder to compute</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Pixel accuracy is dominated by majority classes</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Mean IoU is faster to calculate</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Pixel accuracy doesn't work for multi-class tasks</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="FLOPs (Floating Point Operations) measure computational complexity, useful for comparing model efficiency. FPS (Frames Per Second) measures actual inference speed on specific hardware.">
+                    <p class="quiz-question">56. What do FLOPs and FPS measure when comparing CV models?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Model accuracy and precision</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Training time and memory usage</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Computational complexity and inference speed</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Dataset size and augmentation factor</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Special Applications</h4>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Siamese networks learn to compare two inputs by processing them through identical (shared weight) networks and comparing their embeddings, useful for verification tasks like face recognition.">
+                    <p class="quiz-question">57. What architecture is commonly used for one-shot learning and face verification?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Siamese networks with shared weights</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Standard classification CNNs</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Generative Adversarial Networks</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Recurrent Neural Networks</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Optical flow estimates pixel motion between consecutive frames, providing information about how objects move in video. It's used for action recognition, video prediction, and tracking.">
+                    <p class="quiz-question">58. [NOAI Style] What does optical flow estimation measure in video analysis?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The brightness changes between frames</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The apparent motion of pixels between consecutive frames</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The depth of objects in the scene</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The number of objects in each frame</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Super-resolution models learn to reconstruct high-resolution details from low-resolution inputs, often using residual learning to predict the difference between low-res and high-res.">
+                    <p class="quiz-question">59. What is the goal of image super-resolution models?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Compress images to smaller file sizes</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Detect objects in low-quality images</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Reconstruct high-resolution images from low-resolution inputs</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Convert color images to grayscale</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Depth estimation from monocular images uses visual cues like texture gradients, relative size, and occlusion to predict pixel-wise depth maps, useful for robotics and AR applications.">
+                    <p class="quiz-question">60. What visual cues do monocular depth estimation models rely on?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Stereo image pairs only</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) LiDAR sensor data</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Infrared imaging</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Texture gradients, relative size, and occlusion patterns</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
                 <div class="algorithm-card">
                     <h3>NOAI Memory Aids - Computer Vision</h3>
                     <ul>

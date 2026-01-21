@@ -925,6 +925,360 @@ print("Non-zero features:", sum(lasso.coef_ != 0))</code></pre>
                     </div>
                     <div class="quiz-feedback"></div>
                 </div>
+
+                <h3>Additional Supervised Learning Practice</h3>
+
+                <h4>Advanced Linear Models</h4>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Multicollinearity occurs when independent variables are highly correlated with each other, making it difficult to determine individual variable effects and causing unstable coefficient estimates.">
+                    <p class="quiz-question">26. What is multicollinearity in linear regression?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) When the target variable has multiple values</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) When independent variables are highly correlated with each other</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) When the model predicts multiple outputs</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) When residuals are correlated with predictions</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Polynomial features create non-linear combinations of original features (x², x³, x₁×x₂), allowing linear models to capture non-linear relationships while still using linear regression.">
+                    <p class="quiz-question">27. [NOAI Style] What is the purpose of adding polynomial features to linear regression?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) To reduce the number of features</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) To speed up training</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) To capture non-linear relationships while using linear methods</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) To handle missing values</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Linear regression assumes: linear relationship between features and target, independence of errors, homoscedasticity (constant error variance), and normally distributed errors.">
+                    <p class="quiz-question">28. Which is NOT an assumption of linear regression?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Features must be normally distributed</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Linear relationship between features and target</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Errors are independent of each other</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Errors have constant variance (homoscedasticity)</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Classification Details</h4>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Softmax generalizes sigmoid to multi-class classification, producing probability distribution over all classes that sum to 1.">
+                    <p class="quiz-question">29. For multi-class classification with logistic regression, which function replaces sigmoid?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) ReLU</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Tanh</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Step function</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Softmax</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="One-vs-Rest trains N binary classifiers (one per class), each distinguishing one class from all others. Final prediction is the class with highest confidence.">
+                    <p class="quiz-question">30. In One-vs-Rest (OvR) multi-class classification with 5 classes, how many binary classifiers are trained?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) 4</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) 5</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) 10</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) 25</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Log loss (binary cross-entropy) heavily penalizes confident wrong predictions. Predicting 0.01 for a true positive incurs much higher loss than predicting 0.4.">
+                    <p class="quiz-question">31. [NOAI Style] Why does log loss severely penalize confident but wrong predictions?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It uses absolute differences</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It squares the errors</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Log of values near 0 approaches negative infinity</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It clips probabilities at 0.5</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Distance-Based Methods</h4>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Manhattan distance (L1) sums absolute differences: |x₁-y₁| + |x₂-y₂|. It's named after the grid-like street layout of Manhattan.">
+                    <p class="quiz-question">32. What is the Manhattan distance formula?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Sum of absolute differences: |x₁-y₁| + |x₂-y₂| + ...</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Square root of sum of squared differences</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Maximum absolute difference</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Dot product of vectors</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="The curse of dimensionality means that in high dimensions, distances become increasingly similar (all points are roughly equidistant), making KNN less effective.">
+                    <p class="quiz-question">33. Why does KNN suffer from the curse of dimensionality?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) More dimensions require more memory</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Training becomes slower</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It cannot handle categorical features</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Distances become less meaningful as dimensions increase</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Weighted KNN gives closer neighbors more influence on the prediction, typically using inverse distance weighting. This makes the algorithm more robust to outliers among neighbors.">
+                    <p class="quiz-question">34. What is weighted KNN?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Using weighted features instead of original features</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Giving closer neighbors more influence on prediction</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Weighting different classes by their frequency</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Using different k values for different samples</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Tree-Based Methods</h4>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Decision trees naturally provide feature importance by measuring how much each feature reduces impurity across all splits where it's used.">
+                    <p class="quiz-question">35. How do decision trees calculate feature importance?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) By counting how many times each feature appears in the tree</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) By the correlation with the target variable</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) By the total reduction in impurity from splits on that feature</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) By the depth at which the feature first appears</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="CART (Classification and Regression Trees) creates binary splits, while ID3 can create multi-way splits. CART also handles both classification and regression.">
+                    <p class="quiz-question">36. [NOAI Style] What distinguishes CART from ID3 decision tree algorithms?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) CART creates binary splits only, ID3 can have multi-way splits</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) CART uses entropy, ID3 uses Gini</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) CART is only for regression, ID3 for classification</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) CART requires numerical features only</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="An entropy of 0 indicates a pure node where all samples belong to the same class - there's no uncertainty about the classification.">
+                    <p class="quiz-question">37. What does an entropy value of 0 indicate for a decision tree node?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Maximum uncertainty - equal mix of all classes</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Pure node - all samples belong to the same class</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The node should not be split further</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The feature is not useful for splitting</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>SVM Deep Dive</h4>
+
+                <div class="quiz-container" data-correct="d" data-explanation="The C parameter controls the trade-off between a wider margin and fewer misclassifications. Higher C means smaller margin but fewer training errors.">
+                    <p class="quiz-question">38. What does the C parameter control in SVM?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The number of support vectors</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The kernel type to use</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) The dimensionality of the feature space</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Trade-off between margin width and classification errors</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Soft margin SVM allows some misclassifications, controlled by C, making it suitable for non-linearly separable or noisy data. Hard margin requires perfect separation.">
+                    <p class="quiz-question">39. What is the difference between soft margin and hard margin SVM?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Soft margin allows some misclassifications, hard margin doesn't</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Soft margin uses kernels, hard margin doesn't</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Hard margin is faster to train</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Soft margin only works for binary classification</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Gamma in RBF kernel controls how far the influence of a single training example reaches. High gamma means close points have influence (potential overfitting), low gamma means far points also have influence.">
+                    <p class="quiz-question">40. [NOAI Style] In RBF kernel SVM, what happens when gamma is very high?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Decision boundary becomes more linear</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Training becomes faster</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Model may overfit - only close points influence decision</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) More support vectors are created</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Ensemble Methods Extended</h4>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Out-of-bag (OOB) error uses the ~37% of samples not included in each bootstrap sample to estimate test error without needing a separate validation set.">
+                    <p class="quiz-question">41. What is out-of-bag (OOB) error in Random Forest?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Error from samples that couldn't be classified</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Validation error using samples not in bootstrap samples</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Training error from outlier samples</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Error when bag-of-words features are used</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Stacking uses predictions from base models as inputs to a meta-model that learns how to best combine them. This often outperforms simple averaging or voting.">
+                    <p class="quiz-question">42. What is stacking (stacked generalization) in ensemble learning?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Training deeper decision trees</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Adding more features to the dataset</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Training models on sequential data subsets</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Using a meta-model to combine predictions of base models</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Learning rate in boosting scales the contribution of each tree. Lower learning rate requires more trees but often leads to better generalization.">
+                    <p class="quiz-question">43. What is the effect of a low learning rate in gradient boosting?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Each tree contributes less, requiring more trees for good performance</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Training becomes faster</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Fewer trees are needed</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) The model becomes more prone to overfitting</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Naive Bayes</h4>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Naive Bayes assumes all features are conditionally independent given the class label. This 'naive' assumption simplifies computation but is rarely true in practice.">
+                    <p class="quiz-question">44. What assumption makes Naive Bayes 'naive'?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Features follow a normal distribution</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Classes are equally likely</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Features are conditionally independent given the class</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) All features have equal importance</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Naive Bayes works well for text classification despite the independence assumption because word presence/absence patterns, even without considering dependencies, are informative.">
+                    <p class="quiz-question">45. [NOAI Style] Why does Naive Bayes often work well for text classification despite its assumptions?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Text data always satisfies the independence assumption</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Word patterns are informative even without modeling dependencies</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It uses more training data than other methods</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Text has fewer features than numerical data</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Model Evaluation Metrics</h4>
+
+                <div class="quiz-container" data-correct="d" data-explanation="F1 score is the harmonic mean of precision and recall: 2 × (precision × recall) / (precision + recall). It balances both metrics equally.">
+                    <p class="quiz-question">46. How is the F1 score calculated?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Arithmetic mean of precision and recall</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Geometric mean of precision and recall</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Weighted average based on class distribution</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Harmonic mean of precision and recall</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="AUC-ROC measures the probability that a randomly chosen positive example ranks higher than a randomly chosen negative example. 0.5 means random, 1.0 means perfect.">
+                    <p class="quiz-question">47. What does AUC-ROC measure in classification?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Probability of ranking a positive higher than a negative sample</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Overall classification accuracy</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Training time efficiency</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Feature importance</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Specificity (True Negative Rate) measures how well the model identifies actual negatives: TN / (TN + FP). High specificity means few false alarms.">
+                    <p class="quiz-question">48. What is specificity in classification metrics?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) TP / (TP + FN) - same as recall</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) TP / (TP + FP) - same as precision</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) TN / (TN + FP) - true negative rate</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) (TP + TN) / Total - same as accuracy</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Hyperparameter Tuning</h4>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Grid search exhaustively tries all combinations of hyperparameters in a predefined grid. It's thorough but computationally expensive.">
+                    <p class="quiz-question">49. [NOAI Style] How does grid search find optimal hyperparameters?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Using gradient descent on hyperparameters</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Exhaustively trying all combinations in a predefined grid</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Randomly sampling from hyperparameter distributions</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Using Bayesian optimization</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Random search often finds good hyperparameters faster than grid search because it can explore more values for important hyperparameters while wasting less time on unimportant ones.">
+                    <p class="quiz-question">50. When might random search outperform grid search for hyperparameter tuning?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) When some hyperparameters are more important than others</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) When the search space is very small</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) When you need deterministic results</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) When all hyperparameters interact strongly</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Handling Class Imbalance</h4>
+
+                <div class="quiz-container" data-correct="c" data-explanation="SMOTE (Synthetic Minority Over-sampling Technique) creates synthetic examples by interpolating between existing minority class samples, rather than just duplicating them.">
+                    <p class="quiz-question">51. How does SMOTE address class imbalance?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) By removing majority class samples</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) By duplicating minority class samples exactly</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) By creating synthetic minority samples through interpolation</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) By changing the loss function</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="d" data-explanation="Class weights make misclassifying minority class examples more costly. Higher weight for minority class forces the model to pay more attention to correctly classifying them.">
+                    <p class="quiz-question">52. What is the effect of setting higher class weights for the minority class?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) The model trains faster</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) The decision boundary moves away from minority class</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) More features are selected</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Misclassifying minority class becomes more costly</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="b" data-explanation="Accuracy can be misleading with imbalanced classes. A model predicting only the majority class could achieve 95% accuracy on a 95/5 split while being useless.">
+                    <p class="quiz-question">53. [NOAI Style] Why is accuracy a poor metric for imbalanced classification?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It requires balanced classes to compute</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) A model predicting only majority class can achieve high accuracy</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It doesn't account for training time</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It's too computationally expensive</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <h4>Practical Considerations</h4>
+
+                <div class="quiz-container" data-correct="a" data-explanation="Early stopping monitors validation performance and stops training when it starts degrading, preventing overfitting without needing to specify the exact number of iterations.">
+                    <p class="quiz-question">54. What is early stopping in machine learning?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) Stopping training when validation performance degrades</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) Stopping after a fixed number of epochs</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) Stopping when training accuracy reaches 100%</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) Stopping when loss reaches zero</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
+
+                <div class="quiz-container" data-correct="c" data-explanation="Stratified k-fold maintains the same class distribution in each fold as in the original dataset. This is important for imbalanced datasets to ensure each fold is representative.">
+                    <p class="quiz-question">55. What makes stratified k-fold cross-validation different from regular k-fold?</p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" data-value="a"><span>A) It uses more folds</span></div>
+                        <div class="quiz-option" data-value="b"><span>B) It shuffles data before splitting</span></div>
+                        <div class="quiz-option" data-value="c"><span>C) It maintains class distribution in each fold</span></div>
+                        <div class="quiz-option" data-value="d"><span>D) It uses overlapping folds</span></div>
+                    </div>
+                    <div class="quiz-feedback"></div>
+                </div>
             </div>
         </section>
 
